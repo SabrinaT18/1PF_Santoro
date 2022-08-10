@@ -1,0 +1,41 @@
+h1{
+    padding-top: 30px; 
+    text-align: center; 
+    font-size: 22px;
+  }
+  
+  p {
+    text-align: center;
+  }
+  
+  h4 {
+  padding-top: 30px;    
+  text-align: right; 
+  padding-right: 45px;
+  text-decoration-line:underline;
+  color: dimgray;
+  font-size: 16px;
+  }
+  
+  h3 {
+    padding-top: 30px;    
+    font-size: 18px;
+  }
+  
+  .aprobados{
+    color: green;
+  }
+  
+  .desaprobados{
+    color: red;
+  }
+   
+  
+  .texto-correcto{
+  color:rgb(16, 15, 92);
+  }
+  
+  .texto-incorrecto{
+  background-color:yellow;   
+  }
+  
