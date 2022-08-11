@@ -33,9 +33,11 @@ export class ListaAlumnosComponent implements OnInit {
   dataSource: MatTableDataSource<Alumno> = new MatTableDataSource(ELEMENT_DATA);
  
   @ViewChild(MatTable) tabla!: MatTable<Alumno>;
-
+  
+  nota= 7;
   hoy = Date.now();
 
+  
  constructor(
  private dialog: MatDialog   
   ) { }

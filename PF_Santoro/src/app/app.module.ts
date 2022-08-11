@@ -8,11 +8,17 @@ import { NavbarComponent } from './componentes/layout/navbar/navbar.component';
 import { ContenidoComponent } from './componentes/layout/contenido/contenido.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToolbarComponent } from './componentes/layout/toolbar/toolbar.component';
-import { AppMaterialModule } from './app.material.module';
 import { FormBuilder, ReactiveFormsModule, FormGroup, FormsModule } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { ConcatenarPipe } from './pipes/concatenar.pipe';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { TitulosDirective } from './directivas/titulos.directive';
 
 @NgModule({
   declarations: [
@@ -21,17 +27,25 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     ABMalumnosComponent,
     NavbarComponent,
     ToolbarComponent,
-    ContenidoComponent
+    ContenidoComponent,
+    ConcatenarPipe,
+    TitulosDirective,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    AppMaterialModule,
     ReactiveFormsModule,
-    FormsModule,    
+    FormsModule,  
+    MatButtonModule,
+    MatCardModule,
+    MatIconModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatTableModule,
+    MatDialogModule,
+    MatSlideToggleModule,
     ],
 
   providers: [

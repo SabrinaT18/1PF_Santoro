@@ -1,18 +1,27 @@
-<h1>Estudiantes 2022</h1>
+<h1 [appTitulos]="20" > Estudiantes 2022  </h1>
+
 <mat-card style="width:30%; height:25%">
   <mat-card-title> Criterios de evaluación </mat-card-title>
   <mat-card-subtitle> 2022 </mat-card-subtitle>
-  <mat-card-content> <p>Para aprobar el curso la nota del alumno debe ser mayor a: 7 </p> 
+  <mat-card-content> <p> Para aprobar el curso la nota del alumno debe ser mayor a: {{nota }} </p> 
 <br>
    <footer> Actualizado al: {{ hoy | date:'dd-MM-yy'}} </footer>
    </mat-card-content>
 </mat-card>
 
-<mat-icon> search </mat-icon>
-<mat-form-field >
-<mat-label appearance="fill"> Buscar </mat-label>
+
+<mat-form-field > 
+<mat-label appearance="fill"> Filtrar alumnos </mat-label>
 <input type="text" (keyup)="filtrar($event)" matInput>
+<mat-icon> search </mat-icon>
 </mat-form-field>
+
+<!------
+  El alumno  
+ <div class="aprobados" *ngIf="alumno.nota >= variableNota ">  está aprobado.     </div>
+ <div class="desaprobados" *ngIf="alumno.nota < variableNota ">  está desaprobado. </div> 
+----->
+
 
 <mat-label> <h3> Listado de alumnos </h3> </mat-label>
 <table mat-table [dataSource]="dataSource">

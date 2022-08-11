@@ -1,8 +1,7 @@
 h1 {
-  padding-top: 10px;
-  font-size: 18px;
-  background-color:beige;
-}
+  padding: 20px;
+
+  }
 
 .mat-card {
  margin-left: 50%;
@@ -32,4 +31,11 @@ table {
 
 .mat-icon {
  margin-left: 10px;
+ color: whitesmoke;
+}
+
+.mat-form-field{
+  background-color: rgb(70, 70, 70);
+  margin: 4px;
+  padding: 3px;
 }
