@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListaAlumnosComponent } from './componentes/lista-alumnos/lista-alumnos.component';
@@ -10,7 +9,7 @@ import { ContenidoComponent } from './componentes/layout/contenido/contenido.com
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToolbarComponent } from './componentes/layout/toolbar/toolbar.component';
 import { AppMaterialModule } from './app.material.module';
-import { FormBuilder, ReactiveFormsModule, FormGroup } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, FormGroup, FormsModule } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -30,9 +29,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     BrowserAnimationsModule,
     AppMaterialModule,
     ReactiveFormsModule,
+    FormsModule,    
     MatInputModule,
     MatFormFieldModule
     ],
+
   providers: [
     { provide: MatDialogRef, useValue: {} },
     { provide: MAT_DIALOG_DATA, useValue: {} }

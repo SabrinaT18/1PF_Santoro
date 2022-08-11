@@ -3,21 +3,22 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { ABMalumnosComponent } from '../abmalumnos/abmalumnos.component';
 
-export interface alumno {
-  nombre: string;
+export interface Alumno {
   apellido: string;
+  nombre: string;
   email: string;
   fechaNacimiento: string;
   nota: number;
+  estado: boolean;
 }
 
-const ELEMENT_DATA: alumno [] = [
-  { nombre: 'Juan', apellido: 'Perez', email: 'juan@mail.com', fechaNacimiento: '25/12/1991', nota: 9 },
-  { nombre: 'Candela', apellido: 'Benitez', email: 'candela@mail.com', fechaNacimiento: '05/09/1988', nota: 10 },
-  { nombre: 'Marcos', apellido: 'García', email: 'marcos@mail.com', fechaNacimiento: '12/02/1983', nota: 4 },
-  { nombre: 'Alejo', apellido: 'Nuñez', email: 'alejo@mail.com', fechaNacimiento: '18/05/1984', nota: 6 },
-  { nombre: 'Guadalupe', apellido: 'Suarez', email: 'guadalupe@mail.com', fechaNacimiento: '21/08/1994', nota: 2},
-  { nombre: 'Victoria', apellido: 'Lopez', email: 'victoria@mail.com', fechaNacimiento: '16/04/1985',  nota: 8},
+const ELEMENT_DATA: Alumno [] = [
+  { apellido: 'Perez', nombre: 'Juan',  email: 'juan@mail.com', fechaNacimiento: '25/12/1991', nota: 9, estado: true  },
+  { apellido: 'Benitez', nombre: 'Candela',  email: 'candela@mail.com', fechaNacimiento: '05/09/1988', nota: 10, estado: true },
+  { apellido: 'García', nombre: 'Marcos',  email: 'marcos@mail.com', fechaNacimiento: '12/02/1983', nota: 4, estado: false },
+  { apellido: 'Nuñez', nombre: 'Alejo', email: 'alejo@mail.com', fechaNacimiento: '18/05/1984', nota: 6, estado: false },
+  { apellido: 'Suarez', nombre: 'Guadalupe', email: 'guadalupe@mail.com', fechaNacimiento: '21/08/1994', nota: 2, estado: false},
+  { apellido: 'Lopez', nombre: 'Victoria',  email: 'victoria@mail.com', fechaNacimiento: '16/04/1985',  nota: 8, estado: true}
 ]
 
 
@@ -26,36 +27,36 @@ const ELEMENT_DATA: alumno [] = [
   templateUrl: './lista-alumnos.component.html',
   styleUrls: ['./lista-alumnos.component.css']
 })
+
 export class ListaAlumnosComponent implements OnInit {
-  columnas: string[] = ['nombre', 'apellido', 'email', 'fechaNacimiento', 'nota'] ;
-  dataSource: MatTableDataSource<alumno> = new MatTableDataSource(ELEMENT_DATA);
+  displayedColumns: string [] = ['apellido','nombre', 'email', 'fechaNacimiento', 'nota', 'estado','acciones'] ;
+  dataSource: MatTableDataSource<Alumno> = new MatTableDataSource(ELEMENT_DATA);
+ 
+  @ViewChild(MatTable) tabla!: MatTable<Alumno>;
 
-  @ViewChild(MatTable) tabla!: MatTable<alumno>;
-
-  variableNota = 7;
   hoy = Date.now();
-  
-  constructor(
-    private dialog: MatDialog
+
+ constructor(
+ private dialog: MatDialog   
   ) { }
 
   ngOnInit(): void {
   }
 
-  eliminar(element: alumno){
-    this.dataSource.data = this.dataSource.data.filter((alumno: alumno) => alumno.nombre != element.nombre);
+
+  eliminar(element: Alumno){
+    this.dataSource.data = this.dataSource.data.filter((alumno: Alumno) => alumno.nombre != element.nombre);
   }
 
-
-  editar(element: alumno){
+  editar(element: Alumno){
     const dialogRef = this.dialog.open(ABMalumnosComponent, {
-      width: '350px',
+      width: '400px',
       data: element
     });
 
     dialogRef.afterClosed().subscribe(resultado => {
       if(resultado){
-        const item = this.dataSource.data.find(curso => element.nombre === resultado.nombre);
+        const item = this.dataSource.data.find(alumno => element.nombre === resultado.nombre);
         const index = this.dataSource.data.indexOf(item!);
         this.dataSource.data[index] = resultado;
         this.tabla.renderRows();
@@ -68,9 +69,4 @@ export class ListaAlumnosComponent implements OnInit {
     this.dataSource.filter = valorObtenido.trim().toLocaleLowerCase();
   }
 
-
-  cambiarNota() {
-    this.variableNota = Math.round(Math.random() * 10)
-  }
-
-}
+ }

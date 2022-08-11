@@ -1,41 +1,35 @@
-h1{
-    padding-top: 30px; 
-    text-align: center; 
-    font-size: 22px;
-  }
-  
-  p {
-    text-align: center;
-  }
-  
-  h4 {
-  padding-top: 30px;    
-  text-align: right; 
-  padding-right: 45px;
-  text-decoration-line:underline;
-  color: dimgray;
+h1 {
+  padding-top: 10px;
+  font-size: 18px;
+  background-color:beige;
+}
+
+.mat-card {
+ margin-left: 50%;
+ }
+
+p {
+  text-align: center;
+}
+
+footer {
+  padding-top: 15px;
+  text-align: right;
+  padding-right: 15px;
+  text-decoration-line: underline;
+  color: beige;
   font-size: 16px;
-  }
-  
-  h3 {
-    padding-top: 30px;    
-    font-size: 18px;
-  }
-  
-  .aprobados{
-    color: green;
-  }
-  
-  .desaprobados{
-    color: red;
-  }
-   
-  
-  .texto-correcto{
-  color:rgb(16, 15, 92);
-  }
-  
-  .texto-incorrecto{
-  background-color:yellow;   
-  }
-  
+}
+ 
+h3{
+  text-align: center;
+}
+
+table {
+  width: 60%;
+  margin: auto;
+}
+
+.mat-icon {
+ margin-left: 10px;
+}

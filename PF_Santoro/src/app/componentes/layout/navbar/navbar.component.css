@@ -1,8 +1,10 @@
 .menu {
-    background-color:cadetblue;
-    height: 800px;
+    background-color: rgb(182, 98, 112);
+    height: 700px;
     font-size: 100%;
-    color: aliceblue;
     padding: 10%;
-    border-style:inherit;
-    }
+}
+
+.nav-link{
+  color: aliceblue;  
+}
