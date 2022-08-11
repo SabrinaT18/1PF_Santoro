@@ -1,39 +1,22 @@
 <h1 [appTitulos]="20" > Estudiantes 2022  </h1>
 
-<mat-card style="width:30%; height:25%">
-  <mat-card-title> Criterios de evaluación </mat-card-title>
-  <mat-card-subtitle> 2022 </mat-card-subtitle>
-  <mat-card-content> <p> Para aprobar el curso la nota del alumno debe ser mayor a: {{nota }} </p> 
-<br>
-   <footer> Actualizado al: {{ hoy | date:'dd-MM-yy'}} </footer>
-   </mat-card-content>
-</mat-card>
-
-
 <mat-form-field > 
 <mat-label appearance="fill"> Filtrar alumnos </mat-label>
 <input type="text" (keyup)="filtrar($event)" matInput>
 <mat-icon> search </mat-icon>
 </mat-form-field>
 
-<!------
-  El alumno  
- <div class="aprobados" *ngIf="alumno.nota >= variableNota ">  está aprobado.     </div>
- <div class="desaprobados" *ngIf="alumno.nota < variableNota ">  está desaprobado. </div> 
------>
-
-
 <mat-label> <h3> Listado de alumnos </h3> </mat-label>
 <table mat-table [dataSource]="dataSource">
   
     <ng-container matColumnDef="apellido" >
-      <th mat-header-cell *matHeaderCellDef> Apellido </th>
-      <td mat-cell *matCellDef="let element"> {{element.apellido}} </td>
+      <th mat-header-cell *matHeaderCellDef> Nombre y Apellido </th>
+      <td mat-cell *matCellDef="let element"> {{element|concatenar}} </td>
        </ng-container>
 
     <ng-container matColumnDef="nombre">
-      <th mat-header-cell *matHeaderCellDef> Nombre </th>
-      <td mat-cell *matCellDef="let element">{{ element.nombre }}</td>
+      <th mat-header-cell *matHeaderCellDef> </th>
+      <td mat-cell *matCellDef="let element"></td>
     </ng-container>
 
     <ng-container matColumnDef="email">
@@ -73,4 +56,18 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns"> </tr>
   </table>
 
- 
+  <mat-card style="width:30%; height:25%">
+    <mat-card-title> Criterios de evaluación </mat-card-title>
+    <mat-card-subtitle> 2022 </mat-card-subtitle>
+    <mat-card-content> <p> Para aprobar el curso la nota del alumno debe ser mayor a: {{nota | number: '0.2-2'}} </p> 
+  <br>
+     <footer> Actualizado al: {{ hoy | date:'dd-MM-yy'}} </footer>
+     </mat-card-content>
+  </mat-card>
+
+ <!------ Ver como volvewr a agregar: 
+  
+<div class="aprobados" *ngIf="alumno.nota >= variableNota ">  está aprobado.     </div>
+ <div class="desaprobados" *ngIf="alumno.nota < variableNota ">  está desaprobado. </div> 
+
+----->

@@ -34,10 +34,10 @@ export class ListaAlumnosComponent implements OnInit {
  
   @ViewChild(MatTable) tabla!: MatTable<Alumno>;
   
-  nota= 7;
+  nota= 6.5;
   hoy = Date.now();
 
-  
+
  constructor(
  private dialog: MatDialog   
   ) { }
