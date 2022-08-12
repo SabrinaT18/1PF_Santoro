@@ -29,7 +29,7 @@ export class ABMalumnosComponent implements OnInit {
   ngOnInit() {
   }
 
-  actualizar() {
+  guardar() {
     this.dialogRef.close(this.formulario.value);
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { ABMalumnosComponent } from '../abmalumnos/abmalumnos.component';
@@ -31,12 +31,10 @@ const ELEMENT_DATA: Alumno [] = [
 export class ListaAlumnosComponent implements OnInit {
   displayedColumns: string [] = ['apellido','nombre', 'email', 'fechaNacimiento', 'nota', 'estado','acciones'] ;
   dataSource: MatTableDataSource<Alumno> = new MatTableDataSource(ELEMENT_DATA);
- 
   @ViewChild(MatTable) tabla!: MatTable<Alumno>;
   
   nota= 6.5;
   hoy = Date.now();
-
 
  constructor(
  private dialog: MatDialog   
@@ -45,8 +43,18 @@ export class ListaAlumnosComponent implements OnInit {
   ngOnInit(): void {
   }
 
+agregar (){
+  const dialogRef = this.dialog.open(ABMalumnosComponent, {
+    width: '400px',
+    data: Element
+  });
+  dialogRef.afterClosed().subscribe(resultado => {
+  return this.dataSource.data.push() ;
+  })
+}
 
-  eliminar(element: Alumno){
+
+  eliminar(element: Alumno): void{
     this.dataSource.data = this.dataSource.data.filter((alumno: Alumno) => alumno.nombre != element.nombre);
   }
 
@@ -66,7 +74,7 @@ export class ListaAlumnosComponent implements OnInit {
     })
   }
 
-  filtrar(event: Event){
+   filtrar(event: Event){
     const valorObtenido = (event.target as HTMLInputElement).value;
     this.dataSource.filter = valorObtenido.trim().toLocaleLowerCase();
   }

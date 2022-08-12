@@ -6,10 +6,15 @@
 <mat-icon> search </mat-icon>
 </mat-form-field>
 
+<button mat-icon-button (click)="agregar()" >
+<mat-icon>add</mat-icon>
+</button> 
+
 <mat-label> <h3> Listado de alumnos </h3> </mat-label>
 <table mat-table [dataSource]="dataSource">
-  
-    <ng-container matColumnDef="apellido" >
+
+
+  <ng-container matColumnDef="apellido" >
       <th mat-header-cell *matHeaderCellDef> Nombre y Apellido </th>
       <td mat-cell *matCellDef="let element"> {{element|concatenar}} </td>
        </ng-container>
