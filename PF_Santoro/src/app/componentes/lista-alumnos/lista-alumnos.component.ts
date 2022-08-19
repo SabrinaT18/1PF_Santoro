@@ -43,13 +43,14 @@ export class ListaAlumnosComponent implements OnInit {
   ngOnInit(): void {
   }
 
-agregar (){
+agregar (element: Alumno){
   const dialogRef = this.dialog.open(ABMalumnosComponent, {
     width: '400px',
     data: Element
   });
   dialogRef.afterClosed().subscribe(resultado => {
-  return this.dataSource.data.push() ;
+  this.dataSource.data.push(element);
+  this.tabla.renderRows();
   })
 }
 
