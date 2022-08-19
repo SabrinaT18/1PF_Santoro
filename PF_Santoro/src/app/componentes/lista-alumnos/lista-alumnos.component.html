@@ -6,12 +6,14 @@
 <mat-icon> search </mat-icon>
 </mat-form-field>
 
-<button mat-icon-button (click)="agregar()" >
-<mat-icon>add</mat-icon>
-</button> 
+
 
 <mat-label> <h3> Listado de alumnos </h3> </mat-label>
 <table mat-table [dataSource]="dataSource">
+
+<!-- <button mat-icon-button (click)="agregar(element)" >
+<mat-icon>add</mat-icon>
+</button>  -->
 
 
   <ng-container matColumnDef="apellido" >

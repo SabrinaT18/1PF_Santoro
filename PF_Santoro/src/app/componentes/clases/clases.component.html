@@ -1,0 +1,18 @@
+<div class="container text-center">
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h1 [appTitulos]="20"> Clases (PROMISE):</h1>
+                <pre> {{ clases| json }} </pre>
+        </div>
+    </div>
+
+
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h1 [appTitulos]="20"> Clases (OBSERVABLE): </h1>
+            <pre>  {{ clasesObservable$ | async | json }} </pre>
+
+            <button type="button" class="btn btn-dark " (click)="AgregarClase()"> Agregar </button>
+        </div>
+    </div>
+</div>

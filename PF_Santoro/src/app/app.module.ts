@@ -19,6 +19,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { TitulosDirective } from './directivas/titulos.directive';
+import { ClasesComponent } from './componentes/clases/clases.component';
+import { ClasesService } from './servicios/clases.service';
+import { AlumnosService } from './servicios/alumnos.service';
 
 @NgModule({
   declarations: [
@@ -30,14 +33,15 @@ import { TitulosDirective } from './directivas/titulos.directive';
     ContenidoComponent,
     ConcatenarPipe,
     TitulosDirective,
-    
+    ClasesComponent,
   ],
+  
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    FormsModule,  
+    FormsModule,
     MatButtonModule,
     MatCardModule,
     MatIconModule,
@@ -46,11 +50,13 @@ import { TitulosDirective } from './directivas/titulos.directive';
     MatTableModule,
     MatDialogModule,
     MatSlideToggleModule,
-    ],
+  ],
 
-  providers: [
+  providers: [AlumnosService,
+    ClasesService,
     { provide: MatDialogRef, useValue: {} },
     { provide: MAT_DIALOG_DATA, useValue: {} }
+
   ],
   bootstrap: [AppComponent]
 })
