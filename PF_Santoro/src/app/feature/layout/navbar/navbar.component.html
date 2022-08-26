@@ -1,0 +1,13 @@
+  
+  <button  mat-button [matMenuTriggerFor]= "menu" > Menú </button > 
+  
+    <mat-menu #menu = "matMenu"> 
+
+    <button  mat-menu-item routerLink="/Inicio">  Inicio </button > 
+    <button  mat-menu-item routerLink="/Lista-Alumnos"> Estudiantes </button> 
+    <button  mat-menu-item routerLink="/Cursos"> Cursos </button> 
+    <button  mat-menu-item routerLink="/Clases"> Clases </button> 
+    <button  mat-menu-item disabled="true"> Contacto </button> 
+
+  </mat-menu>
+ 
