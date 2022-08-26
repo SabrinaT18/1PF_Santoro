@@ -8,11 +8,11 @@ import { Clases } from '../Model/Clases';
 
 export class ClasesService {
 clases: Clases[] = [ 
-{id: 1, materia: 'Historia', comision: '20054'},
-{id: 2, materia: 'Matemáticas', comision: '20965'},
-{id: 3, materia: 'Geografía', comision: '20068'},
-{id: 4, materia: 'Literatura', comision: '20497'},
-{id: 5, materia: 'Física', comision: '20326'},
+{id: 1, ClaseNum: 1, tema: 'Introducción', fecha: 'xxxxx'},
+{id: 2, ClaseNum: 2, tema: 'a designar', fecha: 'xxxxx'},
+{id: 3, ClaseNum: 3, tema: 'a designar', fecha: 'xxxxx'},
+{id: 4, ClaseNum: 4, tema: 'a designar', fecha: 'xxxxx'},
+{id: 5, ClaseNum: 5,tema: 'a designar', fecha: 'xxxxx'},
 ];  
 
 clasesObservable : Observable <any>;

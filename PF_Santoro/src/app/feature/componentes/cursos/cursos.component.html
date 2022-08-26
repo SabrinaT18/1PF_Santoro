@@ -1,0 +1,12 @@
+
+<div class="container text-center">
+     <div class="card" style="width: 20rem;">
+        <div class="card-body">
+            <h1 [appTitulos]="20"> Cursos 2022  </h1>
+            <pre>  {{ cursosObservable$ | async | json }} </pre>
+
+            <button type="button" class="btn btn-dark " (click)="AgregarCurso()"> Agregar </button>
+        </div>
+    </div>
+</div>
+

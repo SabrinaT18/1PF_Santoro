@@ -1,0 +1,13 @@
+.container{
+    width: 100%;
+    height: auto;
+    display: flex ;
+  }
+  
+  div.card {
+      margin: 25px;
+  }
+  
+  button {
+  margin: 5px;
+  }
