@@ -6,13 +6,15 @@ import { Router } from '@angular/router';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent  {
 
-  constructor( public router: Router  ) {   
+  constructor( public router: Router ) {   
  }
 
-  ngOnInit(): void {
-  }
+   redireccionar(ruta: string) {
+   this.router.navigate ([ruta]);
+   }
+
 }
 
 

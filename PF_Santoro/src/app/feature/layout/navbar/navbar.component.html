@@ -3,10 +3,11 @@
   
     <mat-menu #menu = "matMenu"> 
 
-    <button  mat-menu-item routerLink="/Inicio">  Inicio </button > 
-    <button  mat-menu-item routerLink="/Lista-Alumnos"> Estudiantes </button> 
-    <button  mat-menu-item routerLink="/Cursos"> Cursos </button> 
-    <button  mat-menu-item routerLink="/Clases"> Clases </button> 
+    <button  mat-menu-item (click)="redireccionar('inicio')">  Inicio </button > 
+    <button  mat-menu-item (click)="redireccionar('usuario/alumnos')"> Estudiantes </button> 
+    <button  mat-menu-item (click)="redireccionar('usuario/cursos')"> Cursos </button> 
+    <button  mat-menu-item (click)="redireccionar('usuario/inscripciones')"> Inscripciones </button> 
+    <button  mat-menu-item (click)="redireccionar('usuario/clases')"> Clases </button> 
     <button  mat-menu-item disabled="true"> Contacto </button> 
 
   </mat-menu>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { map, Observable, Subscription } from 'rxjs';
-import { ClasesService } from '../../../servicios/clases.service';
+import { ClasesService } from '../../servicios/clases.service';
 
 @Component({
   selector: 'app-clases',

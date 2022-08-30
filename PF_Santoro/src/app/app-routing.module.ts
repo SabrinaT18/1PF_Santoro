@@ -10,11 +10,6 @@ import { UsuarioComponent } from './feature/usuario/usuario.component';
 const routes: Routes = [
   {path: 'inicio', component: InicioComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'usuario', component: UsuarioComponent, children: [
-    {path: 'alumnos', component: ListaAlumnosComponent},
-    {path: 'cursos', component: CursosComponent} ,
-    {path: 'clases', component: ClasesComponent}
-]},
   {path: '', redirectTo: 'inicio', pathMatch:'full'}
 ];
 

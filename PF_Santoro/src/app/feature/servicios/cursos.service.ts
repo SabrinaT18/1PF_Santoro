@@ -6,14 +6,12 @@ import { Cursos } from '../Model/Cursos';
   providedIn: 'root'
 })
 export class CursosService {
-  [x: string]: any;
-
   cursos: Cursos [] = [ 
-    {id: 1, materia: 'Historia', comision: '20054', profesor: 'García, Florencia'},
-    {id: 2, materia: 'Matemáticas', comision: '20965', profesor: 'Perez, Juan'},
-    {id: 3, materia: 'Geografía', comision: '20068', profesor: 'Grey, María'},
-    {id: 4, materia: 'Literatura', comision: '20497', profesor: 'Berón, Bautista'},
-    {id: 5, materia: 'Física', comision: '20326', profesor: 'Almada, Eugenia'},
+    {id: 1, materia: 'Historia', comision: '20054', profesor: 'García, Florencia', FechaInicio: 'xxxxx'},
+    {id: 2, materia: 'Matemáticas', comision: '20965', profesor: 'Perez, Juan', FechaInicio: 'xxxxx'},
+    {id: 3, materia: 'Geografía', comision: '20068', profesor: 'Grey, María', FechaInicio: 'xxxxx'},
+    {id: 4, materia: 'Literatura', comision: '20497', profesor: 'Berón, Bautista', FechaInicio: 'xxxxx'},
+    {id: 5, materia: 'Física', comision: '20326', profesor: 'Almada, Eugenia', FechaInicio: 'xxxxx'},
   ];  
   
   cursosObservable : Observable <any>;
