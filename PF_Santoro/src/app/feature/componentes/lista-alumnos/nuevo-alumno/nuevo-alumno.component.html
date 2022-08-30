@@ -1,0 +1,43 @@
+<h1 mat-dialog-title>Agregar Nuevo alumno</h1>
+<div mat-dialog-content>
+    <form [formGroup]="formulario">
+       
+        <mat-form-field appearance="fill">
+            <mat-label>Id</mat-label>
+            <input formControlName="id" matInput>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Nombre</mat-label>
+            <input formControlName="nombre" matInput>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>apellido</mat-label>
+            <input formControlName="apellido" matInput>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input formControlName="email" matInput>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Fecha de Nacimiento</mat-label>
+            <input formControlName="fechaNacimiento" matInput>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label> Nota Final</mat-label>
+            <input formControlName="nota" matInput>
+        </mat-form-field>
+
+        <br>
+        <mat-slide-toggle formControlName="estado">Aprobado</mat-slide-toggle>
+
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="cerrar()">Cerrar</button>
+    <button mat-button (click)="guardar()">Guardar</button>
+</div>

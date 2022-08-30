@@ -1,0 +1,76 @@
+<h1 [appTitulos]="20"> Inscripciones </h1>
+
+
+<mat-form-field>
+    <mat-label appearance="fill"> Filtrar </mat-label>
+    <input type="text" (keyup)="filtrar($event)" matInput>
+    <mat-icon> search </mat-icon>
+</mat-form-field>
+
+
+<mat-label>
+    <h3> Inscripciones </h3>
+</mat-label>
+
+<table mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Nº inscripción </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+     <ng-container matColumnDef="idAlumno">
+        <th mat-header-cell *matHeaderCellDef> Id alumno </th>
+        <td mat-cell *matCellDef="let element"> {{element.idAlumno}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="apellidoAlumno">
+        <th mat-header-cell *matHeaderCellDef> Apellido del alumno</th>
+        <td mat-cell *matCellDef="let element"> {{element.ApellidoAlumno}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="nombreAlumno">
+     <th mat-header-cell *matHeaderCellDef> Nombre del alumno </th>
+     <td mat-cell *matCellDef="let element"> {{element.NombreAlumno}} </td>
+</ng-container>
+
+    <ng-container matColumnDef="IdCurso">
+        <th mat-header-cell *matHeaderCellDef> Id Curso </th>
+        <td mat-cell *matCellDef="let element">{{ element.IdCurso}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="NombreCurso">
+        <th mat-header-cell *matHeaderCellDef> Nombre Curso</th>
+        <td mat-cell *matCellDef="let element">{{element.NombreCurso }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="comision">
+        <th mat-header-cell *matHeaderCellDef> comisión </th>
+        <td mat-cell *matCellDef="let element">{{ element.comision }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="profesor">
+        <th mat-header-cell *matHeaderCellDef> profesor </th>
+        <td mat-cell *matCellDef="let element">{{ element.profesor }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let element">
+
+
+            <button mat-icon-button (click)="editarInscripcion(element)">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="eliminarInscripcion(element)">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"> </tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"> </tr>
+</table>
+
+<span>
+    <button mat-raised-button (click)="agregarInscripcion()"> Agregar </button>
+</span>

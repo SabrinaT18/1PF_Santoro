@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Alumno } from '../../componentes/lista-alumnos/lista-alumnos.component';
+import { Alumnos } from '../../../Model/Alumnos';
 
 @Component({
   selector: 'app-abmalumnos',
@@ -15,8 +15,11 @@ export class ABMalumnosComponent implements OnInit {
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<ABMalumnosComponent>,
 
-    @Inject(MAT_DIALOG_DATA) public elemento: Alumno) {
+    @Inject(MAT_DIALOG_DATA) public elemento: Alumnos) 
+    
+    {
     this.formulario = fb.group({
+      id: new FormControl(elemento.id),
       nombre: new FormControl(elemento.nombre),
       apellido: new FormControl(elemento.apellido),
       email: new FormControl(elemento.email),
