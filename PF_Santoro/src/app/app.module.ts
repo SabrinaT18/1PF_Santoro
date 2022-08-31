@@ -13,12 +13,13 @@ import { FeatureModule } from './feature/feature.module';
 import { CursosService } from './feature/servicios/cursos.service';
 import { RouterModule } from '@angular/router';
 import { InscripcionesComponent } from './feature/componentes/inscripciones/inscripciones.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
-     ],
-  
+  ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -27,8 +28,9 @@ import { InscripcionesComponent } from './feature/componentes/inscripciones/insc
     RouterModule,
     CoreModule,
     FeatureModule,
-    SharedModule
-    ],
+    SharedModule,
+    HttpClientModule
+  ],
 
   providers: [AlumnosService,
     ClasesService,

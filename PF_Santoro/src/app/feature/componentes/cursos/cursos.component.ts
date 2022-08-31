@@ -14,10 +14,9 @@ import { NuevoCursoComponent } from './nuevo-curso/nuevo-curso.component';
 })
 
 export class CursosComponent implements OnInit {
-  cursos: any = [];
-
-  cursosObservable$!: Observable<any>;
-  cursoSuscripcion!: Subscription;
+  cursos$!: Observable <Cursos[]>;
+  
+  cursoSubscripcion!: Subscription;
 
 
   dataSource: MatTableDataSource<any> = new MatTableDataSource();
@@ -25,36 +24,34 @@ export class CursosComponent implements OnInit {
   
   @ViewChild(MatTable) tabla!: MatTable<Cursos>;
   
-
 constructor(
- private dialog: MatDialog,
- private CursosService : CursosService,   
-  ) { 
-    this.cursosObservable$ = this.CursosService.obtenerObservableCursos()
-
-    this.cursoSuscripcion = this.cursosObservable$.subscribe((cursos) => {
-        this.dataSource.data = cursos
-        console.log(cursos);
-      });
-  }
+ private CursosService : CursosService,  
+ private dialog: MatDialog,)
+  {  }
 
 
 ngOnInit(): void {
-  
+ this.cursos$ = this.CursosService.obtenerCursos()
+
+ this.cursoSubscripcion = this.cursos$.subscribe((cursos) => {
+  this.dataSource.data = cursos
+  console.log(cursos);
+});
 }
 
 ngOnDestroy(): void {
-  this.cursoSuscripcion.unsubscribe();
+  this.cursoSubscripcion.unsubscribe()
 }
+
 
 AgregarCurso() {
     const dialogRef = this.dialog.open(NuevoCursoComponent, {
       width: '400px',
-      data: this.cursos
+      data: this.cursos$
     });
     dialogRef.afterClosed().subscribe(resultado => {
-      this.CursosService.cursos.push(resultado);
-      this.tabla.renderRows();
+/*       this.CursosService.data.push(resultado);
+ */      this.tabla.renderRows();
     })
   }
 
@@ -73,7 +70,7 @@ AgregarCurso() {
       }
     })
   }
-
+ 
   filtrar(event: Event) {
     const valorObtenido = (event.target as HTMLInputElement).value;
     this.dataSource.filter = valorObtenido.trim().toLocaleLowerCase();

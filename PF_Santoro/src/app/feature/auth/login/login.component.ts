@@ -11,14 +11,16 @@ export class LoginComponent implements OnInit {
   formulario: FormGroup;
 
   constructor(
-    private form: FormBuilder
+    private form: FormBuilder, private router: Router
   ){
     this.formulario = form.group({
       nombre: new FormControl('', [Validators.required]),
       apellido: new FormControl('', [Validators.required]),
       email: new FormControl ('', [Validators.required, Validators.email]),
-    })
-  }
+      admin: new FormControl('')
+    });
+      }
+      
   ngOnInit(): void {
   }
 
@@ -26,4 +28,13 @@ export class LoginComponent implements OnInit {
     console.log(this.formulario);
   }
 
-}
+  onLogin(event:Event ){
+    event.preventDefault;
+    this.router.navigate(['/inicio']);
+      console.error()} 
+    }
+             
+      
+  
+
+

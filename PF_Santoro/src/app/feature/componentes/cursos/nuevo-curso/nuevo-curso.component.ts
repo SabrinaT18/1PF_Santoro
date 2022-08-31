@@ -39,8 +39,8 @@ export class NuevoCursoComponent implements OnInit {
       profesor:  this.formulario.value.profesor,
       FechaInicio: this.formulario.value.FechaInicio,
      }
-    this.CursosService.cursos.push()
-  }
+/*     this.CursosService.cursos.push()
+ */  }
 
   guardar() {
     this.dialogRef.close(this.formulario.value);

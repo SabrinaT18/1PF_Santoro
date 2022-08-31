@@ -45,8 +45,8 @@ export class NuevaInscrComponent implements OnInit {
       comision: this.formulario.value.comision,
       profesor: this.formulario.value.profesor,
     }
-    this.InscripcionesService.inscripciones.push()
-  }
+/*     this.InscripcionesService.inscripciones.push()
+ */  }
 
   guardar() {
     this.dialogRef.close(this.formulario.value);

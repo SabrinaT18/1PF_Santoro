@@ -48,8 +48,8 @@ export class InscripcionesComponent implements OnInit {
       data: this.Inscripciones
     });
     dialogRef.afterClosed().subscribe(resultado => {
-      this.inscripcionesService.inscripciones.push(resultado);
-      this.tabla.renderRows();
+/*       this.inscripcionesService.inscripciones.push(resultado);
+ */      this.tabla.renderRows();
     })
   }
 
