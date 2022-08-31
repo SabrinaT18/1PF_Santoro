@@ -15,9 +15,7 @@ import { NuevoAlumnoComponent } from './nuevo-alumno/nuevo-alumno.component';
 
 
 export class ListaAlumnosComponent implements OnInit {
-  Alumnos: [] = [];
-
-  alumnosObservable$!: Observable<any>;
+  alumnos$!: Observable<any>;
   alumnoSubscripcion!: Subscription;
 
   dataSource: MatTableDataSource<any> = new MatTableDataSource();
@@ -33,9 +31,9 @@ export class ListaAlumnosComponent implements OnInit {
     private AlumnosService: AlumnosService,
     private dialog: MatDialog,
   ) {
-    this.alumnosObservable$ = this.AlumnosService.obtenerAlumnos()
+    this.alumnos$ = this.AlumnosService.obtenerAlumnos()
 
-    this.alumnoSubscripcion = this.alumnosObservable$.subscribe((alumnos) => {
+    this.alumnoSubscripcion = this.alumnos$.subscribe((alumnos) => {
         this.dataSource.data = alumnos
         console.log(alumnos);
       });
@@ -50,11 +48,11 @@ export class ListaAlumnosComponent implements OnInit {
   agregarAlumno() {
     const dialogRef = this.dialog.open(NuevoAlumnoComponent, {
       width: '400px',
-      data: this.Alumnos
+      data: this.alumnos$
     });
     dialogRef.afterClosed().subscribe(resultado => {
-      this.AlumnosService.alumnos.push(resultado);
-      this.tabla.renderRows();
+/*       this.AlumnosService.push(resultado);
+ */      this.tabla.renderRows();
     })
   }
 

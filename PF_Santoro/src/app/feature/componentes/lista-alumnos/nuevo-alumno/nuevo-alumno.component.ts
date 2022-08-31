@@ -44,8 +44,8 @@ export class NuevoAlumnoComponent implements OnInit {
       nota: this.formulario.value.nota,
       estado: this.formulario.value.estado,
     }
-    this.AlumnosService.alumnos.push()
-  }
+/*     this.AlumnosService.alumnos.push()
+ */  }
 
   guardar() {
     this.dialogRef.close(this.formulario.value);
