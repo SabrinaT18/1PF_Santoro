@@ -4,7 +4,7 @@ import { Observable, Subscription } from 'rxjs';
 import { Inscripciones } from '../../Model/Inscripciones';
 import { MatDialog } from '@angular/material/dialog';
 import { NuevaInscrComponent } from './nueva-inscr/nueva-inscr.component';
-import { AbmInscripComponent } from './abm-inscrip/abm-inscrip.component';
+import { AbmInscripComponent } from './editar-inscripciones/abm-inscrip.component';
 import { InscripcionesService } from 'src/app/feature/servicios/inscripciones.service';
 
 @Component({

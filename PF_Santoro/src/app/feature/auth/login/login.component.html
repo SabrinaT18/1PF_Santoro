@@ -1,29 +1,25 @@
 <div class="container">
 
-    <form [formGroup]= "formulario" class="m-5" (ngSubmit)="enviar()">
+    <form [formGroup]= "formulario" class="m-5" (ngSubmit)="onLogin()">
         <h1>Login</h1>
         <div class="mb-3">
-
-            <label for="exampleInputEmail1" class="form-label"> Nombre: </label>
-            <input type="text" formControlName="nombre">
-            <br>
-
-            <label for="exampleInputEmail1" class="form-label"> Apellido: </label>
-            <input type="text" formControlName="apellido">
-
-            <br>
             <label for="exampleInputEmail1" class="form-label"> Email: </label>
             <input type="email" formControlName="email">
-            <p *ngIf="formulario.get('email')?.errors?.['required']">El email es requerido.</p>
+            <div class="texto-incorrecto" *ngIf="formulario.get('email')?.errors?.['required']">El email es requerido.</div>
+            <div class="texto-incorrecto" *ngIf="formulario.get('email')?.errors?.['email']">Formato inválido.</div>
+
 
             <label for="exampleInputEmail1" class="form-label"> Password: </label>
-            <input type="Password" formControlName="Password">
-            <p *ngIf="formulario.get('Password')?.errors?.['required']">La contraseña es requerido.</p>
+            <input type="password" formControlName="password">
+            <div class="texto-incorrecto" *ngIf="formulario.get('password')?.errors?.['required']"> La contraseña es requerida. </div>
+            <div class="texto-incorrecto" *ngIf="formulario.get('password')?.errors?.['minLength']"> Contraseña inválida. </div>
 
-
+            <input type="checkbox" formControlName="admin"> Admin <br>
+            <input type="checkbox" formControlName="canActivateChild"> Can Activate Child <br>
+            <input type="checkbox" formControlName="canLoad"> Can Load <br>
+            <input type="checkbox" formControlName="canDeactivate"> Can Deactivate <br>
         </div>
-        <button mat-raised-button type="submit" >Enviar </button>
+        <button mat-raised-button type="submit">Enviar </button>
 
     </form>
-
 </div>

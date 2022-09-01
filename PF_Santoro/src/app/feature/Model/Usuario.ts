@@ -1,7 +1,10 @@
 export interface Usuario {
+id: string;
 username: string;
 email: string;
 password: string;
 admin: boolean;
-id: string;
+canActivateChild: boolean;
+canLoad: boolean;
+canDeactivate: boolean;
 }
