@@ -1,11 +1,17 @@
 .h1 {
-    font-size: 18px ;
+    font-size: 18px;
 }
 
-.container{
+.container {
     padding: 2px 2px 2px 20px;
     margin: auto;
- }
-form{
- text-align: center;   
+}
+
+form {
+    text-align: center;
+}
+
+
+.texto-incorrecto {
+    color: red;
 }

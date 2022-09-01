@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
-import { ABMalumnosComponent } from './abmalumnos/abmalumnos.component';
 import { Alumnos } from '../../Model/Alumnos';
 import { AlumnosService } from '../../servicios/alumnos.service';
 import { Observable, Subscription, Subscriber, map } from 'rxjs';
 import { NuevoAlumnoComponent } from './nuevo-alumno/nuevo-alumno.component';
+import { ABMalumnosComponent } from './editar-alumnos/abmalumnos.component';
 
 @Component({
   selector: 'app-lista-alumnos',

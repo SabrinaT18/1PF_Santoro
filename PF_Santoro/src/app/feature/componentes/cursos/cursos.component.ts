@@ -4,7 +4,7 @@ import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { map, Observable, Subscription } from 'rxjs';
 import { Cursos } from 'src/app/feature/Model/Cursos';
 import { CursosService } from '../../servicios/cursos.service';
-import { AbmCursosComponent } from './abm-cursos/abm-cursos.component';
+import { AbmCursosComponent } from './editar-cursos/abm-cursos.component';
 import { NuevoCursoComponent } from './nuevo-curso/nuevo-curso.component';
 
 @Component({
