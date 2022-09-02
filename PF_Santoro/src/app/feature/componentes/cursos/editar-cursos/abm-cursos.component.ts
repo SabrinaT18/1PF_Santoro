@@ -17,7 +17,7 @@ export class AbmCursosComponent implements OnInit {
     private formCu: FormBuilder,
     private dialogRef: MatDialogRef<AbmCursosComponent>,
 
-    @Inject(MAT_DIALOG_DATA) public element: Cursos) 
+    @Inject(MAT_DIALOG_DATA) private element: Cursos) 
     
     
     {
@@ -26,7 +26,7 @@ export class AbmCursosComponent implements OnInit {
       materia: new FormControl(element.materia),
       comision: new FormControl(element.comision),
       profesor: new FormControl(element.profesor),
-      FechaInicio: new FormControl(element.FechaInicio),
+      fechaInicio: new FormControl(element.fechaInicio),
     })
 
 
@@ -35,11 +35,20 @@ export class AbmCursosComponent implements OnInit {
   }
 
   guardar() {
-    this.dialogRef.close(this.formCursos.value);
-  }
-
+    const c: Cursos = {
+      id: this.element.id,
+      materia: this.formCursos.value.materia,
+      comision: this.formCursos.value.comision,
+      profesor: this.formCursos.value.profesor,
+      fechaInicio: this.formCursos.value.fechaInicio,
+    }
+    this.CursosService.EditarCurso(c).subscribe((curso: Cursos) => {
+      this.dialogRef.close(curso);  
+    });
+    }
+  
+  
   cerrar() {
     this.dialogRef.close();
   }
-
 }

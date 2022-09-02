@@ -21,4 +21,9 @@ export class InicioComponent implements OnInit {
       })
   }
 
+  redireccionar(ruta: string) {
+    this.router.navigate ([ruta]);
+    }
+ 
+
 }

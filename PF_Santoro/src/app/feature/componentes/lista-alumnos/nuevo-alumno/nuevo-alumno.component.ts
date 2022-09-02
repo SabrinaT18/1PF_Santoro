@@ -34,7 +34,7 @@ export class NuevoAlumnoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  agregarAlumno(){
+  guardar(){
     const a: Alumnos = {
       id: this.formulario.value.id,
       apellido: this.formulario.value.apellido,
@@ -44,12 +44,13 @@ export class NuevoAlumnoComponent implements OnInit {
       nota: this.formulario.value.nota,
       estado: this.formulario.value.estado,
     }
-/*     this.AlumnosService.alumnos.push()
- */  }
+    this.AlumnosService.agregarAlumno(a).subscribe((alumno: Alumnos) => {
+      alert(`${alumno.id}-${alumno.apellido} agregado correctamente`);
+      this.dialogRef.close();
+    });
+      }
 
-  guardar() {
-    this.dialogRef.close(this.formulario.value);
-  }
+  
 
   cerrar() {
     this.dialogRef.close();

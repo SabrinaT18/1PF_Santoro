@@ -14,11 +14,7 @@
             <div class="texto-incorrecto" *ngIf="formulario.get('password')?.errors?.['required']"> La contraseña es requerida. </div>
             <div class="texto-incorrecto" *ngIf="formulario.get('password')?.errors?.['minLength']"> Contraseña inválida. </div>
 
-            <input type="checkbox" formControlName="admin"> Admin <br>
-            <input type="checkbox" formControlName="canActivateChild"> Can Activate Child <br>
-            <input type="checkbox" formControlName="canLoad"> Can Load <br>
-            <input type="checkbox" formControlName="canDeactivate"> Can Deactivate <br>
-        </div>
+          </div>
         <button mat-raised-button type="submit">Enviar </button>
 
     </form>

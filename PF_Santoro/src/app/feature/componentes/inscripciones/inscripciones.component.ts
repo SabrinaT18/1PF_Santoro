@@ -19,7 +19,7 @@ export class InscripcionesComponent implements OnInit {
   InscripcionesSubscripcion!: Subscription;
 
   dataSource: MatTableDataSource<any> = new MatTableDataSource();
-  displayedColumns: string[] = ['id', 'idAlumno', 'apellidoAlumno', 'nombreAlumno', 'IdCurso', 'NombreCurso', 'comision', 'profesor', 'acciones'];
+  displayedColumns: string[] = ['id', 'apellidoAlumno', 'nombreAlumno', 'NombreCurso', 'comision', 'acciones'];
   
   @ViewChild(MatTable) tabla!: MatTable<Inscripciones>;
 
@@ -48,8 +48,7 @@ export class InscripcionesComponent implements OnInit {
       data: this.Inscripciones
     });
     dialogRef.afterClosed().subscribe(resultado => {
-/*       this.inscripcionesService.inscripciones.push(resultado);
- */      this.tabla.renderRows();
+   this.tabla.renderRows();
     })
   }
 
@@ -65,7 +64,7 @@ export class InscripcionesComponent implements OnInit {
         const index = this.dataSource.data.indexOf(item!);
         this.dataSource.data[index] = resultado;
         this.tabla.renderRows();
-      }
+      };
     })
   }
 
@@ -75,10 +74,12 @@ export class InscripcionesComponent implements OnInit {
   }
 
 
-  eliminarInscripcion(elemento: Inscripciones) {
-    this.dataSource.data = this.dataSource.data.filter((inscripciones: Inscripciones) => inscripciones.id != inscripciones.id);
+  eliminarInscripcion(id: string){
+    this.inscripcionesService.eliminarInscripciones(id).subscribe((insc: Inscripciones) => {
+      alert(`Inscripción nº ${insc.id} se eliminó satisfactoriamente`);
+      this.ngOnInit();
+    });
   }
-
 
 }
 

@@ -9,6 +9,7 @@ import { NuevaInscrComponent } from './nueva-inscr/nueva-inscr.component';
 import { AbmInscripComponent } from './editar-inscripciones/abm-inscrip.component';
 import { InscripcionesComponent } from './inscripciones.component';
 import { FeatureModule } from '../../feature.module';
+import { MaterialModule } from 'src/app/shared/material.module';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { FeatureModule } from '../../feature.module';
     InscripcionesRoutingModule,
     FeatureModule,
     SharedModule,
+    MaterialModule
   ],
 
   providers: [

@@ -1,20 +1,19 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { SharedModule } from './shared/shared.module';
-import { CoreModule } from './core/core.module';
-import { FeatureModule } from './feature/feature.module';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
-import { InscripcionesModule } from './feature/componentes/inscripciones/inscripciones.module';
-import { ClasesModule } from './feature/componentes/clases/clases.module';
-import { CursosModule } from './feature/componentes/cursos/cursos.module';
-import { AlumnosModule } from './feature/componentes/lista-alumnos/alumnos.module';
+import { CoreModule } from './core/core.module';
 import { MaterialModule } from './shared/material.module';
+import { FeatureModule } from './feature/feature.module';
+import { InscripcionesModule } from './feature/componentes/inscripciones/inscripciones.module';
+import { AlumnosModule } from './feature/componentes/lista-alumnos/alumnos.module';
+import { CursosModule } from './feature/componentes/cursos/cursos.module';
+import { ClasesModule } from './feature/componentes/clases/clases.module';
 
 @NgModule({
   declarations: [
@@ -23,25 +22,26 @@ import { MaterialModule } from './shared/material.module';
 
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule,
+    AppRoutingModule,
     RouterModule,
-    CoreModule,
-    FeatureModule,
-    MaterialModule,
-    SharedModule,
     HttpClientModule,
+    SharedModule,
+    CoreModule, 
+    FeatureModule,
     InscripcionesModule,
-    ClasesModule,
     AlumnosModule,
-    CursosModule
-  ],
+    CursosModule,
+    ClasesModule
+    ],
+
+
 
   providers: [
     { provide: MatDialogRef, useValue: {} },
     { provide: MAT_DIALOG_DATA, useValue: {} }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
 })
 export class AppModule { }
