@@ -11,3 +11,14 @@ div.card {
 button {
 margin: 5px;
 }
+
+.img{
+max-height: 400px;
+margin: auto;
+display: block;
+}
+
+div.img {
+  display: flex;
+  justify-content: center;
+}

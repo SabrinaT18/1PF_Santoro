@@ -21,30 +21,30 @@ export class NuevoCursoComponent implements OnInit {
     {
     this.formulario = new FormGroup({
     id  : new FormControl(),
-    Materia : new FormControl(),
-    Comision : new FormControl(),
-    Profesor: new FormControl(),
-    FechaInicio: new FormControl(),
+    materia : new FormControl(),
+    comision : new FormControl(),
+    profesor: new FormControl(),
+    fechaInicio: new FormControl(),
     })
   }
 
   ngOnInit(): void {
   }
 
-  agregarCurso(){
+  guardar() {
     const c: Cursos = {
       id: this.formulario.value.id,
       materia: this.formulario.value.materia,
       comision:  this.formulario.value.comision,
       profesor:  this.formulario.value.profesor,
-      FechaInicio: this.formulario.value.FechaInicio,
+      fechaInicio: this.formulario.value.fechaInicio,
      }
-/*     this.CursosService.cursos.push()
- */  }
+     this.CursosService.AgregarCurso(c).subscribe((curso: Cursos) => {
+      alert(`${curso.id}-${curso.materia} agregado correctamente`);
+      this.dialogRef.close();
+    });
+    }     
 
-  guardar() {
-    this.dialogRef.close(this.formulario.value);
-  }
 
   cerrar() {
     this.dialogRef.close();

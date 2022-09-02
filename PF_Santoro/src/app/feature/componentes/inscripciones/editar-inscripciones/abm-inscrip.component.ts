@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Inscripciones } from '../../../Model/Inscripciones';
+import { InscripcionesService } from '../../../servicios/inscripciones.service';
 
 @Component({
   selector: 'app-abm-inscrip',
@@ -15,7 +16,7 @@ export class AbmInscripComponent implements OnInit {
 
   constructor ( 
   private formIns: FormBuilder,
- 
+ private InscripcionesService: InscripcionesService,
   private dialogRef: MatDialogRef<AbmInscripComponent>,
   @Inject(MAT_DIALOG_DATA) public element: Inscripciones) 
   
@@ -23,10 +24,8 @@ export class AbmInscripComponent implements OnInit {
   {
   this.formInscripcion = formIns.group({
     id : new FormControl(element.id),
-    idAlumno : new FormControl(element.idAlumno),
     NombreAlumno: new FormControl(element.NombreAlumno),
     ApellidoAlumno : new FormControl(element.ApellidoAlumno),
-    IdCurso: new FormControl(element.IdCurso),
     NombreCurso : new FormControl(element.NombreCurso),
     comision : new FormControl(element.comision),
   })
@@ -37,10 +36,20 @@ ngOnInit() {
 }
 
 guardar() {
-  this.dialogRef.close(this.formInscripcion.value);
-}
+  const i: Inscripciones = {
+    id: this.element.id,
+    NombreAlumno: this.formInscripcion.value.NombreAlumno,
+    ApellidoAlumno: this.formInscripcion.value.NombreAlumno,
+    NombreCurso: this.formInscripcion.value.NombreAlumno,
+    comision: this.formInscripcion.value.NombreAlumno,
+  }
+  this.InscripcionesService.EditarInscripciones(i).subscribe((ins: Inscripciones) => {
+    this.dialogRef.close(ins);  
+  });
+  }
+
 
 cerrar() {
   this.dialogRef.close();
-}
+  }
 }

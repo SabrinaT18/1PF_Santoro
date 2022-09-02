@@ -1,8 +1,9 @@
 <mat-toolbar color="primary">
   <span> Coderhouse - Angular | by: Sabrina Santoro </span>
-  <span class="example-spacer"></span>
+
+  <button mat-icon-button class="login" aria-label="login" (click)="redireccionar('inicio')"> 
+  <mat-icon>home</mat-icon> 
 
   <button mat-icon-button class="login" aria-label="login" (click)="cerrarSesion()"> 
-  (Cerrar sesión)  <mat-icon>login</mat-icon> 
+   <mat-icon>logout</mat-icon> 
   </button>
-</mat-toolbar>

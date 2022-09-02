@@ -2,7 +2,7 @@ export interface Cursos {
     materia: string;
     comision: string;
     profesor: string;
-    FechaInicio: String;   
+    fechaInicio: String;   
     id: string;
     }
   

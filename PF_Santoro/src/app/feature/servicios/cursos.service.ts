@@ -29,6 +29,5 @@ export class CursosService {
   BorrarCurso(id: string){
     return this.http.delete<Cursos>(`${this.api}/Cursos/${id}`); 
     }
-
   }
   

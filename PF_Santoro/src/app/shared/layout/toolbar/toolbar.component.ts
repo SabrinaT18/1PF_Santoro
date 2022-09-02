@@ -22,5 +22,8 @@ this.AuthService.cerrarSesion();
 this.router.navigate(['auth/login'])
   }
 
+  redireccionar(ruta: string) {
+    this.router.navigate ([ruta]);
+    }
 
 }

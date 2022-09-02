@@ -21,37 +21,30 @@ export class NuevaInscrComponent implements OnInit {
     {
     this.formulario = new FormGroup({
     id  : new FormControl(),
-    idAlumno  : new FormControl(),
     NombreAlumno: new FormControl(),
     ApellidoAlumno : new FormControl(),
-    IdCurso: new FormControl(),
     NombreCurso : new FormControl(),
     comision: new FormControl(),
-    profesor: new FormControl(),
     })
   }
 
   ngOnInit(): void {
   }
 
-  agregarInscripcion(){
-    const Ins: Inscripciones = {
+  guardar(){
+    const i: Inscripciones = {
       id: this.formulario.value.id,
-      idAlumno: this.formulario.value.idAlumno,
       NombreAlumno: this.formulario.value.NombreAlumno,
       ApellidoAlumno:  this.formulario.value.ApellidoAlumno,
-      IdCurso:  this.formulario.value.IdCurso,
       NombreCurso:   this.formulario.value.NombreCurso,
       comision: this.formulario.value.comision,
-      profesor: this.formulario.value.profesor,
     }
-/*     this.InscripcionesService.inscripciones.push()
- */  }
-
-  guardar() {
-    this.dialogRef.close(this.formulario.value);
-  }
-
+    this.InscripcionesService.agregarInscripciones(i).subscribe((Ins: Inscripciones) => {
+      alert(`Inscripción nº: ${Ins.id} registrada correctamente`);
+      this.dialogRef.close();
+    });
+    }     
+ 
   cerrar() {
     this.dialogRef.close();
   }

@@ -50,9 +50,10 @@ export class ListaAlumnosComponent implements OnInit {
       width: '400px',
       data: this.alumnos$
     });
-    dialogRef.afterClosed().subscribe(resultado => {
-/*       this.AlumnosService.push(resultado);
- */      this.tabla.renderRows();
+      dialogRef.afterClosed().subscribe((resultado) => {
+        if(resultado){        
+          this.tabla.renderRows();
+        }  
     })
   }
 
@@ -61,7 +62,6 @@ export class ListaAlumnosComponent implements OnInit {
       width: '400px',
       data: element
     });
-
     dialogRef.afterClosed().subscribe(resultado => {
       if (resultado) {
         const item = this.dataSource.data.find(alumno => element.id === resultado.id);
@@ -78,9 +78,14 @@ export class ListaAlumnosComponent implements OnInit {
   }
 
 
-  eliminarAlumno(elemento: Alumnos) {
-    this.dataSource.data = this.dataSource.data.filter((alumno: Alumnos) => alumno.id != elemento.id);
+  eliminarAlumno(id: string) {
+    this.AlumnosService.eliminarAlumno(id).subscribe((alumno: Alumnos) => {
+      alert(`${alumno.id}-${alumno.apellido} eliminado satisfactoriamente`);
+      this.ngOnInit();
+    });
+  }
+
   }
 
 
-}
+
