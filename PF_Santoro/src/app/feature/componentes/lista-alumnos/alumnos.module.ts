@@ -9,14 +9,15 @@ import { NuevoAlumnoComponent } from './nuevo-alumno/nuevo-alumno.component';
 import { ListaAlumnosComponent } from './lista-alumnos.component';
 import { FeatureModule } from '../../feature.module';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { MaterialModule } from 'src/app/shared/material.module';
+import { AlumnosComponent } from './alumnos/alumnos.component';
 
 
 @NgModule({
   declarations: [
     ListaAlumnosComponent,
     NuevoAlumnoComponent,
-    ABMalumnosComponent
+    ABMalumnosComponent,
+    AlumnosComponent
   ],
   imports: [
     CommonModule,

@@ -3,18 +3,15 @@ import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 @Directive({
   selector: '[appTitulos]'
 })
-export class TitulosDirective {
+export class TitulosDirective  implements OnInit{
   
   @Input('appTitulos') tamaño: number= 20;
   
-    constructor(
+  constructor(
+  private elemento: ElementRef
+   ) {    }
 
-   private elemento: ElementRef
-   ) { 
-
-   console.log(elemento);
-
-  this.elemento.nativeElement.style.fontSize = this.tamaño+ 'px';
-
+   ngOnInit(): void {
+ this.elemento.nativeElement.style.fontSize = this.tamaño+'px';
    }
 }

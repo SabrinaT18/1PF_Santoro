@@ -14,6 +14,7 @@ import { InscripcionesModule } from './feature/componentes/inscripciones/inscrip
 import { AlumnosModule } from './feature/componentes/lista-alumnos/alumnos.module';
 import { CursosModule } from './feature/componentes/cursos/cursos.module';
 import { ClasesModule } from './feature/componentes/clases/clases.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,10 @@ import { ClasesModule } from './feature/componentes/clases/clases.module';
     InscripcionesModule,
     AlumnosModule,
     CursosModule,
-    ClasesModule
+    ClasesModule,
+    HttpClientModule,
+    MaterialModule,
+    ReactiveFormsModule,
     ],
 
 

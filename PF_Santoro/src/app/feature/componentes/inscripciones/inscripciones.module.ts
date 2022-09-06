@@ -10,6 +10,7 @@ import { AbmInscripComponent } from './editar-inscripciones/abm-inscrip.componen
 import { InscripcionesComponent } from './inscripciones.component';
 import { FeatureModule } from '../../feature.module';
 import { MaterialModule } from 'src/app/shared/material.module';
+import { InscripcionesListaComponent } from './inscripciones-lista/inscripciones-lista.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { MaterialModule } from 'src/app/shared/material.module';
   declarations: [
     InscripcionesComponent,
     AbmInscripComponent,
-    NuevaInscrComponent
+    NuevaInscrComponent,
+    InscripcionesListaComponent
   ],
 
   imports: [

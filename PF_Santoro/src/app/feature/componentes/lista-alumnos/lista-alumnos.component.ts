@@ -6,6 +6,8 @@ import { AlumnosService } from '../../servicios/alumnos.service';
 import { Observable, Subscription, Subscriber, map } from 'rxjs';
 import { NuevoAlumnoComponent } from './nuevo-alumno/nuevo-alumno.component';
 import { ABMalumnosComponent } from './editar-alumnos/abmalumnos.component';
+import { AuthService } from '../../../core/servicios/auth.service';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista-alumnos',
@@ -17,6 +19,8 @@ import { ABMalumnosComponent } from './editar-alumnos/abmalumnos.component';
 export class ListaAlumnosComponent implements OnInit {
   alumnos$!: Observable<any>;
   alumnoSubscripcion!: Subscription;
+  admin!: boolean;
+  auth: any;
 
   dataSource: MatTableDataSource<any> = new MatTableDataSource();
   displayedColumns: string[] = ['id', 'apellido', 'nombre', 'email', 'fechaNacimiento', 'nota', 'estado', 'acciones'];
@@ -30,23 +34,27 @@ export class ListaAlumnosComponent implements OnInit {
   constructor(
     private AlumnosService: AlumnosService,
     private dialog: MatDialog,
-  ) {
+    private AuthService: AuthService
+      ) {
     this.alumnos$ = this.AlumnosService.obtenerAlumnos()
 
     this.alumnoSubscripcion = this.alumnos$.subscribe((alumnos) => {
         this.dataSource.data = alumnos
         console.log(alumnos);
       });
-  }
+    }
+  
 
-  ngOnInit(): void {  }
+  ngOnInit(): void {     
+
+}
 
   ngOnDestroy(): void {
     this.alumnoSubscripcion.unsubscribe()
   }
 
   agregarAlumno() {
-    const dialogRef = this.dialog.open(NuevoAlumnoComponent, {
+    const dialogRef = this.dialog.open(NuevoAlumnoComponent,  {
       width: '400px',
       data: this.alumnos$
     });
@@ -56,6 +64,7 @@ export class ListaAlumnosComponent implements OnInit {
         }  
     })
   }
+
 
   editarAlumno(element: Alumnos) {
     const dialogRef = this.dialog.open(ABMalumnosComponent, {
@@ -84,6 +93,9 @@ export class ListaAlumnosComponent implements OnInit {
       this.ngOnInit();
     });
   }
+  
+
+
 
   }
 

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
+import { Usuario } from 'src/app/feature/Model/Usuario';
 import { AuthService } from '../servicios/auth.service';
 
 @Component({
@@ -25,5 +27,6 @@ export class InicioComponent implements OnInit {
     this.router.navigate ([ruta]);
     }
  
+
 
 }

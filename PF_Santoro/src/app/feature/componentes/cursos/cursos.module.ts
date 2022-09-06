@@ -8,13 +8,16 @@ import { NuevoCursoComponent } from './nuevo-curso/nuevo-curso.component';
 import { FeatureModule } from '../../feature.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MaterialModule } from 'src/app/shared/material.module';
+import { ListaCursosComponent } from './lista-cursos/lista-cursos.component';
+import { AdminGuard } from 'src/app/core/admin.guard';
 
 
 @NgModule({
   declarations: [
     CursosComponent,
     AbmCursosComponent,
-    NuevoCursoComponent
+    NuevoCursoComponent,
+    ListaCursosComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +28,9 @@ import { MaterialModule } from 'src/app/shared/material.module';
   ],
 
   providers: [
-    CursosService
+    CursosService,
+    SharedModule,
+    AdminGuard
   ]
 })
 export class CursosModule { }

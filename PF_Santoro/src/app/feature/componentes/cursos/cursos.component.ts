@@ -1,11 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
-import { map, Observable, Subscription } from 'rxjs';
-import { Cursos } from 'src/app/feature/Model/Cursos';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Cursos } from '../../Model/Cursos';
 import { CursosService } from '../../servicios/cursos.service';
-import { AbmCursosComponent } from './editar-cursos/abm-cursos.component';
-import { NuevoCursoComponent } from './nuevo-curso/nuevo-curso.component';
+import { sesion } from '../../Model/sesion';
+
 
 @Component({
   selector: 'app-cursos',
@@ -14,76 +13,36 @@ import { NuevoCursoComponent } from './nuevo-curso/nuevo-curso.component';
 })
 
 export class CursosComponent implements OnInit {
-  cursos$!: Observable <Cursos[]>;
-  
-  cursoSubscripcion!: Subscription;
+  cursos$!: Observable<Cursos[]>;
+  sesion!: sesion;
+admin!: boolean;
 
-  dataSource: MatTableDataSource<any> = new MatTableDataSource();
-  displayedColumns: string[] = ['id', 'materia', 'comision', 'profesor', 'fechaInicio', 'acciones'];
-  @ViewChild(MatTable) tabla!: MatTable<Cursos>;
-  
-constructor(
- private CursosService : CursosService,  
- private dialog: MatDialog,)
-  {  }
+  constructor(
+private router: Router,
+    private CursosService: CursosService,
+) { }
 
 
-ngOnInit(): void {
- this.cursos$ = this.CursosService.obtenerCursos()
-
- this.cursoSubscripcion = this.cursos$.subscribe((cursos) => {
-  this.dataSource.data = cursos
-  console.log(cursos);
-});
-}
-
-AgregarCurso() {
-    const dialogRef = this.dialog.open(NuevoCursoComponent, {
-      width: '400px',
-      data:this.cursos$
-    });
-        dialogRef.afterClosed().subscribe((resultado) => {
-      if(resultado){        
-        this.tabla.renderRows();
-      }  
-    })
-}
-
-  editarCurso(curso: Cursos) {
-    const dialogRef = this.dialog.open(AbmCursosComponent, {
-      width: '400px',
-      data: curso
-    });
-    dialogRef.afterClosed().subscribe(resultado => {
-      if (resultado) {
-        const item = this.dataSource.data.find(cursos => curso.id === resultado.id);
-        const index = this.dataSource.data.indexOf(item!);
-        this.dataSource.data[index] = resultado;
-        this.tabla.renderRows();
-      }
-    })
+  ngOnInit(): void {
+    this.cursos$ = this.CursosService.obtenerCursos()
   }
 
-  eliminarCurso(id: string){
-    this.CursosService.BorrarCurso(id).subscribe((curso: Cursos) => {
-      alert(`${curso.id}-${curso.materia} eliminado satisfactoriamente`);
-      this.ngOnInit();
-    });
+  redireccionar(ruta: string) {
+    this.router.navigate([ruta]);
   }
 
-   filtrar(event: Event) {
-    const valorObtenido = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = valorObtenido.trim().toLocaleLowerCase();
-  }  
-
-ngOnDestroy(): void {
-  this.cursoSubscripcion.unsubscribe()
-}
+/*   isAdmin(){
+ if (this.AuthService.obtenerSesion(){
+ } return true
+}else{
+  return false}  */
 
 }
 
 
- 
+
+
+
 
 
 

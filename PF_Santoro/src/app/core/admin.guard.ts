@@ -33,7 +33,7 @@ export class AdminGuard implements CanActivate, CanActivateChild, CanDeactivate<
     childRoute: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       return this.AuthService.obtenerSesion().pipe(map((sesion: sesion) => {
-          if(sesion.usuario?.canActivateChild){
+          if(sesion.usuario?.admin){
             return true;
           }else{
             alert('El usuario no tiene permisos');
@@ -51,7 +51,7 @@ export class AdminGuard implements CanActivate, CanActivateChild, CanDeactivate<
     nextState?: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       return this.AuthService.obtenerSesion().pipe(
         map((sesion: sesion) => {
-          if(sesion.usuario?.canDeactivate){
+          if(sesion.usuario?.admin){
             return true;
           }else{
             alert('El usuario no tiene permisos');
@@ -66,7 +66,7 @@ export class AdminGuard implements CanActivate, CanActivateChild, CanDeactivate<
     segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       return this.AuthService.obtenerSesion().pipe(
         map((sesion: sesion) => {
-          if(sesion.usuario?.canLoad){
+          if(sesion.usuario?.admin){
             return true;
           }else{
             alert('El usuario no tiene permisos');
