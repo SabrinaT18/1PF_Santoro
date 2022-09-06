@@ -1,0 +1,24 @@
+   table {
+       width: 60%;
+       margin: 40px;
+   }
+
+   .mat-icon {
+       margin-left: 10px;
+       color: whitesmoke;
+   }
+
+   .mat-form-field {
+       background-color: rgb(70, 70, 70);
+       margin-right: 20%;
+       padding: 4px 20px 5px 5px;
+       float: right;
+   }
+
+   .mat-card {
+       margin-left: 40px;
+   }
+
+   p {
+       text-align: center;
+   }

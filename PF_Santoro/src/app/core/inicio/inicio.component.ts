@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { BehaviorSubject, map } from 'rxjs';
+import { Usuario } from 'src/app/feature/Model/Usuario';
 import { AuthService } from '../servicios/auth.service';
 
 @Component({
@@ -8,6 +10,7 @@ import { AuthService } from '../servicios/auth.service';
   styleUrls: ['./inicio.component.css']
 })
 export class InicioComponent implements OnInit {
+  usuario!: Usuario[];
 
   constructor(private router: Router, private AuthService: AuthService) { }
 
@@ -24,6 +27,5 @@ export class InicioComponent implements OnInit {
   redireccionar(ruta: string) {
     this.router.navigate ([ruta]);
     }
- 
 
 }

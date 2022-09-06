@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { CursosComponent } from './cursos.component';
 
@@ -8,6 +9,9 @@ describe('CursosComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [
+        ReactiveFormsModule
+      ],
       declarations: [ CursosComponent ]
     })
     .compileComponents();
@@ -17,7 +21,14 @@ describe('CursosComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('se crea', () => {
     expect(component).toBeTruthy();
   });
+
+
+
+
+
+
+
 });

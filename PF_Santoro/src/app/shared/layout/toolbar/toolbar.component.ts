@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../core/servicios/auth.service';
 import { Router } from '@angular/router';
+import { Usuario } from 'src/app/feature/Model/Usuario';
+import { map, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-toolbar',
@@ -8,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./toolbar.component.css']
 })
 export class ToolbarComponent implements OnInit {
+usuario$!: Observable<Usuario[]>;
 
   constructor(
     private AuthService: AuthService,
@@ -16,6 +19,12 @@ export class ToolbarComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+ loginDisplay()   {
+   this.AuthService.obtenerSesion();
+    console.log(this.usuario$);
+  }
+   
 
  cerrarSesion(){
 this.AuthService.cerrarSesion();

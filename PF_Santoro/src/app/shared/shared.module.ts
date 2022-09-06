@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { ToolbarComponent } from './layout/toolbar/toolbar.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FooterComponent } from './layout/footer/footer.component';
 
 
 
@@ -15,7 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
     ConcatenarPipe,
     TitulosDirective,
     NavbarComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
@@ -33,7 +35,8 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    FooterComponent
   ]
 })
 export class SharedModule { }

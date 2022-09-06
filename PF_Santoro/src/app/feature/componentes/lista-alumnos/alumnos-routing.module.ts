@@ -4,14 +4,17 @@ import { AdminGuard } from 'src/app/core/admin.guard';
 import { ABMalumnosComponent } from './editar-alumnos/abmalumnos.component';
 import { ListaAlumnosComponent } from './lista-alumnos.component';
 import { NuevoAlumnoComponent } from './nuevo-alumno/nuevo-alumno.component';
+import { AlumnosComponent } from './alumnos/alumnos.component';
 
 const routes: Routes = [
-  {path: 'alumnos', component: ListaAlumnosComponent, children: [
+  {path: 'alumnos', component: AlumnosComponent, children: [
+    {path: 'lista', component: ListaAlumnosComponent   },
     {path: 'nuevo', component: NuevoAlumnoComponent  },
     {path: 'edit', component: ABMalumnosComponent, canDeactivate: [AdminGuard] }
   ],
   canActivateChild: [AdminGuard]}
  ];
+
 
 @NgModule({
 
@@ -21,3 +24,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AlumnosRoutingModule { }
+ 
