@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Alumnos } from 'src/app/feature/Model/Alumnos';
 import { sesion } from 'src/app/feature/Model/sesion';
 import { AlumnosService } from '../../../servicios/alumnos.service';
+import { AuthService } from '../../../../core/servicios/auth.service';
 
 @Component({
   selector: 'app-alumnos',
@@ -18,6 +19,7 @@ admin!: boolean;
   constructor(
     private router: Router,
     private AlumnosService: AlumnosService ,
+    public AuthService: AuthService
 ) { }
 
 
