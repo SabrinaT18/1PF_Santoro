@@ -7,7 +7,7 @@ import { AbmCursosComponent } from './editar-cursos/abm-cursos.component';
 import { ListaCursosComponent } from './lista-cursos/lista-cursos.component';
 
 const routes: Routes = [
-  {    path: 'cursos', component: CursosComponent, children: [
+  { path: 'cursos', component: CursosComponent, children: [
       { path: 'lista', component: ListaCursosComponent, },
       { path: 'new', component: NuevoCursoComponent,  },
       { path: 'edit', component: AbmCursosComponent, canDeactivate: [AdminGuard] }

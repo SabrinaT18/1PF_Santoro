@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../core/servicios/auth.service';
-import { Router } from '@angular/router';
+import { NavigationStart, Router } from '@angular/router';
 import { Usuario } from 'src/app/feature/Model/Usuario';
 import { map, Observable } from 'rxjs';
 
@@ -11,11 +11,18 @@ import { map, Observable } from 'rxjs';
 })
 export class ToolbarComponent implements OnInit {
 usuario$!: Observable<Usuario[]>;
+ruta!: string;
 
   constructor(
     private AuthService: AuthService,
     private router: Router
-  ) { }
+  ) { 
+this.router.events.subscribe((event) => {
+  if (event instanceof NavigationStart) {
+    this.ruta = event.url;
+  }
+})
+  }
 
   ngOnInit(): void {
   }
