@@ -5,13 +5,13 @@
 <h1 [appTitulos]="20">  Listado de alumnos </h1>
 
 <!-- <div *ngIf="AuthService.isAdmin">
- -->    
- <button type="button" class="btn btn-dark" (click)="redireccionar('usuario/alumnos/lista')"> Administrar cursos </button>
+ --> 
+ <button type="button" class="btn btn-dark" (click)="redireccionar('usuario/alumnos/lista')"> Administrar alumnos </button>
 <router-outlet></router-outlet>
 
 
-<!-- <div *ngIf="AuthService.isAdmin"> -->
-    <div class="grid text-center" style="--bs-columns: 6;">
+<!--  <div *ngIf="AuthService.!isAdmin">  -->    
+ <div class="grid text-center" style="--bs-columns: 6;">
     <table class="table table-dark table-borderless">
         <thead>
             <tr>
