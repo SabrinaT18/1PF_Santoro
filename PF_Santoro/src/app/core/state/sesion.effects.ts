@@ -1,0 +1,22 @@
+/* import { Injectable } from '@angular/core';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+
+import { concatMap } from 'rxjs/operators';
+import { Observable, EMPTY } from 'rxjs';
+import * as SesionActions from './sesion.actions';
+
+@Injectable()
+export class SesionEffects {
+
+
+  loadSesions$ = createEffect(() => {
+    return this.actions$.pipe( 
+
+      ofType(SesionActions.loadSesions),
+      concatMap(() => EMPTY as Observable<{ type: string }>)
+    );
+  });
+
+  constructor(private actions$: Actions) {}
+}
+ */

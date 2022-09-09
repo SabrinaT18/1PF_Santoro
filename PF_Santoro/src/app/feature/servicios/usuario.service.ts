@@ -14,8 +14,11 @@ private api: string = environment.api ;
     private http: HttpClient  ) { 
   }
   
-  obtenerUsuario(): Observable<Usuario[]> {
+/*   obtenerUsuario(): Observable<Usuario> {
    return this.http.get<Usuario[]>(`${this.api}/usuario`);
-}
+  
+
+} */
 
 }
+

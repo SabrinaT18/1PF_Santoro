@@ -14,7 +14,7 @@ import { GuardAuthGuard } from './guard-auth.guard';
     ],
   imports: [
    CommonModule,
-   SharedModule
+   SharedModule,
   ],
 
   providers: [

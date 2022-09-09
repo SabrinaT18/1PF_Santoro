@@ -16,12 +16,12 @@ export class InicioComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.AuthService.obtenerSesion().subscribe(
+ /*    this.AuthService.obtenerSesion().subscribe(
       sesion => {
         if (!sesion.sesionActiva) {
           this.router.navigate(['/auth/login']);
         }
-      })
+      }) */
   }
 
   redireccionar(ruta: string) {

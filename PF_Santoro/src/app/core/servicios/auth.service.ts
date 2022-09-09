@@ -13,62 +13,29 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
   sesionSubject!: BehaviorSubject<sesion>
   private api: string = environment.api;
-  rol: any;
-
 
   constructor(
     private http: HttpClient,
     private router: Router) {
-    const sesion: sesion = {
-      sesionActiva: false
     }
-    this.sesionSubject = new BehaviorSubject(sesion);
-  }
 
-
-
-
-  IniciarSesion(usuario: Usuario) {
-    this.http.get<Usuario[]>(`${this.api}/usuario`).pipe(
+  IniciarSesion(usuario: string, contrasena: string): Observable <Usuario> {
+  return this.http.get<Usuario[]>(`${this.api}/usuario`).pipe(
       map((usuarios: Usuario[]) => {
-        return usuarios.filter((u: Usuario) => u.email === usuario.email && u.password === usuario.password)[0];
-      })
-    ).subscribe((usuario: Usuario) => {
-      if (usuario) {
-        const sesion: sesion = {
-          sesionActiva: true,
-          usuario: {
-            id: usuario.id,
-            email: usuario.email,
-            username: usuario.username,
-            password: usuario.password,
-            admin: usuario.admin
-          }
-        }
-        this.sesionSubject.next(sesion);
-      } else {
-        alert('usuario no encontrado');
-      }
-    });
+      return   usuarios.filter((u: Usuario) => u.email === usuario && u.password === usuario)[0]
+    })
+    );
   }
-
+  
   cerrarSesion() {
-    const sesion: sesion = {
-      sesionActiva: false,
-    };
-    this.sesionSubject.next(sesion);
+
   }
 
   obtenerSesion() {
     return this.sesionSubject.asObservable();
   }
 
-/*   isAdmin(): Observable<boolean> {
-    if this.sesionSubject.next
-     
-    return this.rol;
-  }
- */
+
 }
 
 

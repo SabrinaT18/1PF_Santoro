@@ -15,6 +15,12 @@ import { AlumnosModule } from './feature/componentes/lista-alumnos/alumnos.modul
 import { CursosModule } from './feature/componentes/cursos/cursos.module';
 import { ClasesModule } from './feature/componentes/clases/clases.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { environment } from '../environments/environment';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import * as fromSesion from './core/state/sesion.reducer';
+import { EffectsModule } from '@ngrx/effects';
+
 
 @NgModule({
   declarations: [
@@ -37,7 +43,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     MaterialModule,
     ReactiveFormsModule,
-    ],
+    StoreModule.forRoot({}, {}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    StoreModule.forFeature(fromSesion.sesionFeatureKey, fromSesion.reducer),
+    EffectsModule.forRoot([]),
+  ],
 
 
 

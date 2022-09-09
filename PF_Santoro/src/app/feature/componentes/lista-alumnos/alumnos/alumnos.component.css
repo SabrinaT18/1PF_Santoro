@@ -5,10 +5,10 @@ h1{
   
   
     table {
-      font-size: 15px;
-      margin: 25px;
-      }
+      width: 60%;
+      margin: 40px;
+    }
     
     button{
-        margin: 25px;
-      }
+      margin: 25px;
+    }

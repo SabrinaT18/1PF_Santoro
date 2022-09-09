@@ -1,11 +1,11 @@
 <mat-toolbar color="primary">
-  <span> PF_Santoro - {{ruta}} </span>
+  <ng-container *ngIf="usuarioActivo$ | async as usuario">
+    <span>PF_Santoro - {{ ruta }} - {{ usuario.username }}</span>
+  </ng-container>
 
-  <!-- <br> {{usuario$.username}}' > -->
+  <button mat-icon-button class="login" aria-label="login" (click)="redireccionar('inicio')">
+    <mat-icon>home</mat-icon>
 
-  <button mat-icon-button class="login" aria-label="login" (click)="redireccionar('inicio')"> 
-  <mat-icon>home</mat-icon> 
-
-  <button mat-icon-button class="login" aria-label="login" (click)="cerrarSesion()"> 
-   <mat-icon>logout</mat-icon> 
-  </button>
+    <button mat-icon-button class="login" aria-label="login" (click)="cerrarSesion()">
+      <mat-icon>logout</mat-icon>
+    </button>
