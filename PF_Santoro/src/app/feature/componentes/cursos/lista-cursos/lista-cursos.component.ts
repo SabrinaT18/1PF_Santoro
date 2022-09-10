@@ -12,7 +12,9 @@ import { selectCursosCargadosState } from '../state/cursos.selectors';
 import { cursosCargados, loadCursoss } from '../state/cursos.actions';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { selectUsuarioActivoState } from '../../../../core/state/sesion.selectors';
+import { selectUsuarioActivoState, selectUsuarioAdminState } from '../../../../core/state/sesion.selectors';
+import { Usuario } from 'src/app/feature/Model/Usuario';
+import { SesionState } from 'src/app/core/state/sesion.reducer';
 
 
 @Component({
@@ -22,24 +24,28 @@ import { selectUsuarioActivoState } from '../../../../core/state/sesion.selector
 })
 export class ListaCursosComponent implements OnInit {
   cursos$!: Observable<Cursos[]| undefined>;
+  usuarioAdmin$!: Observable<Boolean| undefined>;
+
   data$!: Observable<Cursos[]>;
   cursosSubscription!: Subscription;
-
-  displayedColumns: string[] = ['id', 'materia', 'comision', 'profesor', 'fechaInicio', 'acciones'];
-  
  
-constructor(
+  displayedColumns: string[] = ['id', 'materia', 'comision', 'profesor', 'fechaInicio','AccionesUser' , 'AccionesAdmin'];
+  
+ constructor(
  private CursosService : CursosService,  
  private dialog: MatDialog,
  private store: Store<CursosState>,
+ private Authstore: Store<SesionState>,
  private snackBar: MatSnackBar,
  private router: Router,
  )
   {  }
 
 
-ngOnInit(): void {
+ngOnInit(): void {  
   this.cursos$ = this.store.select(selectCursosCargadosState);
+
+  this.usuarioAdmin$ = this.Authstore.select(selectUsuarioAdminState);
 
   this.data$= this.CursosService.obtenerCursos();
   this.cursosSubscription = this.CursosService.cursoSubject.subscribe(
@@ -47,6 +53,7 @@ ngOnInit(): void {
       this.store.dispatch(cursosCargados({ cursos: data }));
     }
   );
+  
 }
 
 ngOnDestroy(): void {

@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, map } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { Usuario } from 'src/app/feature/Model/Usuario';
 import { AuthService } from '../servicios/auth.service';
+import { SesionState } from '../state/sesion.reducer';
+import { selectUsuarioActivoState } from '../state/sesion.selectors';
 
 @Component({
   selector: 'app-inicio',
@@ -10,18 +13,17 @@ import { AuthService } from '../servicios/auth.service';
   styleUrls: ['./inicio.component.css']
 })
 export class InicioComponent implements OnInit {
-  usuario!: Usuario[];
+  usuarioActivo$: Observable<Usuario | undefined>;
 
-  constructor(private router: Router, private AuthService: AuthService) { }
+  constructor(private router: Router, private AuthService: AuthService,
+    private store: Store<SesionState>,
+    ) { 
+      this.usuarioActivo$ = this.store.select(selectUsuarioActivoState);
+
+    }
 
 
   ngOnInit(): void {
- /*    this.AuthService.obtenerSesion().subscribe(
-      sesion => {
-        if (!sesion.sesionActiva) {
-          this.router.navigate(['/auth/login']);
-        }
-      }) */
   }
 
   redireccionar(ruta: string) {

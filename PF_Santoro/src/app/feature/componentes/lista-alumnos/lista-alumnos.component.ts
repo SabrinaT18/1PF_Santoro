@@ -8,6 +8,9 @@ import { NuevoAlumnoComponent } from './nuevo-alumno/nuevo-alumno.component';
 import { ABMalumnosComponent } from './editar-alumnos/abmalumnos.component';
 import { AuthService } from '../../../core/servicios/auth.service';
 import { Route, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { SesionState } from 'src/app/core/state/sesion.reducer';
+import { selectUsuarioAdminState } from 'src/app/core/state/sesion.selectors';
 
 @Component({
   selector: 'app-lista-alumnos',
@@ -21,6 +24,7 @@ export class ListaAlumnosComponent implements OnInit {
   alumnoSubscripcion!: Subscription;
   admin!: boolean;
   auth: any;
+  usuarioAdmin$!: Observable<Boolean| undefined>;
 
   dataSource: MatTableDataSource<any> = new MatTableDataSource();
   displayedColumns: string[] = ['id', 'apellido', 'nombre', 'email', 'fechaNacimiento', 'nota', 'estado', 'acciones'];
@@ -33,10 +37,13 @@ export class ListaAlumnosComponent implements OnInit {
 
   constructor(
     private AlumnosService: AlumnosService,
-    private dialog: MatDialog,
+    private dialog: MatDialog,  
+    private Authstore: Store<SesionState>,
     private AuthService: AuthService
       ) {
     this.alumnos$ = this.AlumnosService.obtenerAlumnos()
+    
+    this.usuarioAdmin$ = this.Authstore.select(selectUsuarioAdminState);
 
     this.alumnoSubscripcion = this.alumnos$.subscribe((alumnos) => {
         this.dataSource.data = alumnos

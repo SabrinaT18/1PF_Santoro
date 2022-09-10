@@ -7,12 +7,12 @@ import { UsuarioComponent } from './feature/usuario/usuario.component';
 
 const routes: Routes = [
   { path: 'inicio', component: InicioComponent, canActivate: [GuardAuthGuard]},  
-  { path: 'usuario', component: UsuarioComponent, canActivate: [AdminGuard]  },
-   {
-    path: 'auth', loadChildren: () => import('./feature/auth/login-routing.module').then((m) => m.LoginRoutingModule)
+  
+   { path: 'auth', loadChildren: () => import('./feature/auth/login-routing.module').then((m) => m.LoginRoutingModule)
 
-  }, 
-
+  },  
+  {path: 'usuario', component: UsuarioComponent, loadChildren: () => import('./feature/usuario/usuario-routing.module').then((m) => m.UsuarioRoutingModule) },
+   
   {
     path: 'usuario', loadChildren: () => import('./feature/componentes/lista-alumnos/alumnos-routing.module').then((m) => m.AlumnosRoutingModule)
   },

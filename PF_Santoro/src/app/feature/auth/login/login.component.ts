@@ -14,29 +14,32 @@ import { cargarSesion } from 'src/app/core/state/sesion.actions';
 })
 export class LoginComponent implements OnInit {
 formulario: FormGroup;
-usuario?: Usuario;
 
   constructor(
-    private form: FormBuilder, private router: Router, 
-    private AuthService: AuthService, private store: Store<SesionState> ){
+    private form: FormBuilder, 
+    private router: Router, 
+    private AuthService: AuthService, 
+    private store: Store<SesionState> ){
 
     this.formulario = form.group({
       email: new FormControl ('', [Validators.required, Validators.email]),
       password: new FormControl ('', [Validators.required, Validators.minLength(8)]),
       });
       }
-      
-  ngOnInit(): void {
-  }
-
+    
   onLogin(){
     this.AuthService.IniciarSesion(this.formulario.value.email, this.formulario.value.password).subscribe((usuario: Usuario) => {
-      this.store.dispatch(cargarSesion({
-        usuarioActivo: usuario
-      }));
-     this.router.navigate(['/inicio']); 
-     });
+      if(usuario){
+          this.store.dispatch(cargarSesion({usuarioActivo: usuario }));
+          this.router.navigate(['/inicio']);   
+       }else{
+      alert("Credenciales incorrectas");
     }
+  });
+    }
+
+  ngOnInit(): void {
+  }
 
   }
 

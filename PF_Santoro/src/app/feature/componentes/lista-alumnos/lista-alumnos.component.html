@@ -5,13 +5,19 @@
   <mat-icon> search </mat-icon>
 </mat-form-field>
 
-<button mat-raised-button (click)="agregarAlumno()"> Agregar </button>
+
+<div *ngIf="usuarioAdmin$"> 
+<div class="example-button-container">
+  <button mat-fab  color="accent" (click)="agregarAlumno()">
+<mat-icon> person_add  </mat-icon>
+</button>
+</div>
+</div>
 
 <mat-label>
   <h3> Listado de alumnos </h3>
 </mat-label>
 
-<!-- <div *ngIf="auth===admin" >  -->
 <table mat-table [dataSource]="dataSource">
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef> Id </th>

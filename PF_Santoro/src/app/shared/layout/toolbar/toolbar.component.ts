@@ -6,6 +6,7 @@ import { map, Observable } from 'rxjs';
 import { SesionState } from 'src/app/core/state/sesion.reducer';
 import { Store } from '@ngrx/store';
 import { selectSesionActivaState, selectUsuarioActivoState, selectUsuarioAdminState } from 'src/app/core/state/sesion.selectors';
+import { cerrarSesion } from 'src/app/core/state/sesion.actions';
 
 @Component({
   selector: 'app-toolbar',
@@ -20,7 +21,7 @@ usuarioAdmin$: Observable<boolean | undefined>;
 sesionActiva$: Observable<boolean | undefined>;
 
   constructor(
-    private store: Store<SesionState>,
+    private Authstore: Store<SesionState>,
     private AuthService: AuthService,
     private router: Router
   ) { 
@@ -30,9 +31,9 @@ this.router.events.subscribe((event) => {
   }
 });
 
-this.usuarioActivo$ = this.store.select(selectUsuarioActivoState);
-this.usuarioAdmin$ = this.store.select(selectUsuarioAdminState);
-this.sesionActiva$ = this.store.select(selectSesionActivaState);
+this.usuarioActivo$ = this.Authstore.select(selectUsuarioActivoState);
+this.usuarioAdmin$ = this.Authstore.select(selectUsuarioAdminState);
+this.sesionActiva$ = this.Authstore.select(selectSesionActivaState);
 }
 
 
@@ -41,8 +42,8 @@ this.sesionActiva$ = this.store.select(selectSesionActivaState);
 
   
  cerrarSesion(){
-this.AuthService.cerrarSesion();
-this.router.navigate(['auth/login'])
+  this.Authstore.dispatch(cerrarSesion());
+  this.router.navigate(['auth/login'])
   }
 
   redireccionar(ruta: string) {

@@ -18,7 +18,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { environment } from '../environments/environment';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import * as fromSesion from './core/state/sesion.reducer';
 import { EffectsModule } from '@ngrx/effects';
 
 
@@ -45,7 +44,6 @@ import { EffectsModule } from '@ngrx/effects';
     ReactiveFormsModule,
     StoreModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    StoreModule.forFeature(fromSesion.sesionFeatureKey, fromSesion.reducer),
     EffectsModule.forRoot([]),
   ],
 
