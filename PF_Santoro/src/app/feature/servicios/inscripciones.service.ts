@@ -9,7 +9,7 @@ import { Inscripciones } from '../Model/Inscripciones';
 })
 export class InscripcionesService {
 
-private api: string = environment.api ;
+private api = environment.URLapi ;
 
 constructor(
   private http: HttpClient)

@@ -28,7 +28,8 @@ export class ListaCursosComponent implements OnInit {
 
   data$!: Observable<Cursos[]>;
   cursosSubscription!: Subscription;
- 
+
+  @ViewChild(MatTable) TablaCursos!: MatTable<any>;
   displayedColumns: string[] = ['id', 'materia', 'comision', 'profesor', 'fechaInicio','AccionesUser' , 'AccionesAdmin'];
   
  constructor(

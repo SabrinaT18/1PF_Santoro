@@ -1,24 +1,24 @@
 <h1 [appTitulos]="20"> Estudiantes 2022 </h1>
-<mat-form-field>
+
+<!-- <mat-form-field>
   <mat-label appearance="fill"> Filtrar alumnos </mat-label>
   <input type="text" (keyup)="filtrar($event)" matInput>
   <mat-icon> search </mat-icon>
-</mat-form-field>
+</mat-form-field> -->
 
 
-<div *ngIf="usuarioAdmin$"> 
-<div class="example-button-container">
-  <button mat-fab  color="accent" (click)="agregarAlumno()">
+<div  class="example-button-container" >
+<button mat-fab  color="primary" (click)="agregarAlumno()" *ngIf="usuarioAdmin$ |async">
 <mat-icon> person_add  </mat-icon>
 </button>
 </div>
-</div>
+
 
 <mat-label>
   <h3> Listado de alumnos </h3>
 </mat-label>
 
-<table mat-table [dataSource]="dataSource">
+<table mat-table [dataSource]="data$">
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef> Id </th>
     <td mat-cell *matCellDef="let element"> {{element.id}} </td>
@@ -26,7 +26,7 @@
 
   <ng-container matColumnDef="apellido">
     <th mat-header-cell *matHeaderCellDef> Nombre y Apellido </th>
-    <td mat-cell *matCellDef="let element"> {{element|concatenar}} </td>
+    <td mat-cell *matCellDef="let element"> {{element |concatenar}} </td>
   </ng-container>
 
   <ng-container matColumnDef="nombre">
@@ -55,24 +55,34 @@
     <td mat-cell *matCellDef="let element">{{ element.estado }}</td>
   </ng-container>
 
-  <ng-container matColumnDef="acciones">
-    <th mat-header-cell *matHeaderCellDef> Acciones </th>
+  <ng-container matColumnDef="AccionesUser">
+
+    <th mat-header-cell *matHeaderCellDef> Ver detalle </th>
     <td mat-cell *matCellDef="let element">
-      <button mat-icon-button (click)="editarAlumno(element)">
-        <mat-icon>edit</mat-icon>
-      </button>
-      <button mat-icon-button (click)="eliminarAlumno(element.id)">
-        <mat-icon>delete</mat-icon>
-      </button>
+    <button mat-icon-button (click)="redireccionar('inicio')">
+    <mat-icon> visibility </mat-icon>
+     </button>
     </td>
-  </ng-container>
+</ng-container>
+
+<ng-container matColumnDef="AccionesAdmin"  >
+     <th mat-header-cell *matHeaderCellDef> Administración </th>
+    <td mat-cell *matCellDef="let element">
+        <button mat-icon-button (click)="editarAlumno(element)" *ngIf="usuarioAdmin$ |async">
+            <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="eliminarAlumno(element.id)" *ngIf="usuarioAdmin$ |async">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </td>
+</ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"> </tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"> </tr>
 </table>
 
 
-<mat-card style="width:30%; height:25%">
+<mat-card style="width:30%; height:25%" *ngIf="usuarioAdmin$ |async">
   <mat-card-title> Criterios de evaluación </mat-card-title>
   <mat-card-subtitle> 2022 </mat-card-subtitle>
   <mat-card-content>

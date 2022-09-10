@@ -8,17 +8,11 @@ import { Usuario } from '../Model/Usuario';
   providedIn: 'root'
 })
 export class UsuarioService {
-private api: string = environment.api ;
+private api= environment.URLapi ;
  
   constructor(
     private http: HttpClient  ) { 
   }
   
-/*   obtenerUsuario(): Observable<Usuario> {
-   return this.http.get<Usuario[]>(`${this.api}/usuario`);
-  
-
-} */
-
 }
 

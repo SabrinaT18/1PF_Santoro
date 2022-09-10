@@ -21,10 +21,12 @@ export class NuevaInscrComponent implements OnInit {
     {
     this.formulario = new FormGroup({
     id  : new FormControl(),
-    NombreAlumno: new FormControl(),
+    nombreAlumno: new FormControl(),
     ApellidoAlumno : new FormControl(),
     NombreCurso : new FormControl(),
     comision: new FormControl(),
+    idAlumno: new FormControl(),
+    idCurso: new FormControl(),
     })
   }
 
@@ -34,10 +36,12 @@ export class NuevaInscrComponent implements OnInit {
   guardar(){
     const i: Inscripciones = {
       id: this.formulario.value.id,
-      NombreAlumno: this.formulario.value.NombreAlumno,
+      nombreAlumno: this.formulario.value.nombreAlumno,
       ApellidoAlumno:  this.formulario.value.ApellidoAlumno,
+      idAlumno: this.formulario.value.idAlumno,
       NombreCurso:   this.formulario.value.NombreCurso,
       comision: this.formulario.value.comision,
+      idCurso: this.formulario.value.idCurso,
     }
     this.InscripcionesService.agregarInscripciones(i).subscribe((Ins: Inscripciones) => {
       alert(`Inscripción nº: ${Ins.id} registrada correctamente`);

@@ -8,7 +8,7 @@ import { Cursos } from '../Model/Cursos';
   providedIn: 'root'
 })
 export class CursosService {
- private api: string = environment.api ;
+ private api = environment.URLapi ;
  cursoSubject = new Subject<any>();
 
  

@@ -10,6 +10,10 @@ import { ListaAlumnosComponent } from './lista-alumnos.component';
 import { FeatureModule } from '../../feature.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { AlumnosComponent } from './alumnos/alumnos.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { AlumnosEffects } from './state/alumnos.effects';
+import * as fromAlumnos from './state/alumnos.reducer';
 
 
 @NgModule({
@@ -24,6 +28,8 @@ import { AlumnosComponent } from './alumnos/alumnos.component';
     AlumnosRoutingModule,
     FeatureModule,
     SharedModule,
+    StoreModule.forFeature(fromAlumnos.alumnosFeatureKey, fromAlumnos.reducer),
+ EffectsModule.forFeature([AlumnosEffects]),
     ],
 
   providers: [

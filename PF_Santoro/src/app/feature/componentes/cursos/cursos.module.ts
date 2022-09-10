@@ -31,8 +31,9 @@ import { CursosEffects } from './state/cursos.effects';
     SharedModule,
     MaterialModule,
     StoreModule.forFeature(fromCursos.cursosFeatureKey, fromCursos.reducer),
-EffectsModule.forFeature([CursosEffects])
-  ],
+EffectsModule.forFeature([CursosEffects]),
+
+],
 
   providers: [
     CursosService,

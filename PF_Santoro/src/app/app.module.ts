@@ -19,6 +19,7 @@ import { environment } from '../environments/environment';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
+import * as fromSesion from './core/state/sesion.reducer';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { EffectsModule } from '@ngrx/effects';
     StoreModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([]),
+    StoreModule.forFeature(fromSesion.sesionFeatureKey, fromSesion.reducer),
   ],
 
 

@@ -15,7 +15,7 @@ import { selectSesionState, selectUsuarioActivoState } from '../state/sesion.sel
 })
 export class AuthService {
   sesionSubject!: BehaviorSubject<sesion>
-  private api: string = environment.api;
+  private api: string = environment.URLapi;
   store!: Store<SesionState>;
   
   constructor(

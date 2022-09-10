@@ -24,10 +24,12 @@ export class AbmInscripComponent implements OnInit {
   {
   this.formInscripcion = formIns.group({
     id : new FormControl(element.id),
-    NombreAlumno: new FormControl(element.NombreAlumno),
+    nombreAlumno: new FormControl(element.nombreAlumno),
     ApellidoAlumno : new FormControl(element.ApellidoAlumno),
+    idAlumno: new FormControl(element.idAlumno),
     NombreCurso : new FormControl(element.NombreCurso),
     comision : new FormControl(element.comision),
+    idCurso: new FormControl(element.idCurso),
   })
   }
 
@@ -38,11 +40,13 @@ ngOnInit() {
 guardar() {
   const i: Inscripciones = {
     id: this.element.id,
-    NombreAlumno: this.formInscripcion.value.NombreAlumno,
-    ApellidoAlumno: this.formInscripcion.value.NombreAlumno,
-    NombreCurso: this.formInscripcion.value.NombreAlumno,
-    comision: this.formInscripcion.value.NombreAlumno,
-  }
+    nombreAlumno: this.formInscripcion.value.nombreAlumno,
+    ApellidoAlumno: this.formInscripcion.value.ApellidoAlumno,
+    idAlumno: this.formInscripcion.value.idAlumno,
+    NombreCurso: this.formInscripcion.value.NombreCurso,
+    comision: this.formInscripcion.value.comision,
+    idCurso: this.formInscripcion.value.idCurso,
+    }
   this.InscripcionesService.EditarInscripciones(i).subscribe((ins: Inscripciones) => {
     this.dialogRef.close(ins);  
   });

@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { AlumnosService } from './alumnos.service';
 import { Alumnos } from '../Model/Alumnos';
@@ -19,11 +20,11 @@ describe('AlumnosService', () => {
   service = new AlumnosService (httpClientSpy as any);
   });
 
-  it('should be created', () => {
+  it('se crea', () => {
     expect(service).toBeTruthy();
   });
 
-  it('Debe retornar arreglo de alumnos', (done: DoneFn) => {
+  it('Debe retornar arreglo de alumnos mokapi', (done: DoneFn) => {
     const mockDatos =   [
         {
          nombre: "Karelle",
