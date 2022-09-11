@@ -1,8 +1,11 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Store } from '@ngrx/store';
 import { Inscripciones } from '../../../Model/Inscripciones';
 import { InscripcionesService } from '../../../servicios/inscripciones.service';
+import { loadInsc } from '../state/inscripciones.actions';
 
 @Component({
   selector: 'app-abm-inscrip',
@@ -15,13 +18,12 @@ export class AbmInscripComponent implements OnInit {
   formInscripcion: FormGroup;
 
   constructor ( 
+ @Inject(MAT_DIALOG_DATA) public element: Inscripciones,
   private formIns: FormBuilder,
  private InscripcionesService: InscripcionesService,
   private dialogRef: MatDialogRef<AbmInscripComponent>,
-  @Inject(MAT_DIALOG_DATA) public element: Inscripciones) 
-  
-
-  {
+  private snackBar: MatSnackBar,  private store: Store,
+  )   {
   this.formInscripcion = formIns.group({
     id : new FormControl(element.id),
     nombreAlumno: new FormControl(element.nombreAlumno),
@@ -47,8 +49,10 @@ guardar() {
     comision: this.formInscripcion.value.comision,
     idCurso: this.formInscripcion.value.idCurso,
     }
-  this.InscripcionesService.EditarInscripciones(i).subscribe((ins: Inscripciones) => {
-    this.dialogRef.close(ins);  
+  this.InscripcionesService.EditarInscripciones(i).subscribe((insc) => {
+    this.store.dispatch(loadInsc());
+    this.snackBar.open(`${insc.id} se editó correctamente`, 'Ok', { duration: 3000 });
+    this.cerrar();
   });
   }
 

@@ -1,44 +1,25 @@
 h1 {
   padding: 20px;
-  }
+  text-align: center;
+}
 
 .mat-card {
- margin-left: 40px;
- }
+  margin-left: 40px;
+}
 
 p {
   text-align: center;
 }
 
-
-footer {
-  padding-top: 15px;
-  text-align: right;
-  padding-right: 15px;
-  text-decoration-line: underline;
-  color: beige;
-  font-size: 16px;
-}
- 
-h3{
-  text-align: center;
+h3 {
+  margin: 2%;
 }
 
 table {
-  width: 60%;
-  margin: 40px;
-}
-
-.mat-icon {
- margin-left: 10px;
- color: whitesmoke;
-}
-
-.mat-form-field{
-  background-color: rgb(70, 70, 70);
-  margin-right: 20% ;
-  padding: 4px 20px 5px 5px;
-  float:right;
+ width: 65%;
+ margin: 30px;
+ padding: 10px;
+ text-align: center;
 }
 
 .mat-icon {

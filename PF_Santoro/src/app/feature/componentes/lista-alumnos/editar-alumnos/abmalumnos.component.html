@@ -22,9 +22,11 @@
             <input formControlName="email" matInput>
         </mat-form-field>
 
-        <mat-form-field appearance="fill">
-            <mat-label>Fecha de Nacimiento</mat-label>
-            <input formControlName="fechaNacimiento" matInput>
+       <mat-form-field >
+            <input matInput [matDatepicker]="fechaNacimiento" formControlName="fechaNacimiento">
+            <mat-datepicker-toggle matSuffix [for]="fechaNacimiento"> Fecha de Nacimiento</mat-datepicker-toggle>
+            <mat-datepicker #fechaNacimiento></mat-datepicker>
+            <input  matInput>
         </mat-form-field>
 
         <mat-form-field appearance="fill">

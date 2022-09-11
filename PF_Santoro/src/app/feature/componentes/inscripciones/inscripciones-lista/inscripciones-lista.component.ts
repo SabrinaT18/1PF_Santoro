@@ -1,11 +1,19 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource, MatTable } from '@angular/material/table';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
+import { SesionState } from 'src/app/core/state/sesion.reducer';
+import { selectUsuarioAdminState } from 'src/app/core/state/sesion.selectors';
 import { Inscripciones } from 'src/app/feature/Model/Inscripciones';
 import { InscripcionesService } from 'src/app/feature/servicios/inscripciones.service';
 import { AbmInscripComponent } from '../editar-inscripciones/abm-inscrip.component';
 import { NuevaInscrComponent } from '../nueva-inscr/nueva-inscr.component';
+import { InsCargadas, loadInsc } from '../state/inscripciones.actions';
+import { InscState } from '../state/inscripciones.reducer';
+import { selectInsCargadosState } from '../state/inscripciones.selectors';
 
 @Component({
   selector: 'app-inscripciones-lista',
@@ -13,30 +21,38 @@ import { NuevaInscrComponent } from '../nueva-inscr/nueva-inscr.component';
   styleUrls: ['./inscripciones-lista.component.css']
 })
 export class InscripcionesListaComponent implements OnInit {
-  Inscripciones: [] = [];
+  insc$!: Observable<Inscripciones[]| undefined>;
+  usuarioAdmin$!: Observable<Boolean| undefined>;
 
-  InscripcionesObservable$!: Observable<any>;
+  data$!: Observable<Inscripciones[]>;
+
   InscripcionesSubscripcion!: Subscription;
 
-  dataSource: MatTableDataSource<any> = new MatTableDataSource();
-  displayedColumns: string[] = ['id', 'apellidoAlumno', 'nombreAlumno', 'NombreCurso', 'comision', 'acciones'];
-  
+  displayedColumns: string[] = ['id', 'apellidoAlumno', 'nombreAlumno','idAlumno',  'NombreCurso', 'comision', 'idCurso', 'acciones'];
   @ViewChild(MatTable) tabla!: MatTable<Inscripciones>;
 
   constructor(
   private dialog: MatDialog,
    private inscripcionesService: InscripcionesService,
+   private store: Store<InscState>,
+   private Authstore: Store<SesionState>,
+   private snackBar: MatSnackBar,
+   private router: Router,
   ) {
-    
-    this.InscripcionesObservable$ = this.inscripcionesService.obtenerInscripciones()
-
-    this.InscripcionesSubscripcion = this.InscripcionesObservable$.subscribe((Inscripciones) => {
-        this.dataSource.data = Inscripciones
-        console.log(Inscripciones);
-      });
   }
 
-  ngOnInit(): void {  }
+  ngOnInit(): void { 
+    this.insc$ = this.store.select(selectInsCargadosState);
+
+    this.usuarioAdmin$ = this.Authstore.select(selectUsuarioAdminState);
+  
+    this.data$= this.inscripcionesService.obtenerInscripciones();
+    this.InscripcionesSubscripcion = this.inscripcionesService.InscSubject.subscribe(
+      (data) => {
+        this.store.dispatch(InsCargadas({ Ins: data }));
+      }
+    );
+  }
 
   ngOnDestroy(): void {
     this.InscripcionesSubscripcion.unsubscribe()
@@ -45,11 +61,8 @@ export class InscripcionesListaComponent implements OnInit {
   agregarInscripcion() {
     const dialogRef = this.dialog.open(NuevaInscrComponent, {
       width: '400px',
-      data: this.Inscripciones
+      data: this.insc$
     });
-    dialogRef.afterClosed().subscribe(resultado => {
-   this.tabla.renderRows();
-    })
   }
 
   editarInscripcion(element: Inscripciones) {
@@ -57,27 +70,25 @@ export class InscripcionesListaComponent implements OnInit {
       width: '400px',
       data: element
     });
-
-    dialogRef.afterClosed().subscribe(resultado => {
-      if (resultado) {
-        const item = this.dataSource.data.find(inscripciones => element.id === resultado.id);
-        const index = this.dataSource.data.indexOf(item!);
-        this.dataSource.data[index] = resultado;
-        this.tabla.renderRows();
-      };
-    })
-  }
-
-  filtrar(event: Event) {
-    const valorObtenido = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = valorObtenido.trim().toLocaleLowerCase();
   }
 
 
   eliminarInscripcion(id: string){
     this.inscripcionesService.eliminarInscripciones(id).subscribe((insc: Inscripciones) => {
-      alert(`Inscripción nº ${insc.id} se eliminó satisfactoriamente`);
-      this.ngOnInit();
-    });
+      this.store.dispatch(loadInsc());
+      this.snackBar.open(`${insc.id} se eliminó satisfactoriamente`, 'Ok', {duration: 3000});
+    })
+  }  
+
+
+  redireccionar(ruta: string) {
+    this.router.navigate([ruta]);
   }
+  
+  
+/*   filtrar(event: Event) {
+    const valorObtenido = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = valorObtenido.trim().toLocaleLowerCase();
+  } */
+
 }

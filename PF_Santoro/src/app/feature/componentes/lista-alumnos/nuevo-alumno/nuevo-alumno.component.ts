@@ -5,6 +5,10 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { Alumnos } from 'src/app/feature/Model/Alumnos';
 import { AlumnosService } from '../../../servicios/alumnos.service';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { alumnosState } from '../state/alumnos.reducer';
+import { loadAlumnos } from '../state/alumnos.actions';
 
 @Component({
   selector: 'app-nuevo-alumno',
@@ -18,6 +22,8 @@ export class NuevoAlumnoComponent implements OnInit {
     private AlumnosService: AlumnosService ,
     private router: Router,
     private dialogRef: MatDialogRef<NuevoAlumnoComponent>,
+    private store: Store<alumnosState>,
+    private snackBar: MatSnackBar
     )
     {
     this.formulario = new FormGroup({
@@ -44,12 +50,12 @@ export class NuevoAlumnoComponent implements OnInit {
       nota: this.formulario.value.nota,
       estado: this.formulario.value.estado,
     }
-    this.AlumnosService.agregarAlumno(a).subscribe((alumno: Alumnos) => {
-      alert(`${alumno.id}-${alumno.apellido} agregado correctamente`);
+    this.AlumnosService.agregarAlumno(a).subscribe((alumno) => {
+      this.store.dispatch(loadAlumnos());
+      this.snackBar.open(`${alumno.nombre}-${alumno.apellido} fue agregado exitosamente`, 'Ok', {duration: 3000});
       this.dialogRef.close();
     });
       }
-
   
 
   cerrar() {

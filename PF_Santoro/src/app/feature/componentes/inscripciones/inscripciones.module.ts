@@ -9,8 +9,11 @@ import { NuevaInscrComponent } from './nueva-inscr/nueva-inscr.component';
 import { AbmInscripComponent } from './editar-inscripciones/abm-inscrip.component';
 import { InscripcionesComponent } from './inscripciones.component';
 import { FeatureModule } from '../../feature.module';
-import { MaterialModule } from 'src/app/shared/material.module';
 import { InscripcionesListaComponent } from './inscripciones-lista/inscripciones-lista.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { InscripcionesEffects } from './state/inscripciones.effects';
+import  * as fromInscripciones from './state/inscripciones.reducer';
 
 
 @NgModule({
@@ -27,7 +30,8 @@ import { InscripcionesListaComponent } from './inscripciones-lista/inscripciones
     InscripcionesRoutingModule,
     FeatureModule,
     SharedModule,
-    MaterialModule
+    StoreModule.forFeature(fromInscripciones.inscripcionesFeatureKey, fromInscripciones.reducer),
+EffectsModule.forFeature([InscripcionesEffects]),
   ],
 
   providers: [
