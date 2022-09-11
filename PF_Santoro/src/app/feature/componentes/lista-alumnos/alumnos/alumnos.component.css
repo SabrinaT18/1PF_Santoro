@@ -3,12 +3,10 @@ h1{
     text-align: center;
     }
   
-  
-    table {
-      font-size: 15px;
-      margin: 25px;
-      }
+    .mat-spinner {
+      margin: 2%;
+    }
     
-    button{
-        margin: 25px;
-      }
+    b {
+      margin: 2%;
+    }

@@ -4,6 +4,10 @@ import { Observable } from 'rxjs';
 import { Cursos } from '../../Model/Cursos';
 import { CursosService } from '../../servicios/cursos.service';
 import { sesion } from '../../Model/sesion';
+import { CursosState } from './state/cursos.reducer';
+import { Store } from '@ngrx/store';
+import { loadCursoss, cursosCargados } from './state/cursos.actions';
+import { selectCargandoState } from './state/cursos.selectors';
 
 
 @Component({
@@ -13,29 +17,24 @@ import { sesion } from '../../Model/sesion';
 })
 
 export class CursosComponent implements OnInit {
-  cursos$!: Observable<Cursos[]>;
-  sesion!: sesion;
-admin!: boolean;
+  cargando$!: Observable<boolean>;
 
   constructor(
-private router: Router,
+    private router: Router,
     private CursosService: CursosService,
-) { }
+    private store: Store<CursosState>
+  ) { }
 
 
   ngOnInit(): void {
-    this.cursos$ = this.CursosService.obtenerCursos()
+    this.store.dispatch(loadCursoss());
+    this.cargando$ = this.store.select(selectCargandoState);
   }
 
   redireccionar(ruta: string) {
     this.router.navigate([ruta]);
   }
 
-/*   isAdmin(){
- if (this.AuthService.obtenerSesion(){
- } return true
-}else{
-  return false}  */
 
 }
 

@@ -1,6 +1,8 @@
 <app-toolbar></app-toolbar>
 <app-navbar></app-navbar>
-<h1> ¡Bienvenido! <!-- {{usuario.username}} --></h1>
+<h1> ¡Bienvenido <span *ngIf="usuarioActivo$ | async as usuario">
+  {{ usuario.username }} !  </span> </h1>
+
 
 <mat-card class="example-card">
 <mat-card-header>

@@ -21,10 +21,13 @@
             <input formControlName="profesor" matInput>
         </mat-form-field>
 
-        <mat-form-field appearance="fill">
-            <mat-label>fecha de Inicio</mat-label>
-            <input formControlName="fechaInicio" matInput>
+        <mat-form-field >
+            <input matInput [matDatepicker]="fechaInicio" formControlName="fechaInicio">
+            <mat-datepicker-toggle matSuffix [for]="fechaInicio"> Fecha de inicio </mat-datepicker-toggle>
+            <mat-datepicker #fechaInicio></mat-datepicker>
+            <input  matInput>
         </mat-form-field>
+
     </form>
 </div>
 <div mat-dialog-actions>

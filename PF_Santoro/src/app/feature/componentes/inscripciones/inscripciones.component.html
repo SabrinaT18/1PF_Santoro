@@ -2,8 +2,14 @@
 <app-navbar></app-navbar>
 
 <h1 [appTitulos]="20"> Inscripciones </h1>
-<button mat-button  color:primary (click)="redireccionar('usuario/inscripciones/lista')"> Ver detalle de inscripciones </button>
 
 <router-outlet></router-outlet>
+<div *ngIf="(cargando$ | async)">
+    <mat-spinner></mat-spinner>
+    
+     <b>Cargando...</b>
+     </div>
+    
+    <app-inscripciones-lista *ngIf="!(cargando$ | async)"></app-inscripciones-lista>
 
 <app-footer></app-footer>

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { map, Observable } from 'rxjs';
-import { sesion } from '../feature/Model/sesion';
-import { AuthService } from './servicios/auth.service';
+import { SesionState } from './state/sesion.reducer';
+import { selectSesionActivaState } from './state/sesion.selectors';
 
 @Injectable({
   providedIn: 'root'
@@ -10,21 +11,22 @@ import { AuthService } from './servicios/auth.service';
 export class GuardAuthGuard implements CanActivate {
 
   constructor(
-    private router: Router,
-    private AuthService: AuthService
+    private store: Store<SesionState>,
+    private router: Router
   ) { }
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      return this.AuthService.obtenerSesion().pipe(map((sesion: sesion) => {
-          if(sesion.sesionActiva){
-            return true;
-          }else{
-            this.router.navigate(['auth/login']);
-            return false;
-          }
-        })
-      );
-    }
+    return this.store.select(selectSesionActivaState).pipe(
+      map((sesionActiva: boolean) => {
+        if (sesionActiva) {
+          return true;
+        } else {
+          this.router.navigate(['auth/login']);
+          return false;
+        }
+      })
+    );
+  };
 }

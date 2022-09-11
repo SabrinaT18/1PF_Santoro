@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Alumnos } from '../Model/Alumnos';
 
@@ -8,7 +8,8 @@ import { Alumnos } from '../Model/Alumnos';
   providedIn: 'root'
 })
 export class AlumnosService {
-  private api: string = environment.api;
+  private api= environment.URLapi;
+  alumnoSubject = new Subject<any>();
 
   constructor(
     private http: HttpClient) { }
@@ -19,11 +20,18 @@ export class AlumnosService {
   }
 
   agregarAlumno(alumno: Alumnos) {
-    return this.http.post<Alumnos>(`${this.api}/alumnos`, alumno);
+    return this.http.post<Alumnos>(`${this.api}/alumnos`, alumno).pipe(tap({
+      next: (alumno) => this.alumnoSubject.next(alumno),
+    })
+    );
   }
 
   EditarAlumno(alumno: Alumnos) {
-    return this.http.put<Alumnos>(`${this.api}/alumnos/${alumno.id}`, alumno);
+    return this.http.put<Alumnos>(`${this.api}/alumnos/${alumno.id}`, alumno).pipe(    
+      tap({
+      next: () => this.alumnoSubject.next(alumno),
+      })
+      );
   }
 
   eliminarAlumno(id: string) {
@@ -31,6 +39,7 @@ export class AlumnosService {
   }
 
  }
+
 
 
 

@@ -4,6 +4,10 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { InscripcionesService } from '../../../servicios/inscripciones.service';
 import { Inscripciones } from '../../../Model/Inscripciones';
+import { Store } from '@ngrx/store';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { InscState } from '../state/inscripciones.reducer';
+import { loadInsc } from '../state/inscripciones.actions';
 
 @Component({
   selector: 'app-nueva-inscr',
@@ -17,14 +21,18 @@ export class NuevaInscrComponent implements OnInit {
     private InscripcionesService: InscripcionesService ,
     private router: Router,
     private dialogRef: MatDialogRef<NuevaInscrComponent>,
+    private store: Store<InscState>,
+    private snackBar: MatSnackBar
     )
     {
     this.formulario = new FormGroup({
     id  : new FormControl(),
-    NombreAlumno: new FormControl(),
+    nombreAlumno: new FormControl(),
     ApellidoAlumno : new FormControl(),
     NombreCurso : new FormControl(),
     comision: new FormControl(),
+    idAlumno: new FormControl(),
+    idCurso: new FormControl(),
     })
   }
 
@@ -34,13 +42,16 @@ export class NuevaInscrComponent implements OnInit {
   guardar(){
     const i: Inscripciones = {
       id: this.formulario.value.id,
-      NombreAlumno: this.formulario.value.NombreAlumno,
+      nombreAlumno: this.formulario.value.nombreAlumno,
       ApellidoAlumno:  this.formulario.value.ApellidoAlumno,
+      idAlumno: this.formulario.value.idAlumno,
       NombreCurso:   this.formulario.value.NombreCurso,
       comision: this.formulario.value.comision,
+      idCurso: this.formulario.value.idCurso,
     }
-    this.InscripcionesService.agregarInscripciones(i).subscribe((Ins: Inscripciones) => {
-      alert(`Inscripción nº: ${Ins.id} registrada correctamente`);
+    this.InscripcionesService.agregarInscripciones(i).subscribe((Insc) => {
+      this.store.dispatch(loadInsc());
+      this.snackBar.open(`${Insc.id} fue agregado exitosamente`, 'Ok', {duration: 3000});
       this.dialogRef.close();
     });
     }     

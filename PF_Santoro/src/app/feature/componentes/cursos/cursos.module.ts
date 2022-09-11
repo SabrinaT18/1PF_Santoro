@@ -10,6 +10,11 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { MaterialModule } from 'src/app/shared/material.module';
 import { ListaCursosComponent } from './lista-cursos/lista-cursos.component';
 import { AdminGuard } from 'src/app/core/admin.guard';
+import { StoreModule } from '@ngrx/store';
+import  * as fromCursos from './state/cursos.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { CursosEffects } from './state/cursos.effects';
+
 
 
 @NgModule({
@@ -25,7 +30,10 @@ import { AdminGuard } from 'src/app/core/admin.guard';
     FeatureModule,
     SharedModule,
     MaterialModule,
-  ],
+    StoreModule.forFeature(fromCursos.cursosFeatureKey, fromCursos.reducer),
+EffectsModule.forFeature([CursosEffects]),
+
+],
 
   providers: [
     CursosService,

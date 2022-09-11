@@ -1,74 +1,43 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { BehaviorSubject, map, Observable, Subject, tap } from 'rxjs';
 import { sesion } from 'src/app/feature/Model/sesion';
 import { Usuario } from 'src/app/feature/Model/Usuario';
-import { UsuarioComponent } from 'src/app/feature/usuario/usuario.component';
 import { environment } from 'src/environments/environment';
+import { cargarSesion, cerrarSesion } from '../state/sesion.actions';
+import { SesionState } from '../state/sesion.reducer';
+import { selectSesionState, selectUsuarioActivoState } from '../state/sesion.selectors';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   sesionSubject!: BehaviorSubject<sesion>
-  private api: string = environment.api;
-  rol: any;
-
-
+  private api: string = environment.URLapi;
+  store!: Store<SesionState>;
+  
   constructor(
     private http: HttpClient,
     private router: Router) {
-    const sesion: sesion = {
-      sesionActiva: false
     }
-    this.sesionSubject = new BehaviorSubject(sesion);
-  }
 
-
-
-
-  IniciarSesion(usuario: Usuario) {
-    this.http.get<Usuario[]>(`${this.api}/usuario`).pipe(
-      map((usuarios: Usuario[]) => {
-        return usuarios.filter((u: Usuario) => u.email === usuario.email && u.password === usuario.password)[0];
-      })
-    ).subscribe((usuario: Usuario) => {
-      if (usuario) {
-        const sesion: sesion = {
-          sesionActiva: true,
-          usuario: {
-            id: usuario.id,
-            email: usuario.email,
-            username: usuario.username,
-            password: usuario.password,
-            admin: usuario.admin
-          }
-        }
-        this.sesionSubject.next(sesion);
-      } else {
-        alert('usuario no encontrado');
-      }
-    });
+  IniciarSesion(email: string, password: string): Observable <Usuario> {
+  return this.http.get<Usuario[]>(`${this.api}/usuario`).pipe(
+      map((usuario: Usuario[]) => {
+      return usuario.filter((u: Usuario) => u.email === email && u.password === password)[0]
+    })
+    );
   }
 
   cerrarSesion() {
-    const sesion: sesion = {
-      sesionActiva: false,
-    };
-    this.sesionSubject.next(sesion);
-  }
+     }
 
-  obtenerSesion() {
-    return this.sesionSubject.asObservable();
-  }
+ obtenerSesion(){
+  return this.sesionSubject.asObservable();
+ }
 
-/*   isAdmin(): Observable<boolean> {
-    if this.sesionSubject.next
-     
-    return this.rol;
-  }
- */
 }
 
 

@@ -1,13 +1,19 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { MatTable } from '@angular/material/table';
 import { Alumnos } from '../../Model/Alumnos';
 import { AlumnosService } from '../../servicios/alumnos.service';
-import { Observable, Subscription, Subscriber, map } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { NuevoAlumnoComponent } from './nuevo-alumno/nuevo-alumno.component';
 import { ABMalumnosComponent } from './editar-alumnos/abmalumnos.component';
-import { AuthService } from '../../../core/servicios/auth.service';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { SesionState } from 'src/app/core/state/sesion.reducer';
+import { selectUsuarioAdminState } from 'src/app/core/state/sesion.selectors';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { alumnosState } from './state/alumnos.reducer';
+import { selectAlumnosCargadosState } from './state/alumnos.selectors';
+import { alumnosCargados, loadAlumnos } from './state/alumnos.actions';
 
 @Component({
   selector: 'app-lista-alumnos',
@@ -17,35 +23,42 @@ import { Route, Router } from '@angular/router';
 
 
 export class ListaAlumnosComponent implements OnInit {
-  alumnos$!: Observable<any>;
+  alumnos$!: Observable<Alumnos[]| undefined>;
   alumnoSubscripcion!: Subscription;
-  admin!: boolean;
-  auth: any;
+  data$!: Observable<Alumnos[]>;
 
-  dataSource: MatTableDataSource<any> = new MatTableDataSource();
-  displayedColumns: string[] = ['id', 'apellido', 'nombre', 'email', 'fechaNacimiento', 'nota', 'estado', 'acciones'];
-  
-  @ViewChild(MatTable) tabla!: MatTable<Alumnos>;
+  usuarioAdmin$!: Observable<Boolean| undefined>;
 
+  displayedColumns: string[] = ['id', 'apellido', 'nombre', 'email', 'fechaNacimiento', 'nota', 'estado', 'AccionesUser' , 'AccionesAdmin'];
+    @ViewChild(MatTable) tabla!: MatTable<Alumnos>;
 
   nota = 6.5;
   hoy = Date.now();
 
+
   constructor(
     private AlumnosService: AlumnosService,
     private dialog: MatDialog,
-    private AuthService: AuthService
+    private store: Store<alumnosState>,
+    private Authstore: Store<SesionState>,
+    private snackBar: MatSnackBar,
+    private router: Router,
       ) {
-    this.alumnos$ = this.AlumnosService.obtenerAlumnos()
 
-    this.alumnoSubscripcion = this.alumnos$.subscribe((alumnos) => {
-        this.dataSource.data = alumnos
-        console.log(alumnos);
-      });
     }
   
 
   ngOnInit(): void {     
+   this.alumnos$ = this.store.select(selectAlumnosCargadosState);
+
+  this.usuarioAdmin$ = this.Authstore.select(selectUsuarioAdminState);
+
+  this.data$= this.AlumnosService.obtenerAlumnos();
+  this.alumnoSubscripcion = this.AlumnosService.alumnoSubject.subscribe(
+    (data) => {
+      this.store.dispatch(alumnosCargados({ alumnos: data }));
+    }
+  );
 
 }
 
@@ -58,12 +71,7 @@ export class ListaAlumnosComponent implements OnInit {
       width: '400px',
       data: this.alumnos$
     });
-      dialogRef.afterClosed().subscribe((resultado) => {
-        if(resultado){        
-          this.tabla.renderRows();
-        }  
-    })
-  }
+    }
 
 
   editarAlumno(element: Alumnos) {
@@ -71,32 +79,27 @@ export class ListaAlumnosComponent implements OnInit {
       width: '400px',
       data: element
     });
-    dialogRef.afterClosed().subscribe(resultado => {
-      if (resultado) {
-        const item = this.dataSource.data.find(alumno => element.id === resultado.id);
-        const index = this.dataSource.data.indexOf(item!);
-        this.dataSource.data[index] = resultado;
-        this.tabla.renderRows();
-      }
-    })
-  }
+   }
 
-  filtrar(event: Event) {
-    const valorObtenido = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = valorObtenido.trim().toLocaleLowerCase();
-  }
-
-
+ 
   eliminarAlumno(id: string) {
     this.AlumnosService.eliminarAlumno(id).subscribe((alumno: Alumnos) => {
-      alert(`${alumno.id}-${alumno.apellido} eliminado satisfactoriamente`);
-      this.ngOnInit();
-    });
+      this.store.dispatch(loadAlumnos());
+      this.snackBar.open(`${alumno.nombre} ${alumno.apellido} fue eliminado exitosamente`, 'Ok', {duration: 3000});
+    })
+   
   }
   
+       
+    redireccionar(ruta: string) {
+     this.router.navigate([ruta]);
+   }
 
-
-
+/*      filtrar(event: Event) {
+    const valorObtenido = (event.target as HTMLInputElement).value;
+    this.data$.pipe(tap(valorObtenido.trim().toLocaleLowerCase();
+     )} 
+     */
   }
 
 

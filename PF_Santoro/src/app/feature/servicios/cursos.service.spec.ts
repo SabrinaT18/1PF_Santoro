@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CursosService } from './cursos.service';
 import { of } from 'rxjs';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('CursosService', () => {
   let httpClientSpy: { get: jasmine.Spy };
@@ -17,51 +18,52 @@ describe('CursosService', () => {
     service = new CursosService (httpClientSpy as any);
   });
 
-  it('should be created', () => {
+  it('se crea', () => {
     expect(service).toBeTruthy();
   });
-  /* it('Debe retornar arreglo de cursos mokapi', (done: DoneFn) => {
+  
+  it('Debe retornar arreglo de cursos mokapi', (done: DoneFn) => {
     const mockDatos = [
       {
        materia: "BLACKHOLE",
       comision: "55969-5713",
         profesor: "Weimann",
-        fechaInicio: "2022-09-01T08:01:08.660Z",
+        fechaInicio: "2022-09-01",
         id: 2
        },
        {
         materia: "MEMORY",
         comision: "66709-2410",
         profesor: "Koch",
-        fechaInicio: "2022-09-01T12:00:26.755Z",
+        fechaInicio: "2022-09-01",
         id: 4
        },
        {
         materia: "CSV",
        comision: "02638",
         profesor: "Stroman",
-        fechaInicio: "2022-09-01T06:57:59.858Z",
+        fechaInicio: "2022-09-01",
         id: 5
        },
        {
         materia: "BLACKHOLE",
         comision: "84336",
         profesor: "Padberg",
-        fechaInicio: "2022-09-01T21:54:08.316Z",
+        fechaInicio: "2022-09-01",
         id: 6
        },
        {
         materia: "MEMORY",
         comision: "53470-7379",
         profesor: "Mitchell",
-        fechaInicio: "2022-09-01T15:25:52.161Z",
+        fechaInicio: "2022-09-01",
        id: 7
        },
        {
         materia: "ARCHIVE",
        comision: "63072-8824",
         profesor: "Hamill",
-       fechaInicio: "2022-09-01T01:58:01.109Z",
+       fechaInicio: "2022-09-01",
         id: 8,
        }
     ];
@@ -73,7 +75,6 @@ describe('CursosService', () => {
       done();
     })
   });
- */
 
 
 });

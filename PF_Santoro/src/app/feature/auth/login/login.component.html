@@ -4,13 +4,13 @@
         <h1>Login</h1>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label"> Email: </label>
-            <input type="email" formControlName="email">
+            <input type="email" formControlName="email" placeholder="correo">
             <div class="texto-incorrecto" *ngIf="formulario.get('email')?.errors?.['required']">El email es requerido.</div>
             <div class="texto-incorrecto" *ngIf="formulario.get('email')?.errors?.['email']">Formato inválido.</div>
 
 
             <label for="exampleInputEmail1" class="form-label"> Password: </label>
-            <input type="password" formControlName="password">
+            <input type="password" formControlName="password" placeholder="contraseña">
             <div class="texto-incorrecto" *ngIf="formulario.get('password')?.errors?.['required']"> La contraseña es requerida. </div>
             <div class="texto-incorrecto" *ngIf="formulario.get('password')?.errors?.['minLength']"> Contraseña inválida. </div>
 

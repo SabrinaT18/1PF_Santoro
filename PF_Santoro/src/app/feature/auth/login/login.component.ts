@@ -1,11 +1,11 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { map } from 'rxjs';
-import { environment } from 'src/environments/environment';
 import { AuthService } from '../../../core/servicios/auth.service';
 import { Usuario } from '../../Model/Usuario';
+import { Store } from '@ngrx/store';
+import { SesionState } from 'src/app/core/state/sesion.reducer';
+import { cargarSesion } from 'src/app/core/state/sesion.actions';
 
 @Component({
   selector: 'app-login',
@@ -14,42 +14,34 @@ import { Usuario } from '../../Model/Usuario';
 })
 export class LoginComponent implements OnInit {
 formulario: FormGroup;
-usuario?: Usuario;
 
   constructor(
-    private form: FormBuilder, private router: Router, private AuthService: AuthService ){
+    private form: FormBuilder, 
+    private router: Router, 
+    private AuthService: AuthService, 
+    private store: Store<SesionState> ){
 
     this.formulario = form.group({
       email: new FormControl ('', [Validators.required, Validators.email]),
       password: new FormControl ('', [Validators.required, Validators.minLength(8)]),
-      admin: new FormControl(''),
-      canActivateChild: new FormControl(''),
-      canLoad: new FormControl(''),
-      canDeactivate:new FormControl('') ,  
-      id: ('') ,
-      username: new FormControl ('')
-    });
+      });
       }
-      
+    
+  onLogin(){
+    this.AuthService.IniciarSesion(this.formulario.value.email, this.formulario.value.password).subscribe((usuario: Usuario) => {
+      if(usuario){
+          this.store.dispatch(cargarSesion({usuarioActivo: usuario }));
+          this.router.navigate(['/inicio']);   
+       }else{
+      alert("Credenciales incorrectas");
+    }
+  });
+    }
+
   ngOnInit(): void {
   }
 
-  enviar(){
-    console.log(this.formulario);
   }
-
-  onLogin(){
-    const usuario: Usuario = {
-      email: this.formulario.value.email,
-      username: this.formulario.value.username,
-      password: this.formulario.value.password,
-      admin: this.formulario.value.admin,
-      id: this.formulario.value.id,
- }
-    this.AuthService.IniciarSesion(usuario);
-    this.router.navigate(['/inicio']); 
-     }
-    }
 
 
 

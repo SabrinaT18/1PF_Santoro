@@ -1,10 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { Alumnos } from 'src/app/feature/Model/Alumnos';
-import { sesion } from 'src/app/feature/Model/sesion';
 import { AlumnosService } from '../../../servicios/alumnos.service';
 import { AuthService } from '../../../../core/servicios/auth.service';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
+import { NuevoAlumnoComponent } from '../nuevo-alumno/nuevo-alumno.component';
+import { ABMalumnosComponent } from '../editar-alumnos/abmalumnos.component';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { alumnosState } from '../state/alumnos.reducer';
+import { selectCargandoState } from '../state/alumnos.selectors';
+import { loadAlumnos } from '../state/alumnos.actions';
 
 @Component({
   selector: 'app-alumnos',
@@ -12,20 +19,19 @@ import { AuthService } from '../../../../core/servicios/auth.service';
   styleUrls: ['./alumnos.component.css']
 })
 export class AlumnosComponent implements OnInit {
-  alumnos$!: Observable<Alumnos[]>;
-  sesion!: sesion;
-admin!: boolean;
+  cargando$!: Observable<boolean>;
 
   constructor(
+    private AlumnosService: AlumnosService,
     private router: Router,
-    private AlumnosService: AlumnosService ,
-    public AuthService: AuthService
-) { }
+    private store: Store<alumnosState>
+  ) { }
 
 
   ngOnInit(): void {
-    this.alumnos$ = this.AlumnosService.obtenerAlumnos();
-  }
+    this.store.dispatch(loadAlumnos());
+    this.cargando$ = this.store.select(selectCargandoState);
+  };
 
   redireccionar(ruta: string) {
     this.router.navigate([ruta]);

@@ -1,49 +1,62 @@
-    <table mat-table [dataSource]="dataSource">
+<div class="example-button-container">
+    <button mat-fab  color="primary" (click)="AgregarCurso()" *ngIf="usuarioAdmin$ |async">
+<mat-icon> add  </mat-icon>
+</button>
+</div>
 
-        <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef> Id </th>
-            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-        </ng-container>
+<mat-label> <h3> Tabla de cursos </h3></mat-label>
 
-        <ng-container matColumnDef="materia">
-            <th mat-header-cell *matHeaderCellDef> Materia </th>
-            <td mat-cell *matCellDef="let element"> {{element.materia}} </td>
+<table #TablaCursos mat-table [dataSource]="data$">
 
-        </ng-container>
-        <ng-container matColumnDef="comision">
-            <th mat-header-cell *matHeaderCellDef> Comisión</th>
-            <td mat-cell *matCellDef="let element"> {{element.comision}} </td>
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Id Cursos</th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
 
-        </ng-container>
-        <ng-container matColumnDef="profesor">
-            <th mat-header-cell *matHeaderCellDef> Profesor </th>
-            <td mat-cell *matCellDef="let element"> {{element.profesor}} </td>
-        </ng-container>
+    <ng-container matColumnDef="materia">
+        <th mat-header-cell *matHeaderCellDef> Materia </th>
+        <td mat-cell *matCellDef="let element"> {{element.materia}} </td>
 
-        <ng-container matColumnDef="fechaInicio">
-            <th mat-header-cell *matHeaderCellDef> Fecha Inicio </th>
-            <td mat-cell *matCellDef="let element"> {{element.fechaInicio | date: 'dd-MM-yy'}} </td>
-        </ng-container>
-        
-<!--     <div *ngIf="usuario.admin === 'true'"> 
- -->       <ng-container matColumnDef="acciones">
-            
-            <th mat-header-cell *matHeaderCellDef> Acciones </th>
-            <td mat-cell *matCellDef="let element">
-                <button mat-icon-button (click)="editarCurso(element)">
-                    <mat-icon>edit</mat-icon>
-                </button>
-                <button mat-icon-button (click)="eliminarCurso(element.id)">
-                    <mat-icon>delete</mat-icon>
-                </button>
-            </td>
-        </ng-container>
-    
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"> </tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns"> </tr>
+    </ng-container>
+    <ng-container matColumnDef="comision">
+        <th mat-header-cell *matHeaderCellDef> Comisión</th>
+        <td mat-cell *matCellDef="let element"> {{element.comision}} </td>
 
-    </table>
+    </ng-container>
+    <ng-container matColumnDef="profesor">
+        <th mat-header-cell *matHeaderCellDef> Profesor </th>
+        <td mat-cell *matCellDef="let element"> {{element.profesor}} </td>
+    </ng-container>
 
-    <br>
-    <button type="button" class="btn btn-dark" (click)="AgregarCurso()"> Agregar </button>
-    <br>
+    <ng-container matColumnDef="fechaInicio">
+        <th mat-header-cell *matHeaderCellDef> Fecha de Inicio </th>
+        <td mat-cell *matCellDef="let element"> {{element.fechaInicio | date: 'dd-MM-yy'}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="AccionesUser">
+
+        <th mat-header-cell *matHeaderCellDef> Ver detalle </th>
+        <td mat-cell *matCellDef="let element">
+        <button mat-icon-button (click)="redireccionar('usuario/inscripciones')">
+        <mat-icon> visibility </mat-icon>
+         </button>
+        </td>
+    </ng-container>
+
+   <ng-container matColumnDef="AccionesAdmin"  >
+         <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let element">
+            <button mat-icon-button (click)="editarCurso(element)" *ngIf="usuarioAdmin$ |async">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="eliminarCurso(element.id)" *ngIf="usuarioAdmin$ |async">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"> </tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"> </tr>
+</table>
+

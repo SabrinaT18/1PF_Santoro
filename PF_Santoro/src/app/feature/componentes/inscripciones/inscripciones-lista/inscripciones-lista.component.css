@@ -1,24 +1,58 @@
-   table {
-       width: 60%;
-       margin: 40px;
-   }
+h1 {
+  padding: 20px;
+  text-align: center;
+}
 
-   .mat-icon {
-       margin-left: 10px;
-       color: whitesmoke;
-   }
+.mat-card {
+  margin-left: 40px;
+}
 
-   .mat-form-field {
-       background-color: rgb(70, 70, 70);
-       margin-right: 20%;
-       padding: 4px 20px 5px 5px;
-       float: right;
-   }
+p {
+  text-align: center;
+}
 
-   .mat-card {
-       margin-left: 40px;
-   }
+h3 {
+  margin: 2%;
+}
 
-   p {
-       text-align: center;
-   }
+table {
+  width: 65%;
+  margin: 30px;
+  padding: 10px;
+  text-align: center;
+}
+
+.mat-icon {
+  color: whitesmoke;
+}
+
+.mat-header-cell {
+  text-align: center;
+  color: white;
+}
+
+.mat-row .mat-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  cursor: pointer;
+}
+
+.mat-row:hover .mat-cell {
+  border-color: currentColor;
+}
+
+.demo-row-is-clicked {
+  font-weight: bold;
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  margin-left: 60%;
+}

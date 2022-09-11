@@ -1,8 +1,11 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Store } from '@ngrx/store';
 import { Alumnos } from '../../../Model/Alumnos';
 import { AlumnosService } from '../../../servicios/alumnos.service';
+import { loadAlumnos } from '../state/alumnos.actions';
 
 @Component({
   selector: 'app-abmalumnos',
@@ -13,11 +16,13 @@ export class ABMalumnosComponent implements OnInit {
   formulario: FormGroup;
 
   constructor(
+    @Inject(MAT_DIALOG_DATA) public elemento: Alumnos,
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<ABMalumnosComponent>,
     private AlumnosService: AlumnosService,
-
-    @Inject(MAT_DIALOG_DATA) public elemento: Alumnos) 
+    private store: Store,
+    private snackBar: MatSnackBar,
+    ) 
     
     {
     this.formulario = fb.group({
@@ -33,6 +38,10 @@ export class ABMalumnosComponent implements OnInit {
   }
   ngOnInit() {
   }
+  
+  cerrar() {
+    this.dialogRef.close();
+  }
 
   guardar() {
     const a: Alumnos = {
@@ -44,13 +53,14 @@ export class ABMalumnosComponent implements OnInit {
       nota: this.formulario.value.nota,
       estado: this.formulario.value.estado,
     }
-    this.AlumnosService.EditarAlumno(a).subscribe((alumno: Alumnos) => {
-      this.dialogRef.close(alumno);  
+    this.AlumnosService.EditarAlumno(a).subscribe((alumno) => {
+      this.store.dispatch(loadAlumnos());
+      this.snackBar.open(`${alumno.nombre}-${alumno.apellido} fue editado correctamente`, 'Ok', { duration: 3000 });
+      this.cerrar();
     });
   }
-
-  cerrar() {
-    this.dialogRef.close();
   }
 
-}
+
+
+

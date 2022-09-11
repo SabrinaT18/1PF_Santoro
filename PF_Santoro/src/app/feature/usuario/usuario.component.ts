@@ -17,10 +17,9 @@ export class UsuarioComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
   redireccionar(ruta: string) {
     this.router.navigate([ruta]);
   }
 
-
+ 
 }
