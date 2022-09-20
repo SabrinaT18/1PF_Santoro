@@ -85,10 +85,10 @@ export class InscripcionesListaComponent implements OnInit {
     this.router.navigate([ruta]);
   }
   
-  
-/*   filtrar(event: Event) {
+/*   
+ filtrar(event: Event) {
     const valorObtenido = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = valorObtenido.trim().toLocaleLowerCase();
-  } */
+    this.data.filter = valorObtenido.trim().toLocaleLowerCase();
+  */
 
 }

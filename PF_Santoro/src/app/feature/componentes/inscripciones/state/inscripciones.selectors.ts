@@ -2,11 +2,11 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromInscripciones from './inscripciones.reducer';
 import { InscState } from './inscripciones.reducer';
 
-export const selectInscripcionesState = createFeatureSelector<fromInscripciones.InscState>(
+export const selectInscripcionesState = createFeatureSelector<InscState>(
   fromInscripciones.inscripcionesFeatureKey
 );
 
-export const selectCargandoState = createSelector(
+export const selectCargandoState  = createSelector(
   selectInscripcionesState,
   (state: InscState) => state.cargando
 );

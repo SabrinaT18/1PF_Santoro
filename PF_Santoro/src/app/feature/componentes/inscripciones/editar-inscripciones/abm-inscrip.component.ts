@@ -20,7 +20,7 @@ export class AbmInscripComponent implements OnInit {
   constructor ( 
  @Inject(MAT_DIALOG_DATA) public element: Inscripciones,
   private formIns: FormBuilder,
- private InscripcionesService: InscripcionesService,
+  private InscripcionesService: InscripcionesService,
   private dialogRef: MatDialogRef<AbmInscripComponent>,
   private snackBar: MatSnackBar,  private store: Store,
   )   {
@@ -34,7 +34,6 @@ export class AbmInscripComponent implements OnInit {
     idCurso: new FormControl(element.idCurso),
   })
   }
-
 
 ngOnInit() {
 }

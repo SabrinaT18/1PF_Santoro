@@ -32,7 +32,10 @@ export class AuthService {
   }
 
   cerrarSesion() {
-     }
+
+
+    
+  }
 
  obtenerSesion(){
   return this.sesionSubject.asObservable();

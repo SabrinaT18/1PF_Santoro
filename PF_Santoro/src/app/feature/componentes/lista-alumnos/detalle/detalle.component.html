@@ -17,8 +17,8 @@
         <input matInput class="form-control" [(ngModel)]="data.apellido" name="apellido" disabled />
     </mat-form-field>
 
-    <h3 mat-dialog-title> Cursos inscriptos </h3>
 
+    <h3 mat-dialog-title> Cursos inscriptos </h3>
     <table class="table" >
         <thead>
             <tr>
@@ -29,13 +29,12 @@
             </tr>
         </thead>
         <tbody>
-            <tr class *ngFor="let inscripcion of inscripciones$| async"> 
-                <td>{{inscripcion.idCurso }}</td>
-                <td>{{inscripcion.materia }}</td>
-                <td>{{inscripcion.comision }}</td>
-
+            <tr class *ngFor="let inscripcion of inscripciones$|async"> 
+                <td>{{inscripcion.idCurso  }}</td>
+                <td>{{inscripcion.materia  }}</td>
+                <td>{{inscripcion.comision  }}</td>
                 
-                <td> <button  mat-raised-button (click)="desinscribir(inscripcion.idAlumno, inscripcion.idCurso)">
+                <td> <button mat-button (click)="desinscribir(inscripcion.idAlumno, inscripcion.idCurso)">
                 delete_forever</button> </td>  
             </tr>
         </tbody>

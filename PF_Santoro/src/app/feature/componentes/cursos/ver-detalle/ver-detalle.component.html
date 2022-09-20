@@ -23,27 +23,27 @@
 
     <h3 mat-dialog-title> Alumnos inscriptos </h3>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col"> idAlumno </th>
-                <th scope="col"> Nombre </th>
-                <th scope="col"> Apellido </th>
-                <th scope="col"> Desinscribir </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class *ngFor="let inscripcion of inscripciones$ | async">
-                <td>{{inscripcion.idAlumno }}</td>
-                <td>{{inscripcion.nombre }}</td>
-                <td>{{inscripcion.apellido }}</td>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col"> idAlumno </th>
+                    <th scope="col"> Nombre </th>
+                    <th scope="col"> Apellido </th>
+                    <th scope="col"> Desinscribir </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class *ngFor="let inscripcion of inscripciones$ | async">
+                    <td>{{inscripcion.idAlumno }}</td>
+                    <td>{{inscripcion.nombre }}</td>
+                    <td>{{inscripcion.apellido }}</td>
 
-                <td> <button mat-raised-button (click)="desinscribir(inscripcion.idAlumno, inscripcion.idCurso)">
-                        delete_forever</button> </td>
-            </tr>
-        </tbody>
-    </table>
-
+                    <td> <button mat-raised-button (click)="desinscribir(inscripcion.idAlumno, inscripcion.idCurso)">
+                            delete_forever</button> </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
     <div mat-dialog-actions>
         <button mat-button (click)="cerrar()">Cerrar</button>

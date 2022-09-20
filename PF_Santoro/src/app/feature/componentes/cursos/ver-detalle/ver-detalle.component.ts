@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { Cursos } from 'src/app/feature/Model/Cursos';
 import { selectorListaInscripcionesAlumno, selectorListaInscripcionesCurso } from '../../inscripciones/state/inscripciones.selectors';
-import { cargarInscripcionesCurso } from '../../inscripciones/state/inscripciones.actions';
+import { cargarInscripcionesCurso, inscripcionesCargadasCurso, InsCargadas } from '../../inscripciones/state/inscripciones.actions';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
@@ -23,7 +23,6 @@ export class VerDetalleComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: Cursos,
     private store: Store,
   ) {
-
   }
 
   ngOnInit(): void {
@@ -32,6 +31,8 @@ export class VerDetalleComponent implements OnInit {
     )
     console.log(this.inscripciones$);
   }
+
+
 
 
   desinscribir(idAlumno: any, idCurso: any) {
