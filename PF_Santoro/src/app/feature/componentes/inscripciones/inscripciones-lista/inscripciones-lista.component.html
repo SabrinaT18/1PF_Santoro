@@ -19,14 +19,14 @@
         <td mat-cell *matCellDef="let element"> {{element.id}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="apellidoAlumno">
+    <ng-container matColumnDef="apellido">
         <th mat-header-cell *matHeaderCellDef> Apellido del alumno</th>
-        <td mat-cell *matCellDef="let element"> {{element.ApellidoAlumno}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.apellido}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="nombreAlumno">
+    <ng-container matColumnDef="nombre">
         <th mat-header-cell *matHeaderCellDef> Nombre del alumno </th>
-        <td mat-cell *matCellDef="let element"> {{element.nombreAlumno}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
     </ng-container>
 
     <ng-container matColumnDef="idAlumno">
@@ -34,9 +34,9 @@
         <td mat-cell *matCellDef="let element"> {{element.idAlumno}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="NombreCurso">
+    <ng-container matColumnDef="materia">
         <th mat-header-cell *matHeaderCellDef> Nombre Curso</th>
-        <td mat-cell *matCellDef="let element">{{element.NombreCurso }}</td>
+        <td mat-cell *matCellDef="let element">{{element.materia }}</td>
     </ng-container>
 
     <ng-container matColumnDef="comision">
@@ -52,11 +52,7 @@
     <ng-container matColumnDef="acciones">
         <th mat-header-cell *matHeaderCellDef> Acciones </th>
         <td mat-cell *matCellDef="let element">
-            <button mat-icon-button (click)="redireccionar('/')">
-                <mat-icon> visibility </mat-icon>
-            </button>
-
-            <button mat-icon-button (click)="editarInscripcion(element)" *ngIf="usuarioAdmin$ |async">
+               <button mat-icon-button (click)="editarInscripcion(element)" *ngIf="usuarioAdmin$ |async">
                 <mat-icon>edit</mat-icon>
             </button>
             <button mat-icon-button (click)="eliminarInscripcion(element.id)" *ngIf="usuarioAdmin$ |async">

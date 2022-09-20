@@ -43,7 +43,7 @@ export class NuevoCursoComponent implements OnInit {
   
   guardar() {
     const c: Cursos = {
-      id: this.formulario.value.id,
+      idCurso: this.formulario.value.idCurso,
       materia: this.formulario.value.materia,
       comision:  this.formulario.value.comision,
       profesor:  this.formulario.value.profesor,

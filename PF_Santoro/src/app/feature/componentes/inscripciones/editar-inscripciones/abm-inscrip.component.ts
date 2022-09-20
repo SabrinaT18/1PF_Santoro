@@ -26,10 +26,10 @@ export class AbmInscripComponent implements OnInit {
   )   {
   this.formInscripcion = formIns.group({
     id : new FormControl(element.id),
-    nombreAlumno: new FormControl(element.nombreAlumno),
-    ApellidoAlumno : new FormControl(element.ApellidoAlumno),
+    nombre: new FormControl(element.nombre),
+    apellido : new FormControl(element.apellido),
     idAlumno: new FormControl(element.idAlumno),
-    NombreCurso : new FormControl(element.NombreCurso),
+    materia : new FormControl(element.materia),
     comision : new FormControl(element.comision),
     idCurso: new FormControl(element.idCurso),
   })
@@ -42,10 +42,10 @@ ngOnInit() {
 guardar() {
   const i: Inscripciones = {
     id: this.element.id,
-    nombreAlumno: this.formInscripcion.value.nombreAlumno,
-    ApellidoAlumno: this.formInscripcion.value.ApellidoAlumno,
+    nombre: this.formInscripcion.value.nombre,
+    apellido: this.formInscripcion.value.apellido,
     idAlumno: this.formInscripcion.value.idAlumno,
-    NombreCurso: this.formInscripcion.value.NombreCurso,
+    materia: this.formInscripcion.value.materia,
     comision: this.formInscripcion.value.comision,
     idCurso: this.formInscripcion.value.idCurso,
     }

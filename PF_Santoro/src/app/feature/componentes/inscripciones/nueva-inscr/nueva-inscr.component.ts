@@ -27,9 +27,9 @@ export class NuevaInscrComponent implements OnInit {
     {
     this.formulario = new FormGroup({
     id  : new FormControl(),
-    nombreAlumno: new FormControl(),
-    ApellidoAlumno : new FormControl(),
-    NombreCurso : new FormControl(),
+    nombre: new FormControl(),
+    apellido : new FormControl(),
+    materia : new FormControl(),
     comision: new FormControl(),
     idAlumno: new FormControl(),
     idCurso: new FormControl(),
@@ -42,17 +42,17 @@ export class NuevaInscrComponent implements OnInit {
   guardar(){
     const i: Inscripciones = {
       id: this.formulario.value.id,
-      nombreAlumno: this.formulario.value.nombreAlumno,
-      ApellidoAlumno:  this.formulario.value.ApellidoAlumno,
+      nombre: this.formulario.value.nombre,
+      apellido:  this.formulario.value.apellido,
       idAlumno: this.formulario.value.idAlumno,
-      NombreCurso:   this.formulario.value.NombreCurso,
+      materia:   this.formulario.value.materia,
       comision: this.formulario.value.comision,
       idCurso: this.formulario.value.idCurso,
     }
     this.InscripcionesService.agregarInscripciones(i).subscribe((Insc) => {
       this.store.dispatch(loadInsc());
       this.snackBar.open(`${Insc.id} fue agregado exitosamente`, 'Ok', {duration: 3000});
-      this.dialogRef.close();
+      this.cerrar();
     });
     }     
  

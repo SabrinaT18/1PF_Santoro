@@ -28,7 +28,7 @@ export class InscripcionesListaComponent implements OnInit {
 
   InscripcionesSubscripcion!: Subscription;
 
-  displayedColumns: string[] = ['id', 'apellidoAlumno', 'nombreAlumno','idAlumno',  'NombreCurso', 'comision', 'idCurso', 'acciones'];
+  displayedColumns: string[] = ['id', 'apellido', 'nombre','idAlumno',  'materia', 'comision', 'idCurso', 'acciones'];
   @ViewChild(MatTable) tabla!: MatTable<Inscripciones>;
 
   constructor(

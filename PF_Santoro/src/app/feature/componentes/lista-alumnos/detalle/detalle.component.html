@@ -1,0 +1,47 @@
+<h1 mat-dialog-title>Detalle</h1>
+<h3 mat-dialog-subtitle>Alumno: {{ data | concatenar }}</h3>
+
+<div mat-dialog-content>
+    <mat-form-field appearance="standard">
+        <mat-label>Id</mat-label>
+        <input matInput class="form-control" [(ngModel)]="data.idAlumno" name="id" disabled />
+    </mat-form-field>
+
+    <mat-form-field appearance="standard">
+        <mat-label>Nombre</mat-label>
+        <input matInput class="form-control" [(ngModel)]="data.nombre" name="nombre" disabled />
+    </mat-form-field>
+
+    <mat-form-field appearance="standard">
+        <mat-label>apellido</mat-label>
+        <input matInput class="form-control" [(ngModel)]="data.apellido" name="apellido" disabled />
+    </mat-form-field>
+
+    <h3 mat-dialog-title> Cursos inscriptos </h3>
+
+    <table class="table" >
+        <thead>
+            <tr>
+                <th scope="col"> Id Curso </th>
+                <th scope="col"> Nombre </th>
+                <th scope="col"> Comisión </th>
+                <th scope="col"> Desinscribir </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class *ngFor="let inscripcion of inscripciones$| async"> 
+                <td>{{inscripcion.idCurso }}</td>
+                <td>{{inscripcion.materia }}</td>
+                <td>{{inscripcion.comision }}</td>
+
+                
+                <td> <button  mat-raised-button (click)="desinscribir(inscripcion.idAlumno, inscripcion.idCurso)">
+                delete_forever</button> </td>  
+            </tr>
+        </tbody>
+    </table> 
+
+
+    <div mat-dialog-actions>
+        <button mat-button (click)="cerrar()">Cerrar</button>
+    </div>

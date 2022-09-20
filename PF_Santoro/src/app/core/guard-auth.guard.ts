@@ -23,7 +23,7 @@ export class GuardAuthGuard implements CanActivate {
         if (sesionActiva) {
           return true;
         } else {
-          this.router.navigate(['auth/login']);
+          this.router.navigate(['login']);
           return false;
         }
       })
