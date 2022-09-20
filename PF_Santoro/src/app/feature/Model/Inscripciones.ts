@@ -1,10 +1,10 @@
 export interface Inscripciones {
-    nombreAlumno: string;
-    ApellidoAlumno : string;
-    NombreCurso : string;
+    nombre: string;
+    apellido : string;
+    materia : string;
     comision: string;
-    idAlumno: number;
-    idCurso: number;    
+    idAlumno: string;
+    idCurso: string;    
     id: number;
     }
   

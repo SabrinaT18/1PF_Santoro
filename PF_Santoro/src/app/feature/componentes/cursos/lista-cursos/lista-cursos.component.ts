@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 import { selectUsuarioActivoState, selectUsuarioAdminState } from '../../../../core/state/sesion.selectors';
 import { Usuario } from 'src/app/feature/Model/Usuario';
 import { SesionState } from 'src/app/core/state/sesion.reducer';
+import { VerDetalleComponent } from '../ver-detalle/ver-detalle.component';
 
 
 @Component({
@@ -30,7 +31,7 @@ export class ListaCursosComponent implements OnInit {
   cursosSubscription!: Subscription;
 
   @ViewChild(MatTable) TablaCursos!: MatTable<any>;
-  displayedColumns: string[] = ['id', 'materia', 'comision', 'profesor', 'fechaInicio','AccionesUser' , 'AccionesAdmin'];
+  displayedColumns: string[] = ['idCurso', 'materia', 'comision', 'profesor', 'fechaInicio','Acciones'];
   
  constructor(
  private CursosService : CursosService,  
@@ -75,15 +76,26 @@ AgregarCurso() {
     });  
   }
 
-  eliminarCurso(id: string){
-    this.CursosService.BorrarCurso(id).subscribe((curso: Cursos) => {
+  eliminarCurso(idCurso: string){
+    this.CursosService.BorrarCurso(idCurso).subscribe((curso: Cursos) => {
       this.store.dispatch(loadCursoss());
       this.snackBar.open(`${curso.materia} fue eliminado exitosamente`, 'Ok', {duration: 3000});
     })
       }
 
+
+
+     verDetalle (curso: Cursos) {
+        const dialogRef = this.dialog.open(VerDetalleComponent, {
+          width: '400px',
+          data: curso
+        });  
+      }
+
+
  redireccionar(ruta: string) {
   this.router.navigate([ruta]);
 }
+
 
 }

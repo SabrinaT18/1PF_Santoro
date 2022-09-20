@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject, tap } from 'rxjs';
+import { map, Observable, Subject, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Inscripciones } from '../Model/Inscripciones';
 
@@ -38,4 +38,30 @@ constructor(
      eliminarInscripciones(id: string){
        return this.http.delete<Inscripciones>(`${this.api}/Inscripciones/${id}`); 
 }
+
+obtenerInscripcionesFiltradoCurso(inscripcion: any): Observable<any> {
+  return this.http.get<any>(
+    `${this.api}/Inscripciones?idCurso=${inscripcion.idCurso}`
+  );
+}
+
+obtenerInscripcionesFiltradoAlumno(inscripcion: any): Observable<any> {
+  return this.http.get<any>(
+    `${this.api}/Inscripciones?idAlumno=${inscripcion.idAlumno}`
+  );
+}
+
+desinscribirAlumnoCurso(idAlumno: string, idCurso: string): Observable<any> {
+  return this.http
+    .get<any>(`${this.api}/Inscripciones`)
+    .pipe(
+      map((inscripciones: any) => {
+        return inscripciones.filter(
+          (i: any) => i.idAlumno === idAlumno && i.idCurso === idCurso
+        )[0];
+      })
+    );
+}
+
+
 }

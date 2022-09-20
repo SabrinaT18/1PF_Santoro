@@ -26,7 +26,7 @@ export class ABMalumnosComponent implements OnInit {
     
     {
     this.formulario = fb.group({
-      id: new FormControl(elemento.id),
+      idAlumno: new FormControl(elemento.idAlumno),
       nombre: new FormControl(elemento.nombre),
       apellido: new FormControl(elemento.apellido),
       email: new FormControl(elemento.email),
@@ -45,7 +45,7 @@ export class ABMalumnosComponent implements OnInit {
 
   guardar() {
     const a: Alumnos = {
-      id: this.elemento.id,
+      idAlumno: this.elemento.idAlumno,
       nombre: this.formulario.value.nombre,
       apellido: this.formulario.value.apellido,
       email: this.formulario.value.email,

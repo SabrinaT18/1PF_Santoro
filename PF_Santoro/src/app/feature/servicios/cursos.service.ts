@@ -29,7 +29,7 @@ export class CursosService {
     }
 
   EditarCurso(curso: Cursos){
-  return this.http.put<Cursos>(`${this.api}/Cursos/${curso.id}`, curso).pipe(    
+  return this.http.put<Cursos>(`${this.api}/Cursos/${curso.idCurso}`, curso).pipe(    
     tap({
       next: () => this.cursoSubject.next(curso),
     })

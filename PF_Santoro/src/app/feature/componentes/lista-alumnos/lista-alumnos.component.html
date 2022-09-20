@@ -16,9 +16,9 @@
 <mat-label> <h3> Listado de alumnos </h3></mat-label>
 
 <table mat-table [dataSource]="data$">
-  <ng-container matColumnDef="id">
+  <ng-container matColumnDef="idAlumno">
     <th mat-header-cell *matHeaderCellDef> Id </th>
-    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.idAlumno}} </td>
   </ng-container>
 
   <ng-container matColumnDef="apellido">
@@ -52,23 +52,17 @@
     <td mat-cell *matCellDef="let element">{{ element.estado }}</td>
   </ng-container>
 
-  <ng-container matColumnDef="AccionesUser">
+  <ng-container matColumnDef="Acciones">
 
     <th mat-header-cell *matHeaderCellDef> Ver detalle </th>
     <td mat-cell *matCellDef="let element">
-    <button mat-icon-button (click)="redireccionar('usuario/inscripciones')">
+    <button mat-icon-button (click)="verDetalle(element)">
     <mat-icon> visibility </mat-icon>
      </button>
-    </td>
-</ng-container>
-
-<ng-container matColumnDef="AccionesAdmin"  >
-     <th mat-header-cell *matHeaderCellDef> Administración </th>
-    <td mat-cell *matCellDef="let element">
-        <button mat-icon-button (click)="editarAlumno(element)" *ngIf="usuarioAdmin$ |async">
+           <button mat-icon-button (click)="editarAlumno(element)" *ngIf="usuarioAdmin$ |async">
             <mat-icon>edit</mat-icon>
         </button>
-        <button mat-icon-button (click)="eliminarAlumno(element.id)" *ngIf="usuarioAdmin$ |async">
+        <button mat-icon-button (click)="eliminarAlumno(element.idAlumno)" *ngIf="usuarioAdmin$ |async">
             <mat-icon>delete</mat-icon>
         </button>
     </td>

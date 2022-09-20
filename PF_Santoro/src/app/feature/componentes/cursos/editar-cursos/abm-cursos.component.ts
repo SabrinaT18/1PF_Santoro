@@ -25,7 +25,7 @@ export class AbmCursosComponent implements OnInit {
   )
 {   
   this.formCursos = formCu.group({
-    id: new FormControl(element.id),
+    idCurso: new FormControl(element.idCurso),
     materia: new FormControl(element.materia),
     comision: new FormControl(element.comision),
     profesor: new FormControl(element.profesor),
@@ -41,7 +41,7 @@ cerrarDialog() {
 
 guardar() {
   const c: Cursos = {
-    id: this.element.id,
+    idCurso: this.element.idCurso,
     materia: this.formCursos.value.materia,
     comision: this.formCursos.value.comision,
     profesor: this.formCursos.value.profesor,

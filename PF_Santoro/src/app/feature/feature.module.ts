@@ -4,6 +4,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { SharedModule } from '../shared/shared.module';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { UsuarioRoutingModule } from './usuario/usuario-routing.module';
+import { VerDetalleComponent } from './componentes/cursos/ver-detalle/ver-detalle.component';
 
 
 @NgModule({

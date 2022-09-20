@@ -5,7 +5,7 @@ export interface Alumnos {
    fechaNacimiento: string; 
    nota: number;
    estado: boolean; 
-   id: string;
+   idAlumno: string;
     }  
 
   

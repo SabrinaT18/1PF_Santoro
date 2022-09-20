@@ -9,17 +9,16 @@
 
         <label> Email: </label>
         <input type="text" class="form-control" placeholder="email" for="exampleInputEmail1"
-        formControlName="email">
+        formControlName="email" *ngIf="formulario.invalid" class="alert alert-danger">
 
         <div class="texto-incorrecto" *ngIf="formulario.get('email')?.errors?.['required']">El email es requerido.</div>
         <div class="texto-incorrecto" *ngIf="formulario.get('email')?.errors?.['email']">Formato inválido.</div>
-
+     
+    
 
         <label> Password: </label>
-        <input type="password" class="form-control" formControlName="password" placeholder="contraseña">
-
-        <div class="texto-incorrecto" *ngIf="formulario.get('password')?.errors?.['required']"> La contraseña es
-            requerida. </div>
+        <input type="password" class="form-control" formControlName="password" placeholder="contraseña"  *ngIf="formulario.invalid" class="alert alert-danger">
+        <div class="texto-incorrecto" *ngIf="formulario.get('password')?.errors?.['required']"> Se requiere contraseña. </div>
         <div class="texto-incorrecto" *ngIf="formulario.get('password')?.errors?.['minLength']"> Contraseña inválida.
         </div>
 

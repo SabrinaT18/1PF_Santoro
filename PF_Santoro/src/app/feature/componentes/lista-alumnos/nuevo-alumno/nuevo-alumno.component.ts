@@ -27,7 +27,7 @@ export class NuevoAlumnoComponent implements OnInit {
     )
     {
     this.formulario = new FormGroup({
-      id: new FormControl(),
+      idAlumno: new FormControl(),
       nombre: new FormControl(),
       apellido: new FormControl(),
       email: new FormControl(),
@@ -42,7 +42,7 @@ export class NuevoAlumnoComponent implements OnInit {
 
   guardar(){
     const a: Alumnos = {
-      id: this.formulario.value.id,
+      idAlumno: this.formulario.value.idAlumno,
       apellido: this.formulario.value.apellido,
       nombre:  this.formulario.value.nombre,
       email:  this.formulario.value.email,

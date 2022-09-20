@@ -14,6 +14,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { AlumnosEffects } from './state/alumnos.effects';
 import * as fromAlumnos from './state/alumnos.reducer';
+import { DetalleComponent } from './detalle/detalle.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import * as fromAlumnos from './state/alumnos.reducer';
     ListaAlumnosComponent,
     NuevoAlumnoComponent,
     ABMalumnosComponent,
-    AlumnosComponent
+    AlumnosComponent,
+    DetalleComponent
   ],
   imports: [
     CommonModule,

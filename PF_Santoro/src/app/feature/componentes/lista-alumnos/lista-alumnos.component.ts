@@ -14,6 +14,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { alumnosState } from './state/alumnos.reducer';
 import { selectAlumnosCargadosState } from './state/alumnos.selectors';
 import { alumnosCargados, loadAlumnos } from './state/alumnos.actions';
+import { DetalleComponent } from './detalle/detalle.component';
 
 @Component({
   selector: 'app-lista-alumnos',
@@ -29,8 +30,8 @@ export class ListaAlumnosComponent implements OnInit {
 
   usuarioAdmin$!: Observable<Boolean| undefined>;
 
-  displayedColumns: string[] = ['id', 'apellido', 'nombre', 'email', 'fechaNacimiento', 'nota', 'estado', 'AccionesUser' , 'AccionesAdmin'];
-    @ViewChild(MatTable) tabla!: MatTable<Alumnos>;
+  displayedColumns: string[] = ['idAlumno', 'apellido', 'nombre', 'email', 'fechaNacimiento', 'nota', 'estado', 'Acciones'];
+  @ViewChild(MatTable) tabla!: MatTable<Alumnos>;
 
   nota = 6.5;
   hoy = Date.now();
@@ -49,7 +50,7 @@ export class ListaAlumnosComponent implements OnInit {
   
 
   ngOnInit(): void {     
-   this.alumnos$ = this.store.select(selectAlumnosCargadosState);
+  this.alumnos$ = this.store.select(selectAlumnosCargadosState);
 
   this.usuarioAdmin$ = this.Authstore.select(selectUsuarioAdminState);
 
@@ -90,11 +91,14 @@ export class ListaAlumnosComponent implements OnInit {
    
   }
   
+  verDetalle (alumno: Alumnos ) {
+    const dialogRef = this.dialog.open(DetalleComponent, {
+      width: '400px',
+      data: alumno
+    });  
+  }
        
-    redireccionar(ruta: string) {
-     this.router.navigate([ruta]);
-   }
-
+  
 /*      filtrar(event: Event) {
     const valorObtenido = (event.target as HTMLInputElement).value;
     this.data$.pipe(tap(valorObtenido.trim().toLocaleLowerCase();

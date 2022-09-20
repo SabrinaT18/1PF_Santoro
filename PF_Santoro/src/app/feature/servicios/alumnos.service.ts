@@ -27,7 +27,7 @@ export class AlumnosService {
   }
 
   EditarAlumno(alumno: Alumnos) {
-    return this.http.put<Alumnos>(`${this.api}/alumnos/${alumno.id}`, alumno).pipe(    
+    return this.http.put<Alumnos>(`${this.api}/alumnos/${alumno.idAlumno}`, alumno).pipe(    
       tap({
       next: () => this.alumnoSubject.next(alumno),
       })

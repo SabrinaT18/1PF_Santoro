@@ -3,6 +3,6 @@ export interface Cursos {
     comision: string;
     profesor: string;
     fechaInicio: string;   
-    id: number;
+    idCurso: string;
     }
   

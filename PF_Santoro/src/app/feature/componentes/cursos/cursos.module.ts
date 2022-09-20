@@ -14,6 +14,7 @@ import { StoreModule } from '@ngrx/store';
 import  * as fromCursos from './state/cursos.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { CursosEffects } from './state/cursos.effects';
+import { VerDetalleComponent } from './ver-detalle/ver-detalle.component';
 
 
 
@@ -22,7 +23,8 @@ import { CursosEffects } from './state/cursos.effects';
     CursosComponent,
     AbmCursosComponent,
     NuevoCursoComponent,
-    ListaCursosComponent
+    ListaCursosComponent,
+    VerDetalleComponent
   ],
   imports: [
     CommonModule,
