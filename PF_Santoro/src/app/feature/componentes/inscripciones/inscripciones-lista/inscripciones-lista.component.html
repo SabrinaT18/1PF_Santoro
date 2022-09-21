@@ -1,11 +1,6 @@
-<!-- <mat-form-field>
-    <mat-label appearance="fill"> Filtrar </mat-label>
-    <input type="text" (keyup)="filtrar($event)" matInput>
-    <mat-icon> search </mat-icon>
-</mat-form-field> -->
 
 <div class="example-button-container">
-    <button mat-fab color="primary" (click)="agregarInscripcion()"  *ngIf="usuarioAdmin$ |async">
+    <button mat-fab color="primary" (click)="agregarInscripcion()">
         <mat-icon> add </mat-icon>
     </button>
 </div>
@@ -52,10 +47,13 @@
     <ng-container matColumnDef="acciones">
         <th mat-header-cell *matHeaderCellDef> Acciones </th>
         <td mat-cell *matCellDef="let element">
-               <button mat-icon-button (click)="editarInscripcion(element)" *ngIf="usuarioAdmin$ |async">
+            <button mat-icon-button (click)="verDetalle(element)">
+                <mat-icon> visibility </mat-icon>
+                 </button>
+               <button mat-icon-button (click)="editarInscripcion(element)">
                 <mat-icon>edit</mat-icon>
             </button>
-            <button mat-icon-button (click)="eliminarInscripcion(element.id)" *ngIf="usuarioAdmin$ |async">
+            <button mat-icon-button (click)="eliminarInscripcion(element.id)">
                 <mat-icon>delete</mat-icon>
             </button>
         </td>

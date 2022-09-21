@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminGuard } from 'src/app/core/admin.guard';
+import { AdminGuard } from 'src/app/core/guard/admin.guard';
 import { CursosComponent } from './cursos.component';
 import { NuevoCursoComponent } from './nuevo-curso/nuevo-curso.component';
 import { AbmCursosComponent } from './editar-cursos/abm-cursos.component';

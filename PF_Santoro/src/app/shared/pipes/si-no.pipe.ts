@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class SiNoPipe implements PipeTransform {
 
   transform(value: any, ...args: any[]): any {
-    return value ? "Aprobado" : "Desaprobado";
+    return value ? "Si" : "No";
   
   }
 }

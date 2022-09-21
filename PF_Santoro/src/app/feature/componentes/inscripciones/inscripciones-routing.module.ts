@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { InscripcionesComponent } from './inscripciones.component';
 import { NuevaInscrComponent } from './nueva-inscr/nueva-inscr.component';
 import { AbmInscripComponent } from './editar-inscripciones/abm-inscrip.component';
-import { AdminGuard } from 'src/app/core/admin.guard';
+import { AdminGuard } from 'src/app/core/guard/admin.guard';
 import { InscripcionesListaComponent } from './inscripciones-lista/inscripciones-lista.component';
 
 const routes: Routes = [

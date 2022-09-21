@@ -1,0 +1,44 @@
+<h1 mat-dialog-title>Detalle</h1>
+<h3 mat-dialog-subtitle> Inscripción Nº # {{data.id }}</h3>
+
+<div mat-dialog-content>
+    <mat-form-field appearance="standard">
+        <mat-label>Id</mat-label>
+        <input matInput class="form-control" [(ngModel)]="data.idCurso" name="idCurso" disabled />
+    </mat-form-field>
+
+    <mat-form-field appearance="standard">
+        <mat-label>
+            Nombre
+        </mat-label>
+        <input matInput class="form-control" [(ngModel)]="data.materia" name="materia" disabled />
+    </mat-form-field>
+
+    <mat-form-field appearance="standard">
+        <mat-label>
+            Comisión
+        </mat-label>
+        <input matInput class="form-control" [(ngModel)]="data.comision" name="comision" disabled />
+    </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="standard">
+        <mat-label>Alumno Id</mat-label>
+        <input matInput class="form-control" [(ngModel)]="data.idAlumno" name="idAlumno" disabled />
+    </mat-form-field>
+
+
+    <mat-form-field appearance="standard">
+        <mat-label>Nombre</mat-label>
+        <input matInput class="form-control" [(ngModel)]="data.nombre" name="nombre" disabled />
+    </mat-form-field>
+
+    <mat-form-field appearance="standard">
+        <mat-label>Apellido </mat-label>
+        <input matInput class="form-control" [(ngModel)]="data.apellido" name="apellido" disabled />
+    </mat-form-field>
+
+
+    <div mat-dialog-actions>
+        <button mat-button (click)="cerrar()">Cerrar</button>
+    </div>

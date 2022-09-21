@@ -14,6 +14,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { InscripcionesEffects } from './state/inscripciones.effects';
 import  * as fromInscripciones from './state/inscripciones.reducer';
+import { DetalleInsComponent } from './detalle-ins/detalle-ins.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import  * as fromInscripciones from './state/inscripciones.reducer';
     InscripcionesComponent,
     AbmInscripComponent,
     NuevaInscrComponent,
-    InscripcionesListaComponent
+    InscripcionesListaComponent,
+    DetalleInsComponent
   ],
 
   imports: [
@@ -31,7 +33,7 @@ import  * as fromInscripciones from './state/inscripciones.reducer';
     FeatureModule,
     SharedModule,
     StoreModule.forFeature(fromInscripciones.inscripcionesFeatureKey, fromInscripciones.reducer),
-EffectsModule.forFeature([InscripcionesEffects]),
+    EffectsModule.forFeature([InscripcionesEffects]),
   ],
 
   providers: [

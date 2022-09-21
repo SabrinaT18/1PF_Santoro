@@ -36,8 +36,12 @@ constructor(
      }
      
      eliminarInscripciones(id: string){
-       return this.http.delete<Inscripciones>(`${this.api}/Inscripciones/${id}`); 
-}
+       return this.http.delete<Inscripciones>(`${this.api}/Inscripciones/${id}`)       
+       .pipe(tap({
+           next: () => this.InscSubject.next(id),
+         })
+       );
+   }
 
 obtenerInscripcionesFiltradoCurso(inscripcion: any): Observable<any> {
   return this.http.get<any>(
@@ -49,18 +53,6 @@ obtenerInscripcionesFiltradoAlumno(inscripcion: any): Observable<any> {
   return this.http.get<any>(
     `${this.api}/Inscripciones?idAlumno=${inscripcion.idAlumno}`
   );
-}
-
-desinscribirAlumnoCurso(idAlumno: string, idCurso: string): Observable<any> {
-  return this.http
-    .get<any>(`${this.api}/Inscripciones`)
-    .pipe(
-      map((inscripciones: any) => {
-        return inscripciones.filter(
-          (i: any) => i.idAlumno === idAlumno && i.idCurso === idCurso
-        )[0];
-      })
-    );
 }
 
 

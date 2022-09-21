@@ -14,6 +14,7 @@ import { NuevaInscrComponent } from '../nueva-inscr/nueva-inscr.component';
 import { InsCargadas, loadInsc } from '../state/inscripciones.actions';
 import { InscState } from '../state/inscripciones.reducer';
 import { selectInsCargadosState } from '../state/inscripciones.selectors';
+import { DetalleInsComponent } from '../detalle-ins/detalle-ins.component';
 
 @Component({
   selector: 'app-inscripciones-lista',
@@ -23,7 +24,6 @@ import { selectInsCargadosState } from '../state/inscripciones.selectors';
 export class InscripcionesListaComponent implements OnInit {
   insc$!: Observable<Inscripciones[]| undefined>;
   usuarioAdmin$!: Observable<Boolean| undefined>;
-
   data$!: Observable<Inscripciones[]>;
 
   InscripcionesSubscripcion!: Subscription;
@@ -80,15 +80,15 @@ export class InscripcionesListaComponent implements OnInit {
     })
   }  
 
+  verDetalle (inscripion: Inscripciones ) {
+    const dialogRef = this.dialog.open(DetalleInsComponent, {
+      width: '400px',
+      data: inscripion
+    });  
+  }
 
   redireccionar(ruta: string) {
     this.router.navigate([ruta]);
   }
   
-/*   
- filtrar(event: Event) {
-    const valorObtenido = (event.target as HTMLInputElement).value;
-    this.data.filter = valorObtenido.trim().toLocaleLowerCase();
-  */
-
-}
+  }

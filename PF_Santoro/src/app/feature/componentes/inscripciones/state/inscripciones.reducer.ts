@@ -29,7 +29,7 @@ export const reducer = createReducer(
     on(
       InscripcionesActions.inscripcionesCargadasCurso,
       (state, { inscripciones }) => {
-        return { ...state, cargando: false, inscripciones };
+        return { ...state, cargando: false, Ins:inscripciones};
       }
     ),
   
@@ -40,7 +40,7 @@ export const reducer = createReducer(
     on(
       InscripcionesActions.inscripcionesCargadasAlumno,
       (state, { inscripciones }) => {
-        return { ...state, cargando: false, inscripciones };
+        return { ...state, cargando: false, Ins:inscripciones };
       }
     )
   );  
