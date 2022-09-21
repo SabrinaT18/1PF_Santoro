@@ -38,8 +38,8 @@
                     <td>{{inscripcion.nombre }}</td>
                     <td>{{inscripcion.apellido }}</td>
 
-                    <td> <button mat-raised-button (click)="desinscribir(inscripcion.idAlumno, inscripcion.idCurso)">
-                            delete_forever</button> </td>
+                    <td> <button mat-icon-button (click)="desinscribir(inscripcion.idAlumno, inscripcion.idCurso)">
+                          <mat-icon>delete </mat-icon>  </button> </td>
                 </tr>
             </tbody>
         </table>

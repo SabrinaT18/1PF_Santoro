@@ -29,13 +29,13 @@
             </tr>
         </thead>
         <tbody>
-            <tr class *ngFor="let inscripcion of inscripciones$|async"> 
-                <td>{{inscripcion.idCurso  }}</td>
-                <td>{{inscripcion.materia  }}</td>
-                <td>{{inscripcion.comision  }}</td>
-                
-                <td> <button mat-button (click)="desinscribir(inscripcion.idAlumno, inscripcion.idCurso)">
-                delete_forever</button> </td>  
+            <tr class *ngFor="let inscripcion of inscripciones$ | async"> 
+                <td>{{inscripcion.idCurso }}</td>
+                <td>{{inscripcion.materia }}</td>
+                <td>{{inscripcion.comision }}</td>
+
+              <td> <button mat-button (click)="desinscribir(inscripcion.idAlumno, inscripcion.idCurso)">
+                <mat-icon>delete </mat-icon></button> </td>  
             </tr>
         </tbody>
     </table> 

@@ -17,19 +17,17 @@ import { Alumnos } from '../../../Model/Alumnos';
 export class DetalleComponent implements OnInit {
 inscripciones$!: Observable<Inscripciones[]|undefined>;
 
-
   constructor(
     public dialogRef: MatDialogRef<DetalleComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Alumnos, 
     private InscripcionesService: InscripcionesService,
     private store: Store,
   ) {
-    
-  }
+      }
   
   ngOnInit(): void {   
     this.inscripciones$ = this.store.select(selectorListaInscripcionesAlumno); 
-    this.store.dispatch(cargarInscripcionesAlumno({ idAlumno: this.data.idAlumno })
+    this.store.dispatch(cargarInscripcionesAlumno({idAlumno: this.data.idAlumno })
     )
     console.log(this.inscripciones$);
    }
