@@ -1,9 +1,9 @@
 <h1 mat-dialog-title>Editar inscripción</h1>
 <div mat-dialog-content>
     <form [formGroup]="formInscripcion">
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="fill" >
             <mat-label>id </mat-label>
-            <input formControlName="" matInput>
+            <input formControlName="id" matInput>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
@@ -24,8 +24,9 @@
             <mat-form-field appearance="fill">
             <mat-label>Nombre Curso</mat-label>
             <input formControlName="materia" matInput>
-        </mat-form-field><mat-form-field appearance="fill">
-
+        </mat-form-field>
+        
+        <mat-form-field appearance="fill">
             <mat-label>Comisión</mat-label>
             <input formControlName="comision" matInput>
         </mat-form-field>
