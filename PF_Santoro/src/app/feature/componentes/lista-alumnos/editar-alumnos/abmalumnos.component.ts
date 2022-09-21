@@ -14,6 +14,7 @@ import { loadAlumnos } from '../state/alumnos.actions';
 })
 export class ABMalumnosComponent implements OnInit {
   formulario: FormGroup;
+  checked = false;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public elemento: Alumnos,
