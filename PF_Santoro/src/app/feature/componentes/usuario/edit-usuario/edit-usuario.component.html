@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>Editar usuario</h1>
+
+<div mat-dialog-content>
+    <form [formGroup]="formulario">
+
+        <mat-form-field appearance="fill">
+            <mat-label>Cambiar username</mat-label>
+            <input formControlName="username" matInput>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Cambiar e-mail</mat-label>
+            <input formControlName="email" matInput>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Cambiar password</mat-label>
+            <input formControlName="password" matInput>
+        </mat-form-field>
+
+    <section class="example-section">
+      <mat-checkbox class="example-margin" input formControlName="admin" matInput > Cambiar perfil a usuarioAdmin </mat-checkbox>
+      </section>
+
+    </form>
+</div>
+
+<div mat-dialog-actions>
+    <button id="btnCrear" mat-button (click)="cerrar()">Cerrar</button>
+    <button mat-button (click)="guardar()">Guardar</button>
+
+    <button mat-icon-button (click)="eliminarUsuario()">
+        <mat-icon>delete-forever</mat-icon>
+    </button>
+</div>

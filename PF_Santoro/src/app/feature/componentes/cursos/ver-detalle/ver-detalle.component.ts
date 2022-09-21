@@ -1,13 +1,14 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { Cursos } from 'src/app/feature/Model/Cursos';
-import { selectorListaInscripcionesAlumno, selectorListaInscripcionesCurso } from '../../inscripciones/state/inscripciones.selectors';
-import { cargarInscripcionesCurso, inscripcionesCargadasCurso, InsCargadas } from '../../inscripciones/state/inscripciones.actions';
+import { selectorListaInscripcionesCurso } from '../../inscripciones/state/inscripciones.selectors';
+import { cargarInscripcionesCurso } from '../../inscripciones/state/inscripciones.actions';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Inscripciones } from 'src/app/feature/Model/Inscripciones';
 import { InscripcionesService } from '../../../servicios/inscripciones.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-ver-detalle',
@@ -22,6 +23,7 @@ export class VerDetalleComponent implements OnInit {
     public dialogRef: MatDialogRef<VerDetalleComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Cursos,
     private store: Store,
+    private snackBar: MatSnackBar,
   ) {
   }
 
@@ -34,25 +36,14 @@ export class VerDetalleComponent implements OnInit {
 
 
 
-
-  desinscribir(idAlumno: any, idCurso: any) {
-    if (idAlumno !== undefined && idCurso !== undefined) {
-      this.InscripcionesService.desinscribirAlumnoCurso(idAlumno, idCurso)
-        .subscribe((res) => {
-          const id = res.idInscripcion;
-          this.InscripcionesService.eliminarInscripciones(res)
-            .subscribe((resp: any) => {
-              this.store.dispatch(
-                cargarInscripcionesCurso({ idCurso: this.data.idCurso })
-              );
-              this.dialogRef.close();
-            });
-        });
-    };
-  }
-  formControl = new FormControl('', [Validators.required]);
-  getError() {
-    return this.formControl.hasError('required') ? 'El campo es requerido' : '';
+  desinscribir(id: any) {
+    this.InscripcionesService.eliminarInscripciones(id)
+      .subscribe((inscripcion) => {
+        this.store.dispatch(cargarInscripcionesCurso({ idCurso: this.data.idCurso })
+        );
+        this.snackBar.open(`La inscripción nº ${inscripcion.id} se eliminó`, 'OK', { duration: 3000 });
+        this.cerrar();
+      });
   }
 
   cerrar() {

@@ -1,5 +1,6 @@
-<div style="background-color:#080710">
-
+<div class="nuevo">
+    <button mat-raised-button color="primary" (click)="registrarse()"> Nuevo Usuario </button>
+</div>
 
 <div class="container">
 <div class="mb-3">
@@ -14,17 +15,15 @@
         <div class="texto-incorrecto" *ngIf="formulario.get('email')?.errors?.['required']">El email es requerido.</div>
         <div class="texto-incorrecto" *ngIf="formulario.get('email')?.errors?.['email']">Formato inválido.</div>
      
-    
-
         <label> Password: </label>
         <input type="password" class="form-control" formControlName="password" placeholder="contraseña"  *ngIf="formulario.invalid" class="alert alert-danger">
         <div class="texto-incorrecto" *ngIf="formulario.get('password')?.errors?.['required']"> Se requiere contraseña. </div>
         <div class="texto-incorrecto" *ngIf="formulario.get('password')?.errors?.['minLength']"> Contraseña inválida.
         </div>
 
-        <button mat-raised-button type="submit">Enviar </button>
-
+        <button mat-raised-button color="primary" type="submit">Enviar </button>
     </form>
-</div>
-</div>
+    </div>    
+    
+
 </div>

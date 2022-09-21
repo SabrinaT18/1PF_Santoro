@@ -6,6 +6,8 @@ import { Usuario } from '../../Model/Usuario';
 import { Store } from '@ngrx/store';
 import { SesionState } from 'src/app/core/state/sesion.reducer';
 import { cargarSesion } from 'src/app/core/state/sesion.actions';
+import { NuevoUsuarioComponent } from '../nuevo-usuario/nuevo-usuario.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +21,9 @@ formulario: FormGroup;
     private form: FormBuilder, 
     private router: Router, 
     private AuthService: AuthService, 
-    private store: Store<SesionState> ){
+    private store: Store<SesionState> ,
+    private dialog: MatDialog,
+    ){
 
     this.formulario = form.group({
       email: new FormControl ('', [Validators.required, Validators.email]),
@@ -27,6 +31,9 @@ formulario: FormGroup;
       });
       }
     
+   ngOnInit(): void {
+  }  
+
   onLogin(){
     this.AuthService.IniciarSesion(this.formulario.value.email, this.formulario.value.password).subscribe((usuario: Usuario) => {
       if(usuario){
@@ -38,8 +45,11 @@ formulario: FormGroup;
   });
     }
 
-  ngOnInit(): void {
-  }
+    registrarse(){
+   const dialogRef = this.dialog.open(NuevoUsuarioComponent,  {
+        width: '400px',
+      });
+    }
 
   }
 

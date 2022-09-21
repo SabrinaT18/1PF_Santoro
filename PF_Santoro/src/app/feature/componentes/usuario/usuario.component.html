@@ -1,0 +1,26 @@
+<app-toolbar></app-toolbar>
+<app-navbar></app-navbar>
+
+<h1 [appTitulos]="20"> Perfil de Usuario </h1>
+
+<div class="card">
+    <h2>Datos de usuario </h2>
+
+    <div class="card-body" *ngIf="usuarioActivo$ | async as usuario">
+    <pre>
+    ID USER: {{usuario.id }}
+    USERNAME: {{usuario.username }}
+    EMAIL: {{usuario.email }}
+    CONTRASEÑA: {{usuario.password }}
+    ROL ADMIN: {{usuario.admin | siNo}}     </pre>
+
+        <button mat-icon-button (click)="eliminarUsuario()">
+            <mat-icon>delete </mat-icon>
+        </button>
+        <button mat-icon-button (click)="editarUsuario(usuario)">
+            <mat-icon>edit</mat-icon>
+        </button>
+    </div>
+</div>
+
+<app-footer></app-footer>

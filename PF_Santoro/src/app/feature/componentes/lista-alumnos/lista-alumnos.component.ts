@@ -6,7 +6,6 @@ import { AlumnosService } from '../../servicios/alumnos.service';
 import { Observable, Subscription } from 'rxjs';
 import { NuevoAlumnoComponent } from './nuevo-alumno/nuevo-alumno.component';
 import { ABMalumnosComponent } from './editar-alumnos/abmalumnos.component';
-import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { SesionState } from 'src/app/core/state/sesion.reducer';
 import { selectUsuarioAdminState } from 'src/app/core/state/sesion.selectors';
@@ -43,7 +42,6 @@ export class ListaAlumnosComponent implements OnInit {
     private store: Store<alumnosState>,
     private Authstore: Store<SesionState>,
     private snackBar: MatSnackBar,
-    private router: Router,
       ) {
 
     }
@@ -99,11 +97,7 @@ export class ListaAlumnosComponent implements OnInit {
   }
        
   
-/*      filtrar(event: Event) {
-    const valorObtenido = (event.target as HTMLInputElement).value;
-    this.data$.pipe(tap(valorObtenido.trim().toLocaleLowerCase();
-     )} 
-     */
+
   }
 
 

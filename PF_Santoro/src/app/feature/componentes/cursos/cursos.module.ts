@@ -9,7 +9,7 @@ import { FeatureModule } from '../../feature.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MaterialModule } from 'src/app/shared/material.module';
 import { ListaCursosComponent } from './lista-cursos/lista-cursos.component';
-import { AdminGuard } from 'src/app/core/admin.guard';
+import { AdminGuard } from 'src/app/core/guard/admin.guard';
 import { StoreModule } from '@ngrx/store';
 import  * as fromCursos from './state/cursos.reducer';
 import { EffectsModule } from '@ngrx/effects';

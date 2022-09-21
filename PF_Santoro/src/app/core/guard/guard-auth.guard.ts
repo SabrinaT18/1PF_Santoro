@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Route, Router, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { map, Observable } from 'rxjs';
-import { SesionState } from './state/sesion.reducer';
-import { selectSesionActivaState } from './state/sesion.selectors';
+import { SesionState } from '../state/sesion.reducer';
+import { selectSesionActivaState } from '../state/sesion.selectors';
 
 @Injectable({
   providedIn: 'root'

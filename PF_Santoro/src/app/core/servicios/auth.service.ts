@@ -31,16 +31,14 @@ export class AuthService {
     );
   }
 
-  cerrarSesion() {
-
-
-    
-  }
-
  obtenerSesion(){
   return this.sesionSubject.asObservable();
  }
 
+  cerrarSesion() {
+    this.router.navigate(['login']);  }
+
+    
 }
 
 

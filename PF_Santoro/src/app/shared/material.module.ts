@@ -12,9 +12,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import {MatRippleModule} from '@angular/material/core';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {   MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import {  MatCheckboxModule} from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ MatProgressSpinnerModule,
 MatSnackBarModule,
 MatDatepickerModule,
 MatNativeDateModule,
+MatCheckboxModule
 ],
 
 
@@ -55,7 +57,8 @@ MatRippleModule,
 MatProgressSpinnerModule,
 MatSnackBarModule,
 MatDatepickerModule,
-MatNativeDateModule
+MatNativeDateModule,
+MatCheckboxModule
   ]
 })
 
