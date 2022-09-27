@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { EditUsuarioComponent } from "../componentes/usuario/edit-usuario/edit-usuario.component";
+import { EditUsuarioComponent } from "../componentes/usuario/componentes/edit-usuario/edit-usuario.component";
 import { LoginComponent } from "./login/login.component";
 
 

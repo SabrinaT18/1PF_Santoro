@@ -9,7 +9,7 @@ import { AlumnosComponent } from './alumnos/alumnos.component';
 const routes: Routes = [
   {path: 'alumnos', component: AlumnosComponent, children: [
     {path: 'lista', component: ListaAlumnosComponent   },
-    {path: 'nuevo', component: NuevoAlumnoComponent  },
+    {path: 'nuevo', component: NuevoAlumnoComponent },
     {path: 'edit', component: ABMalumnosComponent, canDeactivate: [AdminGuard] }
   ],
   canActivateChild: [AdminGuard]}

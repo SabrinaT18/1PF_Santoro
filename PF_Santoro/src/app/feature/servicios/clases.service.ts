@@ -39,7 +39,6 @@ obtenerPromiseClases () {
   });
 }
 
-
 AgregarClase(clases: any){
 this.clases.push(clases); 
 console.log(this.clases)

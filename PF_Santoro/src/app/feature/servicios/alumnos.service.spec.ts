@@ -33,7 +33,7 @@ describe('AlumnosService', () => {
          fechaNacimiento: "2021-09-27T13:13:20.771Z",
          nota: 4,
          estado: false,
-         id: "3"
+         idAlumno: "3"
         },
         {
          nombre: "Domenic",
@@ -42,7 +42,7 @@ describe('AlumnosService', () => {
         fechaNacimiento: "2021-10-15T16:51:58.150Z",
          nota: 5,
          estado: false,
-         id: "4"
+         idAlumno: "4"
         },
         {
          nombre: "Asa",
@@ -51,7 +51,7 @@ describe('AlumnosService', () => {
          fechaNacimiento: "2022-07-03T16:48:51.827Z",
          nota: 7,
          estado: true,
-         id: "5"
+         idAlumno: "5"
         },
         {
          nombre: "Korbin",
@@ -60,7 +60,7 @@ describe('AlumnosService', () => {
         fechaNacimiento: "2022-02-23T14:09:22.284Z",
          nota: 7,
          estado: true,
-         id: "6"
+         idAlumno: "6"
         },
         {
          nombre: "Julian",
@@ -69,7 +69,7 @@ describe('AlumnosService', () => {
          fechaNacimiento: "2022-06-11T11:39:07.314Z",
          nota: 2,
          estado: false,
-         id: "7"
+         idAlumno: "7"
         },
         {
          nombre: "Joan",
@@ -78,7 +78,7 @@ describe('AlumnosService', () => {
          fechaNacimiento: "2021-10-09T16:39:23.140Z",
          nota: 8,
          estado: true,
-         id: "8"
+         idAlumno: "8"
         },
       ];
 

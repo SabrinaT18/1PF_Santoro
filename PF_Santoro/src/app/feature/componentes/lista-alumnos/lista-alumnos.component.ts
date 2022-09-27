@@ -84,7 +84,7 @@ export class ListaAlumnosComponent implements OnInit {
   eliminarAlumno(id: string) {
     this.AlumnosService.eliminarAlumno(id).subscribe((alumno: Alumnos) => {
       this.store.dispatch(loadAlumnos());
-      this.snackBar.open(`${alumno.nombre} ${alumno.apellido} fue eliminado exitosamente`, 'Ok', {duration: 3000});
+      this.snackBar.open(`${alumno.nombre} - ${alumno.apellido} fue eliminado exitosamente`, 'Ok', {duration: 3000});
     })
    
   }

@@ -6,8 +6,8 @@ import { Usuario } from '../../Model/Usuario';
 import { Store } from '@ngrx/store';
 import { SesionState } from 'src/app/core/state/sesion.reducer';
 import { cargarSesion } from 'src/app/core/state/sesion.actions';
-import { NuevoUsuarioComponent } from '../nuevo-usuario/nuevo-usuario.component';
 import { MatDialog } from '@angular/material/dialog';
+import { NuevoUsuarioComponent } from '../../componentes/usuario/componentes/nuevo-usuario/nuevo-usuario.component';
 
 @Component({
   selector: 'app-login',

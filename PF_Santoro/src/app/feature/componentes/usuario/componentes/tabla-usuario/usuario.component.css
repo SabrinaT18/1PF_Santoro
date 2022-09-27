@@ -1,0 +1,54 @@
+h1 {
+   padding: 20px;
+   text-align: center;
+ }
+ 
+ p {
+   text-align: center;
+ }
+ 
+ h3 {
+   margin: 2%;
+ }
+ 
+ table {
+  width: 65%;
+  margin: 30px;
+  padding: 10px;
+  text-align: center;
+ }
+ 
+ .mat-icon {
+   color: whitesmoke;
+ } 
+ 
+ .mat-header-cell {
+ text-align: center;
+ color: white;
+ }
+ 
+ .mat-row .mat-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  cursor: pointer;
+ }
+ 
+ .mat-row:hover .mat-cell {
+  border-color: currentColor;
+ }
+ 
+ .demo-row-is-clicked {
+  font-weight: bold;
+ }
+ 
+ .example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+ }
+ 
+ .example-button-container {
+  display: flex;
+  justify-content: center;
+  margin-left: 60%;
+ }

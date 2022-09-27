@@ -1,0 +1,18 @@
+h1 {
+    padding: 20px;
+    text-align: center;
+}
+
+h2 {
+    padding: 7px;
+    text-align: center;
+}
+
+.card {
+    margin: 8%;
+    width: 350px;
+    background-color: black;
+    color: whitesmoke;
+    font-weight: 200;
+    font-size: 16px;
+}
