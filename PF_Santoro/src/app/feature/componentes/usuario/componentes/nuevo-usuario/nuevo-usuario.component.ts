@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { AuthService } from '../../../core/servicios/auth.service';
-import { SesionState } from '../../../core/state/sesion.reducer';
-import { Usuario } from '../../Model/Usuario';
-import { UsuariosService } from '../../servicios/usuarios.service';
-import { loadUsuarios } from './state/usuario.actions';
+import { SesionState } from 'src/app/core/state/sesion.reducer';
+import { Usuario } from 'src/app/feature/Model/Usuario';
+import { loadUsuarios } from '../../state/usuario.actions';
+import { UsuariosService } from '../../../../servicios/usuarios.service';
+
 
 @Component({
   selector: 'app-nuevo-usuario',
@@ -27,9 +27,9 @@ export class NuevoUsuarioComponent implements OnInit {
     {
     this.formulario = new FormGroup({
     id  : new FormControl(),
-    username : new FormControl(),
-    email : new FormControl(),
-    password: new FormControl(),
+    username : new FormControl('', [Validators.required]),
+    email : new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.minLength(8)]),
     admin: new FormControl(),
     })
    }

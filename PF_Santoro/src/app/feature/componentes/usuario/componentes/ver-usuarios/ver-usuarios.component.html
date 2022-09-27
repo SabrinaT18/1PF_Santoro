@@ -1,0 +1,40 @@
+<h1 mat-dialog-title>Detalle</h1>
+<h3 mat-dialog-subtitle> Usuario: {{data.username }}</h3>
+
+<div mat-dialog-content>
+    <mat-form-field appearance="standard">
+        <mat-label>Id</mat-label>
+        <input matInput class="form-control" [(ngModel)]="data.id" name="id" disabled />
+    </mat-form-field>
+
+    <mat-form-field appearance="standard">
+        <mat-label>
+            Nombre de usuario
+        </mat-label>
+        <input matInput class="form-control" [(ngModel)]="data.username" name="username" disabled />
+    </mat-form-field>
+
+    <mat-form-field appearance="standard">
+        <mat-label>
+            email
+        </mat-label>
+        <input matInput class="form-control" [(ngModel)]="data.email" name="email" disabled />
+    </mat-form-field>
+
+    <mat-form-field appearance="standard">
+        <mat-label>
+            contraseña
+        </mat-label>
+        <input matInput class="form-control" [(ngModel)]="data.password" name="password" disabled />
+    </mat-form-field>
+
+    <mat-form-field appearance="standard">
+        <mat-label>
+            rol admin
+        </mat-label>
+        <input matInput class="form-control" [(ngModel)]="data.admin" name="admin" disabled />
+    </mat-form-field>
+
+    <div mat-dialog-actions>
+        <button mat-button (click)="cerrar()">Cerrar</button>
+    </div>

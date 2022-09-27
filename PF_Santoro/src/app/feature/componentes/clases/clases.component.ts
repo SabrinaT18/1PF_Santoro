@@ -18,13 +18,11 @@ export class ClasesComponent implements OnInit {
   ) {
 
     this.ClasesService.obtenerPromiseClases().then((clases) => {
-      console.log('desde promise: ', clases);
     }).catch((error) => {
-      console.log(error);
+     (error);
     });
 
     this.ClasesService.obtenerObservableClases().subscribe((clases) => {
-      console.log('desde el observable: ', clases);
       this.clases = clases;
     });
 
@@ -32,7 +30,6 @@ export class ClasesComponent implements OnInit {
       this.clases = clases;
     });
     this.clasesObservable$ = this.ClasesService.obtenerObservableClases();
-    console.log(this.clasesObservable$);
   }
 
 
@@ -40,7 +37,6 @@ export class ClasesComponent implements OnInit {
     this.ClasesService.obtenerObservableClases().pipe(map((clases: any[]) =>
       clases.filter(clases =>
         clases.id === 1))).subscribe((clases) => {
-          console.log('probando pipe map', clases);
         });
   }
 

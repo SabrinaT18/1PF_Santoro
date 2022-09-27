@@ -18,7 +18,8 @@ export const reducer = createReducer(
   on(AlumnosActions.loadAlumnos, state =>   {
       return { ...state, cargando: true }
     }),
-  on(AlumnosActions.alumnosCargados, (state, { alumnos }) => {
+
+    on(AlumnosActions.alumnosCargados, (state, { alumnos }) => {
       return { ...state, cargando: false, alumnos: alumnos };
     })
     );

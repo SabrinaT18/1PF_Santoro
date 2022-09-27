@@ -6,8 +6,8 @@ export const loadUsuarios = createAction(
 );
 
 export const usuariosCargados = createAction(
-  '[Lista Usuarios] Usuarios Cargados',
-  props<{ usuarios: Usuario[] }>()
+  '[Usuarios] Usuarios Cargados',
+  props<{usuarios: Usuario[] }>()
 );
 
 

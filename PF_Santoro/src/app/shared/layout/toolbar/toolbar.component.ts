@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import { Usuario } from 'src/app/feature/Model/Usuario';
 import { Observable } from 'rxjs';
@@ -6,6 +6,7 @@ import { SesionState } from 'src/app/core/state/sesion.reducer';
 import { Store } from '@ngrx/store';
 import { selectSesionActivaState, selectUsuarioActivoState, selectUsuarioAdminState } from 'src/app/core/state/sesion.selectors';
 import { cerrarSesion } from 'src/app/core/state/sesion.actions';
+import { AppComponent } from '../../../app.component';
 
 @Component({
   selector: 'app-toolbar',
@@ -14,16 +15,17 @@ import { cerrarSesion } from 'src/app/core/state/sesion.actions';
 })
 export class ToolbarComponent implements OnInit {
 usuario$!: Observable<Usuario[]>;
-ruta!: string;
 usuarioActivo$!: Observable<Usuario | undefined>;
 usuarioAdmin$: Observable<boolean | undefined>;
 sesionActiva$: Observable<boolean | undefined>;
+
+ruta!: string;
 
   constructor(
     private Authstore: Store<SesionState>,
     private router: Router,
     ) { 
-      
+     
 this.router.events.subscribe((event) => {
   if (event instanceof NavigationStart) {
     this.ruta = event.url;
@@ -39,7 +41,7 @@ this.sesionActiva$ = this.Authstore.select(selectSesionActivaState);
   }
 
   
-   redireccionar(ruta: string) {
+redireccionar(ruta: string) {
     this.router.navigate ([ruta]);
     }
 

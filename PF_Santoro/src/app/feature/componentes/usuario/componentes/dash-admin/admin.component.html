@@ -1,0 +1,14 @@
+<app-toolbar></app-toolbar>
+<app-navbar></app-navbar>
+
+<div *ngIf="(cargando$ | async)">
+<mat-spinner>
+    
+</mat-spinner>
+
+ <b>Cargando...</b>
+ </div>
+
+ <app-usuario *ngIf="!(cargando$ | async)"> </app-usuario>
+
+ <app-footer></app-footer>
