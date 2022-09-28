@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Cursos } from '../../Model/Cursos';
 import { CursosService } from '../../servicios/cursos.service';
-import { sesion } from '../../Model/sesion';
 import { CursosState } from './state/cursos.reducer';
 import { Store } from '@ngrx/store';
-import { loadCursoss, cursosCargados } from './state/cursos.actions';
+import { loadCursoss } from './state/cursos.actions';
 import { selectCargandoState } from './state/cursos.selectors';
 
 

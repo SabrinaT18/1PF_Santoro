@@ -11,7 +11,7 @@ import { MaterialModule } from 'src/app/shared/material.module';
 import { ListaCursosComponent } from './lista-cursos/lista-cursos.component';
 import { AdminGuard } from 'src/app/core/guard/admin.guard';
 import { StoreModule } from '@ngrx/store';
-import  * as fromCursos from './state/cursos.reducer';
+import * as fromCursos from './state/cursos.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { CursosEffects } from './state/cursos.effects';
 import { VerDetalleComponent } from './ver-detalle/ver-detalle.component';
@@ -33,9 +33,9 @@ import { VerDetalleComponent } from './ver-detalle/ver-detalle.component';
     SharedModule,
     MaterialModule,
     StoreModule.forFeature(fromCursos.cursosFeatureKey, fromCursos.reducer),
-EffectsModule.forFeature([CursosEffects]),
+    EffectsModule.forFeature([CursosEffects]),
 
-],
+  ],
 
   providers: [
     CursosService,

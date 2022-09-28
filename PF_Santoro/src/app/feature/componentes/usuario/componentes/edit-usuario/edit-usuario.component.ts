@@ -5,7 +5,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 import { Usuario } from '../../../../Model/Usuario';
 import { UsuariosService } from '../../../../servicios/usuarios.service';
-import { Observable, Subscription } from 'rxjs';
 import { loadUsuarios } from '../../state/usuario.actions';
 
 @Component({

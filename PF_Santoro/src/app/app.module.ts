@@ -20,7 +20,6 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import * as fromSesion from './core/state/sesion.reducer';
-import { VerDetalleComponent } from './feature/componentes/cursos/ver-detalle/ver-detalle.component';
 import { UsuarioModule } from './feature/componentes/usuario/usuario.module';
 
 

@@ -12,19 +12,26 @@ const routes: Routes = [
 
   },  
   {path: 'admin', component: adminComponent, loadChildren: () => import('./feature/componentes/usuario/usuario-routing.module').then((m) => m.UsuarioRoutingModule), 
-  canActivate: [AdminGuard]},
+  canActivate: [GuardAuthGuard], canLoad: [GuardAuthGuard]},
 
   {
-    path: 'usuario', loadChildren: () => import('./feature/componentes/lista-alumnos/alumnos-routing.module').then((m) => m.AlumnosRoutingModule), canActivate: [GuardAuthGuard]
+    path: 'usuario', loadChildren: () => import('./feature/componentes/lista-alumnos/alumnos-routing.module').then((m) => m.AlumnosRoutingModule), 
+    canActivate: [GuardAuthGuard],  canLoad: [GuardAuthGuard]
+
   },
   {
-    path: 'usuario', loadChildren: () => import('./feature/componentes/cursos/cursos-routing.module').then((m) => m.CursosRoutingModule), canActivate: [GuardAuthGuard] 
+    path: 'usuario', loadChildren: () => import('./feature/componentes/cursos/cursos-routing.module').then((m) => m.CursosRoutingModule), 
+    canActivate: [GuardAuthGuard],  canLoad: [GuardAuthGuard]
   },
   {
-    path: 'usuario', loadChildren: () => import('./feature/componentes/inscripciones/inscripciones-routing.module').then((m) => m.InscripcionesRoutingModule), canActivate: [GuardAuthGuard]
+    path: 'usuario', loadChildren: () => import('./feature/componentes/inscripciones/inscripciones-routing.module').then((m) => m.InscripcionesRoutingModule), 
+     canActivate: [GuardAuthGuard],  canLoad: [GuardAuthGuard]
   },
   {
-    path: 'usuario', loadChildren: () => import('./feature/componentes/clases/clases-routing.module').then((m) => m.ClasesRoutingModule), canActivate: [GuardAuthGuard]
+    path: 'usuario', loadChildren: () => import('./feature/componentes/clases/clases-routing.module').then((m) => m.ClasesRoutingModule), 
+    canActivate: [GuardAuthGuard],
+    canLoad: [GuardAuthGuard]
+
   },
   { path: '', redirectTo: 'inicio', pathMatch: 'full' }
 ];

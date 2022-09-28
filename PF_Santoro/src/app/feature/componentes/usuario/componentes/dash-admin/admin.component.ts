@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { UsuariosService } from '../../../../servicios/usuarios.service';
 import { loadUsuarios } from '../../state/usuario.actions';
 import { UsuarioState } from '../../state/usuario.reducer';
 import { selectCargandoUsuarios } from '../../state/usuario.selectors';
@@ -16,7 +15,6 @@ export class adminComponent implements OnInit {
   cargando$!: Observable<boolean>;
 
   constructor(
-    private UsuariosService: UsuariosService,
     private router: Router,
     private store: Store<UsuarioState>
   ) { }

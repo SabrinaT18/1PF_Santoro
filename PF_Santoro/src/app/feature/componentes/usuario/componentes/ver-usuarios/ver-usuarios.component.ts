@@ -5,8 +5,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Usuario } from 'src/app/feature/Model/Usuario';
 import { UsuariosService } from '../../../../servicios/usuarios.service';
-import { loadUsuarios } from '../../state/usuario.actions';
-import { selectCargandoUsuarios, selectUsuariosCargadosState } from '../../state/usuario.selectors';
+import { selectUsuariosCargadosState } from '../../state/usuario.selectors';
 
 @Component({
   selector: 'app-ver-usuarios',
@@ -17,11 +16,9 @@ export class VerUsuariosComponent implements OnInit {
   data$!: Observable<Usuario[] | undefined>;
 
   constructor(
-    private UsuariosService: UsuariosService,
     public dialogRef: MatDialogRef<VerUsuariosComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Usuario,
     private store: Store,
-    private snackBar: MatSnackBar,
   ) { }
 
   ngOnInit(): void {

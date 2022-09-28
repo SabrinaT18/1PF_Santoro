@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
   <ng-container *ngIf="usuarioActivo$ | async as usuario">
-    <span> PF_Santoro  - {{ruta}} - {{ usuario.username }}  </span>  
+    <span> PF_Santoro - {{ruta}} - {{ usuario.username }}  </span>  
 
     <button mat-icon-button class="edit" aria-label="edit-usuario" (click)="redireccionar('perfil')">
         <mat-icon> person </mat-icon>
