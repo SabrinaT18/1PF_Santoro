@@ -1,15 +1,13 @@
 # PF_Santoro
 CODERHOUSE- curso Angular 2022- Proyecto final
 
-Usuarios principales/pruebas
+Usuarios principales para pruebas
 
-Perfil administrador:
-
+Perfil administrador
 email: admin@mail.com,
 password: admin
 
-Perfil usuario:
-
+Perfil usuario
 email: user@mail.com,
 password: user
 
