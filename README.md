@@ -4,10 +4,12 @@ CODERHOUSE- curso Angular 2022- Proyecto final
 Usuarios principales/pruebas
 
 Perfil administrador:
+
 email: admin@mail.com,
-password: admin,
+password: admin
 
 Perfil usuario:
+
 email: user@mail.com,
-password: user,
+password: user
 
