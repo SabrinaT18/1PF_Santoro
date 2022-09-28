@@ -1,12 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
-import { Alumnos } from 'src/app/feature/Model/Alumnos';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { AlumnosService } from '../../../servicios/alumnos.service';
-import { AuthService } from '../../../../core/servicios/auth.service';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
-import { MatDialog } from '@angular/material/dialog';
-import { NuevoAlumnoComponent } from '../nuevo-alumno/nuevo-alumno.component';
-import { ABMalumnosComponent } from '../editar-alumnos/abmalumnos.component';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { alumnosState } from '../state/alumnos.reducer';

@@ -2,7 +2,6 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { Cursos } from 'src/app/feature/Model/Cursos';
 import { selectorListaInscripcionesCurso } from '../../inscripciones/state/inscripciones.selectors';
 import { cargarInscripcionesCurso } from '../../inscripciones/state/inscripciones.actions';
-import { FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';

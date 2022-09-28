@@ -50,7 +50,7 @@
             <button mat-icon-button (click)="verDetalle(element)">
                 <mat-icon> visibility </mat-icon>
                  </button>
-               <button mat-icon-button (click)="editarInscripcion(element)">
+               <button mat-icon-button (click)="editarInscripcion(element)" *ngIf="usuarioAdmin$ |async">
                 <mat-icon>edit</mat-icon>
             </button>
             <button mat-icon-button (click)="eliminarInscripcion(element.id)">

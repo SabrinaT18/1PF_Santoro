@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
-import { InscripcionesService } from 'src/app/feature/servicios/inscripciones.service';
+import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { InscState } from './state/inscripciones.reducer';
@@ -17,7 +16,6 @@ export class InscripcionesComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private InsService: InscripcionesService,
     private store: Store<InscState>
   ) { }
 

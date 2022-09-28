@@ -44,7 +44,7 @@
             <button mat-icon-button (click)="editarCurso(element)" *ngIf="usuarioAdmin$ |async">
                 <mat-icon>edit</mat-icon>
             </button>
-            <button mat-icon-button (click)="eliminarCurso(element.id)" *ngIf="usuarioAdmin$ |async">
+            <button mat-icon-button (click)="eliminarCurso(element.idCurso)" *ngIf="usuarioAdmin$ |async">
                 <mat-icon>delete</mat-icon>
             </button>
         </td>

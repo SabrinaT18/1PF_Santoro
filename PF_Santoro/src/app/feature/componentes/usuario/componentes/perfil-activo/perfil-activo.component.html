@@ -1,10 +1,10 @@
 <app-toolbar></app-toolbar>
 <app-navbar></app-navbar>
 
-<h1 [appTitulos]="20"> Perfil de Usuario </h1>
+<h1 [appTitulos]="20"> Mi Perfil </h1>
 
 <div class="card">
-    <h2>Datos de usuario </h2>
+    <h2>Datos de usuario activo</h2>
 
     <div class="card-body" *ngIf="usuarioActivo$ | async as usuario">
         <pre>

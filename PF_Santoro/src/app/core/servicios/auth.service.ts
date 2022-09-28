@@ -1,8 +1,8 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { BehaviorSubject, catchError, map, Observable, throwError } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { sesion } from 'src/app/feature/Model/sesion';
 import { Usuario } from 'src/app/feature/Model/Usuario';
 import { environment } from 'src/environments/environment';

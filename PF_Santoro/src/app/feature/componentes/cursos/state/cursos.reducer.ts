@@ -1,7 +1,6 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import * as CursosActions from './cursos.actions';
 import { Cursos } from '../../../Model/Cursos';
-import { cursosCargados } from './cursos.actions';
 
 export const cursosFeatureKey = 'cursos';
 

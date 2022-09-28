@@ -4,7 +4,6 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Inscripciones } from '../../../Model/Inscripciones';
 import { InscripcionesService } from '../../../servicios/inscripciones.service';
-import { loadInsc } from '../state/inscripciones.actions';
 
 @Component({
   selector: 'app-detalle-ins',
