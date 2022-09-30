@@ -28,8 +28,7 @@ export class ToolbarComponent implements OnInit {
       if (event instanceof NavigationStart) {
         this.ruta = event.url;
       }
-    }); console.log(this.ruta);
-
+    }); 
 
     this.usuarioActivo$ = this.Authstore.select(selectUsuarioActivoState);
     this.usuarioAdmin$ = this.Authstore.select(selectUsuarioAdminState);

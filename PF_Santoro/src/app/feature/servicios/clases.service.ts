@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, Subscriber } from 'rxjs';
 import { Clases } from '../Model/Clases';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
@@ -41,7 +42,6 @@ obtenerPromiseClases () {
 
 AgregarClase(clases: any){
 this.clases.push(clases); 
-console.log(this.clases)
   }
 }
 

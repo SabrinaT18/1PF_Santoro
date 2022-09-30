@@ -1,24 +1,22 @@
-.container{
-  width: 100%;
-  height: auto;
-  display: flex ;
+h1 {
+  padding-top: 30px;
+  text-align: center;
 }
 
-div.card {
-    margin: 25px;
+h2 {
+  font-size: 16px;
+  margin-left: 25%;
+  margin-top: 2%;
+}
+
+table {
+  font-size: 15px;
+  text-align: center;
+  margin-left: 25%;
+  width: 50%;
 }
 
 button {
-margin: 5px;
-}
-
-.img{
-max-height: 400px;
-margin: auto;
-display: block;
-}
-
-div.img {
-  display: flex;
-  justify-content: center;
+  margin-left: 70%;
+  margin-bottom: 2%;
 }

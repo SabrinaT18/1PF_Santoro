@@ -30,7 +30,6 @@ export class DetalleComponent implements OnInit {
     this.inscripciones$ = this.store.select(selectorListaInscripcionesAlumno);
     this.store.dispatch(cargarInscripcionesAlumno({ idAlumno: this.data.idAlumno })
     )
-    console.log(this.inscripciones$);
   }
 
   desinscribir(id: any) {
