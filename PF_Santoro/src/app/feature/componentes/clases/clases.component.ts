@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { map, Observable, Subscription } from 'rxjs';
 import { ClasesService } from '../../servicios/clases.service';
 
@@ -14,7 +15,8 @@ export class ClasesComponent implements OnInit {
   clasesObservable$!: Observable<any>;
 
   constructor(
-    private ClasesService: ClasesService
+    private ClasesService: ClasesService,
+    private snackBar: MatSnackBar
   ) {
 
     this.ClasesService.obtenerPromiseClases().then((clases) => {
@@ -45,7 +47,6 @@ export class ClasesComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    console.log("Ejecutando ngOnDestroy");
     this.clasesSuscripcion.unsubscribe();
   }
 
@@ -54,5 +55,8 @@ export class ClasesComponent implements OnInit {
       id: 6, ClaseNum: 6,tema: 'examen', fecha: 'xxxxx'
     }
     this.ClasesService.AgregarClase(clase);
+    this.snackBar.open(`La clase nº ${clase.ClaseNum} fue agregada exitosamente`, 'Ok', {duration: 3000});
+
+
   }
 }

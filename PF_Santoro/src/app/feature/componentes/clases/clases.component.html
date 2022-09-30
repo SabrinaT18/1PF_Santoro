@@ -1,23 +1,60 @@
 <app-toolbar></app-toolbar>
 <app-navbar></app-navbar>
 
+<h1 [appTitulos]="20"> Clases </h1>
+<button type="button" class="btn btn-dark " (click)="AgregarClase()"> Agregar </button>
 
-<div class="container text-center">
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h1 [appTitulos]="20"> Clases (PROMISE):</h1>
-                <pre> {{ clases| json }} </pre>
-        </div>
-    </div>
+<h2>(PROMISE)</h2>
+<div class="grid text-center" style="--bs-columns: 4;">
 
+    <table class="table table-dark table-borderless">
+        <thead>
+            <tr>
+                <th scope="col"> Id </th>
+                <th scope="col"> Clase Nº</th>
+                <th scope="col">Fecha </th>
+                <th scope="col"> Tema </th>
+            </tr>
+        </thead>
+        <tbody>
 
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h1 [appTitulos]="20"> Clases (OBSERVABLE): </h1>
-            <pre>  {{ clasesObservable$ | async | json }} </pre>
+            <tr class *ngFor="let clase of clases">
 
-            <button type="button" class="btn btn-dark " (click)="AgregarClase()"> Agregar </button>
-        </div>
-    </div>
+                <td>{{clase.id }}</td>
+                <td>{{clase.ClaseNum }}</td>
+                <td>{{clase.fecha }}</td>
+                <td>{{clase.tema }}</td>
+
+            </tr>
+        </tbody>
+    </table>
 </div>
+
+
+<h2>(OBSERVABLE) </h2>
+
+
+<div class="grid text-center" style="--bs-columns: 4;">
+    <table class="table table-dark table-borderless">
+        <thead>
+            <tr>
+                <th scope="col"> Id </th>
+                <th scope="col"> Clase Nº</th>
+                <th scope="col">Fecha </th>
+                <th scope="col"> Tema </th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr class *ngFor="let clasesObservable$ of clases">
+                <td>{{clasesObservable$.id }}</td>
+                <td>{{clasesObservable$.ClaseNum }}</td>
+                <td>{{clasesObservable$.fecha }}</td>
+                <td>{{clasesObservable$.tema }}</td>
+
+            </tr>
+        </tbody> 
+    </table>          
+</div>
+
 <app-footer></app-footer>

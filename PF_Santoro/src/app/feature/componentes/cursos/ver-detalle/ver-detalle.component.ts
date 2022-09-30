@@ -30,7 +30,6 @@ export class VerDetalleComponent implements OnInit {
     this.inscripciones$ = this.store.select(selectorListaInscripcionesCurso);
     this.store.dispatch(cargarInscripcionesCurso({ idCurso: this.data.idCurso })
     )
-    console.log(this.inscripciones$);
   }
 
 
